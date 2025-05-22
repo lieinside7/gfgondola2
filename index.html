@@ -172,24 +172,296 @@
             gap: 0.5rem;
             margin-top: 0.7rem;
          }
-      }
-      @media (max-width: 600px) {
-         .gf-header {
-            padding: 0.7rem 3vw;
+         /* Hamburger visible */
+         .menu-toggle {
+            display: block !important;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--accent-1);
+            cursor: pointer;
+            margin-left: auto;
+            margin-top: 0.2em;
+            z-index: 120;
          }
-         .gf-logo {
-            font-size: 1.3rem;
-            padding: 0.15em 0.5em;
-         }
-         .gf-header .logo {
-            font-size: 1.2rem;
-         }
+         /* Hide nav by default on mobile */
          .gf-nav {
-            gap: 0.2rem;
+            display: none;
+            flex-direction: column;
+            background: var(--primary);
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            box-shadow: 0 8px 24px #005a8d22;
+            border-radius: 0 0 12px 12px;
+            padding: 0.7rem 0;
+         }
+         .gf-nav.show {
+            display: flex;
          }
          .gf-nav a {
-            font-size: 1em;
+            width: 100%;
+            justify-content: flex-start;
+            padding: 12px 24px;
+            border-radius: 0;
+            border-bottom: 1px solid #e3f0fa;
+         }
+      }
+      @media (max-width: 600px) {
+         html {
+            font-size: 15px;
+         }
+         body {
+            font-size: 15px;
+         }
+         .gf-header {
+            padding: 0.5rem 2vw;
+            min-height: 56px;
+         }
+         .gf-logo {
+            font-size: 1rem;
+            padding: 0.1em 0.3em;
+         }
+         .gf-header .logo {
+            font-size: 1rem;
+         }
+         .brand-subtitle {
+            font-size: 0.9rem;
+         }
+         .gf-nav a {
+            font-size: 0.95em;
+            padding: 7px 7px;
+            min-width: 36px;
+            min-height: 36px;
+         }
+         .gf-banner {
+            padding: 0.7rem 0 0.7rem 0;
+            min-height: 180px;
+         }
+         .gf-banner-inner {
+            gap: 0.7rem;
+            padding: 0 2vw;
+         }
+         .gf-banner-text h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
+         }
+         .gf-banner-text p {
+            font-size: 0.95rem;
+         }
+         .gf-banner-img img {
+            max-width: 120px;
+            border-radius: 12px;
+         }
+         .hero-section {
+            padding: 2rem 0 1.5rem 0;
+         }
+         .hero-section h1 {
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+         }
+         .hero-section p {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+         }
+         .btn-primary {
+            font-size: 1rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 7px;
+         }
+         .about {
+            padding: 1.2rem 0;
+         }
+         .about .video {
+            border-radius: 12px;
+            margin-bottom: 1rem;
+         }
+         .about video {
+            height: 120px;
+            border-radius: 8px;
+         }
+         .about h3 {
+            font-size: 1.2rem;
+         }
+         .about p {
+            font-size: 0.95rem;
+         }
+         .about .btn {
+            font-size: 1rem;
+            padding: 0.7rem 1.5rem;
+         }
+         .about .box {
+            padding: 0.7rem;
+         }
+         .about .box h3 {
+            font-size: 1.1rem;
+         }
+         .about .box p {
+            font-size: 0.85rem;
+         }
+         .services {
+            padding: 1.2rem 0;
+         }
+         .services .box {
+            padding: 1rem 0.7rem 0.7rem 0.7rem;
+         }
+         .services .box img {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 0.5rem;
+         }
+         .services .box h3 {
+            font-size: 1rem;
+         }
+         .services .box p {
+            font-size: 0.85rem;
+         }
+         .projects {
+            padding: 1.2rem 0;
+         }
+         .projects .box {
+            border-radius: 8px;
+         }
+         .projects .box .image img {
+            height: 90px;
+         }
+         .projects .box h3 {
+            font-size: 1rem;
+         }
+         .projects .box p {
+            font-size: 0.85rem;
+         }
+         .reviews {
+            padding: 1.2rem 0;
+         }
+         .reviews .swiper-slide {
+            padding: 12px;
+            border-radius: 6px;
+         }
+         .reviews .user img {
+            width: 32px;
+            height: 32px;
+         }
+         .reviews .user .info h3 {
+            font-size: 0.9rem;
+         }
+         .pricing {
+            padding: 1.2rem 0;
+         }
+         .pricing .box {
+            padding: 1rem 0.7rem 0.7rem 0.7rem;
+         }
+         .pricing .box .price {
+            font-size: 1.1rem;
+         }
+         .pricing .box .list p {
+            font-size: 0.85rem;
+         }
+         .pricing .box h3 {
+            font-size: 1rem;
+         }
+         .pricing .box .btn {
+            font-size: 1rem;
+            padding: 0.7rem 1.5rem;
+         }
+         .contact {
+            padding: 1.2rem 0;
+         }
+         .contact .section-header .heading {
+            font-size: 1.1rem;
+         }
+         .contact .section-header .subheading {
+            font-size: 0.95rem;
+         }
+         .contact-container {
+            padding: 0 0.3rem;
+            gap: 1rem;
+         }
+         .gf-map {
+            border-radius: 8px;
+         }
+         .gf-form {
+            padding: 1rem;
+            border-radius: 8px;
+            gap: 0.7rem;
+         }
+         .input-group input,
+         .input-group textarea {
+            font-size: 0.95rem;
             padding: 8px 10px;
+            border-radius: 6px;
+         }
+         .gf-submit-btn {
+            font-size: 0.95rem;
+            padding: 8px 10px;
+            border-radius: 6px;
+         }
+         .blogs {
+            padding: 1.2rem 0;
+         }
+         .blog-card {
+            max-width: 100%;
+            border-radius: 8px;
+            padding: 0 0 0.7rem 0;
+         }
+         .blog-card .image img {
+            height: 90px;
+         }
+         .blog-card .content {
+            padding: 0.7rem 0.5rem 0 0.5rem;
+         }
+         .gallery {
+            padding: 1.2rem 0;
+         }
+         .gallery-container {
+            gap: 0.7rem;
+            padding: 0 0.3rem;
+         }
+         .gallery-item {
+            border-radius: 8px;
+         }
+         .gallery-item img {
+            height: 90px;
+            border-radius: 8px;
+         }
+         .logo-container {
+            padding: 1.2rem 0;
+         }
+         .logo-container h1.heading {
+            font-size: 1.1rem;
+         }
+         .logo-container .client-desc {
+            font-size: 0.9rem;
+         }
+         .footer {
+            padding: 1.2rem 0 1rem 0;
+         }
+         .footer .footer-content {
+            font-size: 0.85rem;
+            gap: 0.5rem;
+         }
+         .footer .footer-brand {
+            font-size: 0.95rem;
+         }
+         .footer .credit {
+            font-size: 0.85rem;
+         }
+      }
+      @media (max-width: 375px) {
+         html {
+            font-size: 13px;
+         }
+         .gf-header {
+            min-height: 44px;
+         }
+         .gf-nav a {
+            font-size: 0.85em;
+            padding: 5px 5px;
+         }
+         .btn-primary, .about .btn, .pricing .box .btn, .gf-submit-btn {
+            font-size: 0.85rem;
+            padding: 6px 8px;
          }
       }
 
@@ -422,17 +694,6 @@
          }
          .about .box-container {
             grid-template-columns: 1fr;
-         }
-      }
-      @media (max-width: 600px) {
-         .about h1 {
-            font-size: 1.8rem;
-         }
-         .about .box {
-            padding: 1.5rem;
-         }
-         .about .box h3 {
-            font-size: 1.3rem;
          }
       }
       @media (max-width: 600px) {
@@ -1110,10 +1371,10 @@
          <span class="brand-subtitle">GONDOLA FIRDAUS</span>
       </a>
       <!-- Hamburger menu button (for future JS toggle) -->
-      <button class="menu-toggle" aria-label="Toggle navigation" style="display:none;">
+      <button class="menu-toggle" aria-label="Toggle navigation" id="menu-toggle-btn" style="display:none;">
          <i class="fas fa-bars"></i>
       </button>
-      <nav class="gf-nav">
+      <nav class="gf-nav" id="main-nav">
          <a href="#home" class="active">Home</a>
          <a href="#about">Tentang</a>
          <a href="#services">Layanan</a>
@@ -1743,6 +2004,19 @@
    <!-- custom js file link  -->
    <script src="js/script.js"></script>
    <script>
+      // Hamburger menu toggle
+      const menuToggleBtn = document.getElementById('menu-toggle-btn');
+      const mainNav = document.getElementById('main-nav');
+      menuToggleBtn.addEventListener('click', function() {
+         mainNav.classList.toggle('show');
+      });
+      // Close menu on link click (mobile UX)
+      document.querySelectorAll('.gf-nav a').forEach(link => {
+         link.addEventListener('click', function() {
+            if(window.innerWidth <= 900) mainNav.classList.remove('show');
+         });
+      });
+
       lightGallery(document.querySelector('.projects .box-container'));
       lightGallery(document.getElementById('lightgallery'), {
          selector: '.gallery-item'
