@@ -364,22 +364,34 @@ ul {
     position: fixed;
     top: 8rem;
     left: -100%;
-    width: 100%;
-    height: calc(100vh - 8rem);
+    width: 92vw; /* Ubah dari 100% ke 92vw */
+    max-width: 420px;
+    min-width: 220px;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: auto;
     background-color: var(--white);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,86,179,0.13), 0 2px 12px rgba(0,0,0,0.09);
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 3rem;
-    padding: 3rem 0;
-    transition: left 0.3s ease;
+    padding: 2.5rem 0;
+    transition: left 0.3s ease, opacity 0.3s;
     z-index: 998;
     display: none; /* Hide by default on mobile */
+    opacity: 0;
+    pointer-events: none;
   }
 
   .navbar.active {
-    left: 0;
-    display: flex !important; /* Show navbar when active */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-link {
