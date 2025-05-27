@@ -668,19 +668,8 @@ ul {
   z-index: 2;
 }
 
-@media (max-width: 600px) {
-  .hero {
-    min-height: 100vh !important;
-    height: 100vh !important;
-    width: 100vw !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
+@media (max-width: 900px) {
+  .hero,
   .hero .swiper,
   .hero .swiper-wrapper,
   .hero .swiper-slide {
@@ -688,6 +677,8 @@ ul {
     height: 100vh !important;
     width: 100vw !important;
     max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -983,7 +974,7 @@ ul {
   border-radius: 2.5rem;
   overflow: hidden;
   box-shadow: 0 16px 64px rgba(0,86,179,0.22), 0 2px 12px rgba(0,0,0,0.13);
-  background: #ffffff00;
+  background: transparent !important;
   position: relative;
   min-height: 520px;
 }
@@ -994,7 +985,7 @@ ul {
   object-fit: cover;
   border-radius: 0rem;
   box-shadow: none;
-  background: #ffffff00;
+  background: transparent !important;
   display: block;
 }
 
