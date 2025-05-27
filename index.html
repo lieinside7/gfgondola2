@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Perbaiki viewport agar mobile tidak zoom out dan tampil proporsional -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+   <title>PT. Gondola Firdaus Pratama Jaya - Spesialis Gondola Profesional</title>
+   <meta name="description" content="Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat. Solusi aman dan profesional untuk kebutuhan akses ketinggian Anda.">
+
+   <!-- Favicon -->
+   <link rel="icon" href="images/favicon.png" type="image/png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+   <!-- Tambahkan sebelum custom CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <!-- =========================
+        ===== CUSTOM CSS =====
+        ========================= -->
+   <link rel="stylesheet" href="css/style.css">
+   <script src="js/animations.js"></script>
+   <style>
+      /* === Proyek Kami Gallery Custom CSS === */
+      .projects .box-container {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 2rem;
+         justify-content: center;
+         margin-top: 2rem;
+      }
+      .projects .box {
+         background: #fff;
+         border-radius: 18px;
+         box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+         overflow: hidden;
+         width: 380px;
+         max-width: 100%;
+         display: flex;
+         flex-direction: column;
+         text-decoration: none;
+         transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
+         position: relative;
+      }
+      .projects .box:hover {
+         transform: translateY(-10px) scale(1.03);
+         box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.10);
+         z-index: 2;
+      }
+      .projects .box .image {
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+         background: #f6f6f6;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      .projects .box .image img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: 
+            transform 0.4s cubic-bezier(.10,2,.5,1),
+            filter 0.3s;
+         filter: brightness(0.97) contrast(1.08);
+      }
+      .projects .box:hover .image img {
+         transform: scale(1.07) rotate(-1deg);
+         filter: brightness(1.03) contrast(1.12);
+      }
+      .projects .box .content {
+         padding: 1.3rem 1.2rem 1.1rem 1.2rem;
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         background: #fff;
+         position: relative;
+      }
+      .projects .box .info h3 {
+         font-size: 1.18rem;
+         font-weight: 700;
+         color: #1a237e;
+         margin-bottom: 0.3rem;
+         letter-spacing: 0.01em;
+      }
+      .projects .box .info p {
+         font-size: 1rem;
+         color: #444;
+         margin-bottom: 0;
+         font-weight: 400;
+      }
+      .projects .box .fas.fa-plus {
+         position: absolute;
+         right: 1.2rem;
+         bottom: 1.2rem;
+         color: #ff7d00;
+         font-size: 1.3rem;
+         opacity: 0.7;
+         transition: color 0.2s, opacity 0.2s;
+      }
+      .projects .box:hover .fas.fa-plus {
+         color: #0056b3;
+         opacity: 1;
+      }
+      .projects .text-center.mt-4 {
+         margin-top: 2.5rem;
+      }
+      .projects .btn.btn-primary {
+         padding: 0.9rem 2.2rem;
+         font-size: 1.1rem;
+         border-radius: 30px;
+         font-weight: 600;
+         background: linear-gradient(90deg,#ff7d00 0%,#ff6600 100%);
+         border: none;
+         color: #fff;
+         box-shadow: 0 2px 8px rgba(255,125,0,0.10);
+         transition: background 0.2s, box-shadow 0.2s;
+      }
+      .projects .btn.btn-primary:hover {
+         background: linear-gradient(90deg,#0056b3 0%,#ff7d00 100%);
+         box-shadow: 0 4px 16px rgba(0,86,179,0.10);
+         color: #fff;
+      }
+      @media (max-width: 900px) {
+         .projects .box-container {
+            gap: 1.2rem;
+         }
+         .projects .box {
+            width: 95vw;
+            max-width: 420px;
+         }
+      }
+      @media (max-width: 600px) {
+         .projects .box-container {
+            flex-direction: column;
+            align-items: center;
+         }
+         .projects .box {
+            width: 100%;
+            min-width: 0;
+         }
+         .projects .box .image {
+            height: 170px;
+         }
+      }
+
+      /* Tambahkan style khusus untuk link MCA di footer */
+      .footer-bottom .mca-highlight {
+         color: #ff7d00 !important;
+         font-weight: bold;
+         text-decoration: underline;
+         transition: color 0.2s;
+      }
+      .footer-bottom .mca-highlight:hover {
+         color: #0056b3 !important;
+      }
+   </style>
+</head>
+   <!-- =========================
+        ===== JS LIBRARIES (HEAD) =====
+        ========================= -->
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
+   <script src="js/animations.js"></script>
+
+   <body>
+      <!-- Preloader -->
+      <div class="preloader">
+        <div class="loader"></div>
+      </div>
+      <header class="header mobile-header">
+         <div class="container">
+           <a href="#" class="logo">
+             <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="30" height="30">
+             <span>PT. Gondola Firdaus Pratama Jaya</span>
+           </a>
+           
+           <div class="header-actions">
+             <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
+               <i class="fas fa-phone-alt"></i>
+             </a>
+             <a href="mailto:gfgondola86@gmail.com" class="action-btn email">
+             <i class="fas fa-envelope"></i>
+            </a>
+             <div id="menu-btn" class="fas fa-bars"></div>
+           </div>
+
+           <nav class="navbar">
+             <a href="#home" class="nav-link active">Beranda</a>
+             <a href="#about" class="nav-link">Tentang</a>
+             <a href="#services" class="nav-link">Layanan</a>
+             <a href="#projects" class="nav-link">Proyek</a>
+             <a href="#testimonials" class="nav-link">Testimoni</a>
+             <a href="#contact" class="nav-link">Kontak</a>
+           </nav>
+         </div>
+       </header>
+      <!-- Header -->
+<header class="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="40" height="38">
+      <span>PT. Gondola Firdaus Pratama Jaya</span>
+    </a>
+    
+    <nav class="navbar">
+      <a href="#home" class="nav-link active">Beranda</a>
+      <a href="#about" class="nav-link">Tentang</a>
+      <a href="#services" class="nav-link">Layanan</a>
+      <a href="#projects" class="nav-link">Proyek</a>
+      <a href="#testimonials" class="nav-link">Testimoni</a>
+      <a href="#contact" class="nav-link">Kontak</a>
+    </nav>
+    
+    <div class="header-actions">
+      <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+      <a href="mailto:gfgondola86@gmail.com" class="action-btn email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <div id="menu-btn" class="fas fa-bars"></div>
+    </div>
+  </div>
+</header>
+<!-- Tambahkan spasi antara header dan banner -->
+<div style="height: 10px;"></div>
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <!-- Contoh pada hero slider -->
+<div class="swiper hero-slider">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide slide" style="background: url(fotofabrikasi/IMG-20241211-WA0011.jpg) no-repeat center/cover;">
+      <div class="container">
+        <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+          <h1 class="hero-title" style="font-size:4.8rem;font-weight:900;letter-spacing:0.01em;text-align:center;">
+            Solusi Gondola Profesional &amp; Aman untuk Gedung Tinggi
+          </h1>
+          <p class="hero-text" style="font-size:2.1rem;text-align:center;">
+            Layanan gondola custom, pemasangan, perawatan, dan suku cadang dengan standar internasional. <br>
+            <span style="font-weight:700;color:#ca6303fd;">Lebih dari 10 tahun pengalaman!</span>
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Hubungi Kami</a>
+            <a href="#services" class="btn btn-outline">Layanan Kami</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide slide" style="background: url(fotofabrikasi/gondolapapua.jpg) no-repeat center/cover;">
+      <div class="container">
+        <div class="hero-content" data-aos="fade-up" data-aos-delay="300">
+          <h1 class="hero-title">Menghubungkan Ketinggian dengan Keamanan</h1>
+          <p class="hero-text">Berpengalaman lebih dari 10 tahun dalam menyediakan layanan gondola terbaik untuk berbagai kebutuhan gedung tinggi di seluruh Indonesia</p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary" style="pointer-events:auto;z-index:2;position:relative;">Lihat Proyek</a>
+            <a href="#testimonials" class="btn btn-outline" style="pointer-events:auto;z-index:2;position:relative;">Testimoni Klien</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+</section>
+
+   <!-- About Section -->
+   <section class="section about" id="about" data-aos="fade-up">
+      <div class="container">
+         <div class="section-header" style="text-align:center;">
+            <h2 class="section-title" style="font-size:3.6rem;font-weight:800;letter-spacing:0.01em;">
+              Kenapa Memilih <span style="color:#ff7d00;">PT. Gondola Firdaus Pratama Jaya?</span>
+            </h2>
+            <p class="section-subtitle" style="font-size:2rem;">
+              Mitra terpercaya untuk solusi gondola gedung tinggi di Indonesia
+            </p>
+         </div>
+
+         <div class="row">
+            <div class="about-content">
+               <!-- Tambahkan deskripsi utama di atas video, beri jarak bawah -->
+               <div class="about-main-desc" style="margin-bottom:2.5rem;">
+                  <h3 class="content-title">Kami Hadirkan Solusi Gondola Terbaik untuk Anda</h3>
+                  <p>Dengan pengalaman lebih dari satu dekade, kami telah dipercaya oleh berbagai klien untuk menyediakan gondola berkualitas tinggi. Tim profesional kami siap memberikan layanan terbaik, mulai dari konsultasi, pemasangan, hingga perawatan rutin.</p>
+               </div>
+               
+               <div class="features-grid">
+                  <div class="feature-item">
+                     <i class="fas fa-award"></i>
+                     <h4>Bersertifikat</h4>
+                     <p>Tenaga kerja bersertifikat dan peralatan standar internasional</p>
+                  </div>
+                  <div class="feature-item">
+                     <i class="fas fa-shield-alt"></i>
+                     <h4>Aman</h4>
+                     <p>Prioritaskan keselamatan dalam setiap proyek</p>
+                  </div>
+                  <div class="feature-item">
+                     <i class="fas fa-clock"></i>
+                     <h4>Tepat Waktu</h4>
+                     <p>Penyelesaian proyek sesuai jadwal yang disepakati</p>
+                  </div>
+               </div>
+               
+               <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
+            </div>
+
+            <div class="about-media">
+               <div class="video-wrapper">
+                  <video id="about-video" src="images/videogf.mp4" loop playsinline></video>
+                  <div class="video-overlay" id="videoOverlay">
+                     <button class="video-play-btn" id="playPauseBtn">
+                        <i class="fas fa-play"></i>
+                        <button class="video-fullscreen-btn" id="fullscreenBtn" type="button" title="Perbesar Video">
+                           <i class="fas fa-expand"></i>
+                        </button>
+                     </button>
+                  </div>
+                  <div class="video-autoplay-hint" id="autoplayHint" style="display:none;">
+                     Klik untuk memutar video
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+         <div class="stats-grid" style="display:flex;gap:2.5rem;justify-content:center;align-items:stretch;">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#ff7d00;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-calendar-check"></i>
+               </div>
+               <h3 class="stat-number" data-count="10" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Tahun<br><span style="font-weight:600;">Pengalaman</span>
+               </div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#0056b3;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-briefcase"></i>
+               </div>
+               <h3 class="stat-number" data-count="1500" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Proyek<br><span style="font-weight:600;">Selesai</span>
+               </div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#25D366;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-users"></i>
+               </div>
+               <h3 class="stat-number" data-count="790" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Klien<br><span style="font-weight:600;">Puas</span>
+               </div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="400" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#ff6600;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-user-cog"></i>
+               </div>
+               <h3 class="stat-number" data-count="450" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Teknisi<br><span style="font-weight:600;">Aktif</span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
+   </section>
+
+   <!-- Services Section -->
+   <section class="section services" id="services" data-aos="fade-up">
+      <div class="container">
+         <div class="section-header" style="text-align:center;">
+            <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
+              Layanan Unggulan Kami
+            </h2>
+            <p class="section-subtitle" style="font-size:1.8rem;">
+              Satu tempat untuk semua kebutuhan gondola Anda
+            </p>
+         </div>
+<!-- Contoh pada layanan -->
+<div class="box-container">
+   <div class="box" data-aos="zoom-in" data-aos-delay="100">
+     <!-- konten box -->
+   </div>
+   <div class="box" data-aos="zoom-in" data-aos-delay="200">
+     <!-- konten box -->
+   </div>
+
+         <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+               <div class="service-icon">
+                  <img src="images/service-1.png" alt="Pembuatan Gondola Custom">
+               </div>
+               <h3>Pembuatan Gondola Custom</h3>
+               <p>Desain dan pembuatan gondola sesuai kebutuhan gedung Anda, dengan standar keamanan internasional.</p>
+               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+               <div class="service-icon">
+                  <img src="images/service-7.png" alt="Pemasangan Gondola">
+               </div>
+               <h3>Pemasangan Gondola</h3>
+               <p>Pemasangan gondola oleh tim profesional, memastikan keamanan dan efisiensi operasional.</p>
+               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+               <div class="service-icon">
+                  <img src="images/service-8.png" alt="Perawatan Gondola">
+               </div>
+               <h3>Perawatan & Servis</h3>
+               <p>Layanan perawatan rutin dan perbaikan gondola untuk menjaga performa optimal dan memperpanjang usia pakai.</p>
+               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+               <div class="service-icon">
+                  <img src="images/service-6.png" alt="Suku Cadang Gondola">
+               </div>
+               <h3>Suku Cadang</h3>
+               <p>Penyediaan sparepart gondola asli dan bergaransi untuk berbagai merek dan tipe.</p>
+               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+         </div>
+         <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
+      </div>
+      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
+   </section>
+
+   <!-- Proyek Kami Section -->
+   <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section-header" style="text-align:center;">
+          <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
+            Proyek-Proyek Terbaik Kami
+          </h2>
+          <p class="section-subtitle" style="font-size:1.8rem;">
+            Portofolio instalasi &amp; perawatan gondola di berbagai gedung ternama
+          </p>
+        </div>
+         <div class="box-container">
+            <a href="fotomaintenance/A.jpg" class="box" data-lg-size="1406-1390">
+               <div class="image">
+                  <img src="fotomaintenance/A.jpg" loading="lazy" alt="Gedung Perkantoran Jakarta">
+               </div>
+               <div class="content">
+                  <div class="info">
+                     <h3>Gedung Perkantoran Jakarta</h3>
+                     <p>Instalasi gondola custom</p>
+                  </div>
+                  <i class="fas fa-plus"></i>
+               </div>
+            </a>
+            <a href="fotomaintenance/l.jpg" class="box" data-lg-size="1406-1390">
+               <div class="image">
+                  <img src="fotomaintenance/l.jpg" loading="lazy" alt="Apartemen Surabaya">
+               </div>
+               <div class="content">
+                  <div class="info">
+                     <h3>Apartemen Surabaya</h3>
+                     <p>Pemasangan & pelatihan operator</p>
+                  </div>
+                  <i class="fas fa-plus"></i>
+               </div>
+            </a>
+            <a href="fotomaintenance/i.jpg" class="box" data-lg-size="1406-1390">
+               <div class="image">
+                  <img src="fotomaintenance/i.jpg" loading="lazy" alt="Rumah Sakit Bandung">
+               </div>
+               <div class="content">
+                  <div class="info">
+                     <h3>Rumah Sakit Bandung</h3>
+                     <p>Servis & modernisasi gondola</p>
+                  </div>
+                  <i class="fas fa-plus"></i>
+               </div>
+            </a>
+            <a href="fotomaintenance/m.jpg" class="box" data-lg-size="1406-1390">
+               <div class="image">
+                  <img src="fotomaintenance/m.jpg" loading="lazy" alt="Hotel Bali">
+               </div>
+               <div class="content">
+                  <div class="info">
+                     <h3>Hotel Bali</h3>
+                     <p>Perawatan berkala gondola</p>
+                  </div>
+                  <i class="fas fa-plus"></i>
+               </div>
+            </a>
+            <a href="fotomaintenance/k.jpg" class="box" data-lg-size="1406-1390">
+               <div class="image">
+                  <img src="fotomaintenance/k.jpg" loading="lazy" alt="Pusat Perbelanjaan Medan">
+               </div>
+               <div class="content">
+                  <div class="info">
+                     <h3>Pusat Perbelanjaan Medan</h3>
+                     <p>Audit & inspeksi gondola</p>
+                  </div>
+                  <i class="fas fa-plus"></i>
+               </div>
+            </a>
+            <a href="fotomaintenance/g.jpg" class="box" data-lg-size="1406-1390">
+               <div class="image">
+                  <img src="fotomaintenance/g.jpg" loading="lazy" alt="Gedung Pemerintahan">
+               </div>
+               <div class="content">
+                  <div class="info">
+                     <h3>Gedung Pemerintahan</h3>
+                     <p>Penyediaan suku cadang</p>
+                  </div>
+                  <i class="fas fa-plus"></i>
+               </div>
+            </a>
+         </div>
+         <div class="text-center mt-4">
+            <a href="#contact" class="btn btn-primary">Ajukan Proyek Anda</a>
+         </div>
+      </div>
+   </section>
+   <!-- End Proyek Kami Section -->
+
+   <!-- Blogs Section -->
+   <section class="section blogs" id="blogs">
+      <div class="container">
+        <div class="section-header" style="text-align:center;">
+          <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
+            Wawasan &amp; Tips Seputar Gondola
+          </h2>
+          <p class="section-subtitle" style="font-size:1.7rem;">
+            Artikel, berita, dan inspirasi untuk solusi akses gedung tinggi
+          </p>
+        </div>
+         <div class="swiper blogs-slider">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide slide">
+                  <div class="image">
+                     <img src="fotofabrikasi/fabrikasiunisba.jpg" alt="Teknologi Gondola Terkini">
+                  </div>
+                  <div class="content">
+                     <h3>Teknologi Gondola Terkini</h3>
+                     <p>Artikel tentang inovasi, metode terbaru, dan teknologi gondola untuk gedung tinggi.</p>
+                  </div>
+               </div>
+               <div class="swiper-slide slide">
+                  <div class="image">
+                     <img src="fotofabrikasi/gondolapapua.jpg" alt="Manajemen Proyek Gondola">
+                  </div>
+                  <div class="content">
+                     <h3>Manajemen Proyek Gondola</h3>
+                     <p>Tips dan panduan perencanaan, penjadwalan, serta pengelolaan proyek gondola secara efektif.</p>
+                  </div>
+               </div>
+               <div class="swiper-slide slide">
+                  <div class="image">
+                     <img src="fotomodifikasi/modifikasi.jpg" alt="Berita Industri Gondola">
+                  </div>
+                  <div class="content">
+                     <h3>Berita Industri Gondola</h3>
+                     <p>Update regulasi, tren pasar, dan event industri gondola di Indonesia.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="swiper-pagination"></div>
+         </div>
+      </div>
+      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
+   </section>
+
+   <!-- Testimonials Section -->
+
+   <section class="section testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header" style="text-align:center;">
+          <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
+            Apa Kata Klien Kami?
+          </h2>
+          <p class="section-subtitle" style="font-size:1.7rem;">
+            Testimoni nyata dari pelanggan yang puas dengan layanan kami
+          </p>
+        </div>
+         <div class="swiper testimonials-slider">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                  <div class="testimonial-content">
+                     <p>"Memilih PT. Gondola Firdaus Pratama Jaya adalah keputusan terbaik untuk proyek gedung kami. Tim sangat profesional, responsif, dan hasil pemasangan gondola sangat memuaskan. Kami sangat merekomendasikan!"</p>
+                  </div>
+                  <div class="testimonial-author">
+                     <img src="images/pic 1.jpg" alt="Budi Santoso">
+                     <div class="author-info">
+                        <h4>Budi Santoso</h4>
+                        <div class="rating">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="swiper-slide testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                  <div class="testimonial-content">
+                     <p>"Sebagai pengelola properti, saya sangat puas dengan layanan perawatan gondola dari PT. Gondola Firdaus. Selalu tepat waktu dan hasil kerja sangat rapi."</p>
+                  </div>
+                  <div class="testimonial-author">
+                     <img src="images/pic 2.jpg" alt="Sri Wahyuni">
+                     <div class="author-info">
+                        <h4>Sri Wahyuni</h4>
+                        <div class="rating">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="swiper-slide testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                  <div class="testimonial-content">
+                     <p>"Pelayanan konsultasi dan pemasangan gondola sangat profesional. Semua proses berjalan lancar dan hasilnya sesuai harapan."</p>
+                  </div>
+                  <div class="testimonial-author">
+                     <img src="images/pic 3.jpg" alt="Andi Pratama">
+                     <div class="author-info">
+                        <h4>Andi Pratama</h4>
+                        <div class="rating">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+         </div>
+      </div>
+   </section>
+
+   <!-- CLIENT LOGO SECTION -->
+   <div class="section-header" style="text-align:center;">
+  <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
+    Klien &amp; Mitra Kepercayaan Kami
+  </h2>
+  <p class="section-subtitle" style="font-size:1.7rem;">
+    Gedung dan perusahaan ternama yang telah mempercayakan solusi gondola kepada kami
+  </p>
+</div>
+      <div class="swiper logo-slider">
+         <div class="swiper-wrapper">
+            <!-- Contoh pada logo client -->
+<div class="swiper-slide slide">
+  <img src="logoclient/aspen.jpg" loading="lazy" alt="Client 1">
+</div>
+<div class="swiper-slide slide"><img src="logoclient/bankmega.png" alt="Client 2" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/bi.jpg" alt="Client 3" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/bks.jpg" alt="Client 4" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/inalum.png" alt="Client 5" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/keisha.png" alt="Client 6" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/kempinski.jpg" alt="Client 7" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/montsera.png" alt="Client 8" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/mulia.jpg" alt="Client 9" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/nusaraya.jpg" alt="Client 10" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/olive.jpg" alt="Client 11" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/pakkodian.png" alt="Client 12" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/pbs.jpg" alt="Client 13" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/polri.png" alt="Client 14" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/pp.png" alt="Client 15" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/provices.png" alt="Client 16" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/trakindo.jpg" alt="Client 17" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/ugm.jpg" alt="Client 18" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/uresidences.jpg" alt="Client 19" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/wika.png" alt="Client 20" loading="lazy"></div>
+<div class="swiper-slide slide"><img src="logoclient/xlsmart.png" alt="Client 21" loading="lazy"></div>
+         </div>
+      </div>
+   </section>
+   <!-- END CLIENT LOGO SECTION -->
+
+   <!-- Contact Section -->
+<section class="contact-section" id="contact">
+   <div class="container">
+     <div class="section-header" style="text-align:center;">
+       <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
+         Hubungi Tim Gondola Profesional Kami
+       </h2>
+       <p class="section-subtitle" style="font-size:1.7rem;">
+         Konsultasikan kebutuhan gondola Anda bersama kami, gratis!
+       </p>
+     </div>
+ 
+     <div class="contact-grid">
+       <!-- Contact Info -->
+       <div class="contact-info">
+         <div class="info-item">
+           <i class="fas fa-map-marker-alt"></i>
+           <div>
+             <h3>Alamat Kantor</h3>
+             <p>Jl. Raya Pondok Petir No.118 RT 002/100<br>Bojongsari - Depok</p>
+           </div>
+         </div>
+         
+         <div class="info-item">
+           <i class="fas fa-phone-alt"></i>
+           <div>
+             <h3>Telepon</h3>
+             <p><a href="tel:081220200680">0812-2020-0680</a></p>
+           </div>
+         </div>
+         
+         <div class="info-item">
+           <i class="fas fa-envelope"></i>
+           <div>
+             <h3>Email</h3>
+             <p><a href="mailto:gfgondola86@gmail.com">gfgondola86@gmail.com</a></p>
+           </div>
+         </div>
+         
+         <div class="info-item">
+           <i class="fas fa-clock"></i>
+           <div>
+             <h3>Jam Operasional</h3>
+             <p>Senin - Sabtu: 08.00 - 17.00 WIB</p>
+           </div>
+         </div>
+ 
+         <!-- Social Media Links -->
+         <div class="contact-social">
+           <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+           <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+           <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+           <a href="https://wa.me/6281220200690" class="social-icon whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+         </div>
+       </div>
+ 
+       <!-- Contact Form -->
+       <div class="contact-form">
+         <form id="contactForm">
+           <div class="form-group">
+             <input type="text" name="nama" placeholder="Nama Lengkap" required>
+           </div>
+           <div class="form-group">
+             <input type="email" name="email" placeholder="Alamat Email" required>
+           </div>
+           <div class="form-group">
+             <input type="tel" name="telepon" placeholder="Nomor Telepon" required>
+           </div>
+           <div class="form-group">
+             <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
+           </div>
+           <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+         </form>
+       </div>
+ 
+       <!-- Google Maps Embed -->
+       <div class="contact-map">
+         <iframe 
+           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1277154841987!2d106.7256441!3d-6.377510099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efe7f8fe5e2d%3A0xba7042e6d99bad88!2sKantor%20GF%202!5e0!3m2!1sid!2sid!4v1748254798901!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+           width="600" 
+           height="450" 
+           style="border:0;" 
+           allowfullscreen="" 
+           loading="lazy">
+         </iframe>
+       </div>
+     </div>
+   </div>
+ </section>
+   <!-- Footer -->
+   <footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-about">
+        <a href="#" class="footer-logo">
+          <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="40" height="38">
+          <span>PT. Gondola Firdaus Pratama Jaya</span>
+        </a>
+        <p style="font-size:1.2rem;">
+          Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat di seluruh Indonesia.
+        </p>
+        
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#services">Layanan</a></li>
+          <li><a href="#projects">Proyek</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Layanan Kami</h3>
+        <ul>
+          <li><a href="#services">Pembuatan Gondola</a></li>
+          <li><a href="#services">Pemasangan</a></li>
+          <li><a href="#services">Perawatan</a></li>
+          <li><a href="#services">Suku Cadang</a></li>
+          <li><a href="#services">Konsultasi</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h3>Hubungi Kami</h3>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Jl. Raya Pondok Petir No.118, Depok</li>
+          <li><i class="fas fa-phone-alt"></i> <a href="tel:081220200690">0812-2020-0690</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:gfgondola86@gmail.com">gfgondola86@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom" style="font-size:1.1rem;">
+      <p>&copy; 2023 PT. Gondola Firdaus Pratama Jaya. Seluruh hak cipta dilindungi undang-undang.</p>
+      <p>Website oleh <a href="https://www.facebook.com/lieinsid" target="_blank" class="mca-highlight">MCA</a></p>
+    </div>
+  </div>
+</footer>
+
+   <!-- WhatsApp Float Button -->
+   <a href="https://wa.me/6281220200690" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+   </a>
+
+   <!-- Back to Top Button -->
+   <a href="#home" class="back-to-top" aria-label="Kembali ke atas">
+      <i class="fas fa-arrow-up"></i>
+   </a>
+
+   <!-- JavaScript Libraries -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lg-zoom/1.1.0/lg-zoom.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lg-thumbnail/1.1.0/lg-thumbnail.min.js"></script>
+   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+
+   <!-- Custom JS -->
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
+   <script src="js/animations.js"></script>
+   <script src="js/script.js"></script>
+   <script>
+     // Inisialisasi LightGallery
+     document.addEventListener('DOMContentLoaded', function() {
+       if (document.querySelector('.projects .box-container')) {
+         lightGallery(document.querySelector('.projects .box-container'), {
+           selector: '.box',
+           download: false
+           // Jika ingin plugin zoom/thumbnail, pastikan sudah include plugin-nya
+           // plugins: [lgZoom, lgThumbnail],
+           // speed: 500
+         });
+       }
+
+       // Animasi masuk box proyek (fadeInUp)
+       const projectBoxes = document.querySelectorAll('.projects .box');
+       projectBoxes.forEach((box, idx) => {
+         box.style.opacity = 0;
+         box.style.transform = 'translateY(40px)';
+         setTimeout(() => {
+           box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
+           box.style.opacity = 1;
+           box.style.transform = 'translateY(0)';
+         }, 200 + idx * 120);
+       });
+     });
+
+     // === AUTOPLAY VIDEO ABOUT ===
+     document.addEventListener('DOMContentLoaded', function() {
+       var video = document.getElementById('about-video');
+       var overlay = document.getElementById('videoOverlay');
+       var autoplayHint = document.getElementById('autoplayHint');
+
+       if (video) {
+         // Coba autoplay
+         var playPromise = video.play();
+         if (playPromise !== undefined) {
+           playPromise.then(function() {
+             // Autoplay berhasil, sembunyikan hint
+             if (autoplayHint) autoplayHint.style.display = 'none';
+           }).catch(function() {
+             // Autoplay gagal, tampilkan hint
+             if (autoplayHint) autoplayHint.style.display = 'block';
+           });
+         }
+
+         // Jika user klik overlay, play video dan sembunyikan hint
+         if (overlay) {
+           overlay.addEventListener('click', function() {
+             video.play();
+             if (autoplayHint) autoplayHint.style.display = 'none';
+           });
+         }
+       }
+     });
+   </script>
+</body>
+</html>
