@@ -139,6 +139,8 @@ const logoSlider = new Swiper('.logo-slider', {
        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
        videoWrapper.appendChild(fullscreenBtn);
      }
+     // Tambahkan agar tombol fullscreen bisa diklik di mobile
+     fullscreenBtn.style.pointerEvents = 'auto';
 
      // Cek dan tambahkan overlay jika belum ada
      let videoOverlay = document.getElementById('videoOverlay');
@@ -471,6 +473,7 @@ const logoSlider = new Swiper('.logo-slider', {
     let hideBtnTimeout = null;
 
     function updatePlayPauseIcon() {
+       if (!playPauseBtn || !video) return;
        playPauseBtn.querySelector('i').className = video.paused ? 'fas fa-play' : 'fas fa-pause';
     }
 
@@ -522,15 +525,23 @@ const logoSlider = new Swiper('.logo-slider', {
     if (playPauseBtn && video) {
        playPauseBtn.onclick = function(e) {
           e.preventDefault();
+          e.stopPropagation(); // pastikan event tidak bubbling ke overlay
           video.volume = 0.5;
           if (video.paused) {
              video.play();
           } else {
              video.pause();
           }
-          updatePlayPauseIcon();
           showHint(false);
        };
+       // Pastikan tombol bisa diklik
+       playPauseBtn.style.pointerEvents = 'auto';
+    }
+
+    // Tambahkan event listener agar ikon tombol selalu sinkron
+    if (video && playPauseBtn) {
+       video.addEventListener('play', updatePlayPauseIcon);
+       video.addEventListener('pause', updatePlayPauseIcon);
     }
 
     // Fullscreen
@@ -538,14 +549,31 @@ const logoSlider = new Swiper('.logo-slider', {
        fullscreenBtn.onclick = function(e) {
           e.stopPropagation();
           video.volume = 0.5;
+          // Agar bisa fullscreen di mobile Safari/iOS
           if (video.requestFullscreen) {
              video.requestFullscreen();
+          } else if (video.webkitEnterFullscreen) {
+             video.webkitEnterFullscreen(); // khusus iOS Safari
           } else if (video.webkitRequestFullscreen) {
              video.webkitRequestFullscreen();
           } else if (video.msRequestFullscreen) {
              video.msRequestFullscreen();
           }
        };
+       // Tambahkan dukungan sentuhan untuk mobile
+       fullscreenBtn.addEventListener('touchstart', function(e) {
+         e.stopPropagation();
+         video.volume = 0.5;
+         if (video.requestFullscreen) {
+            video.requestFullscreen();
+         } else if (video.webkitEnterFullscreen) {
+            video.webkitEnterFullscreen();
+         } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+         } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+         }
+       });
     }
 
     // Hide play button saat video play, show saat pause
