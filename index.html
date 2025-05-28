@@ -1,944 +1,2811 @@
-<!DOCTYPE html>
-<html lang="id">
+/* =========================
+   ===== VARIABLES =====
+   ========================= */
+/* Warna, radius, shadow, dan variabel global lainnya */
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #003366;
+  --accent-color: #ff7d00;
+  --text-color: #333;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --white: #fff;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+  --border-radius: 5px;
+  --box-shadow: 0 8px 32px rgba(0,86,179,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
+  --box-shadow-hover: 0 16px 48px rgba(0,86,179,0.16), 0 2px 12px rgba(0,0,0,0.09);
+  --transition: all 0.35s cubic-bezier(.77,0,.18,1);
+}
 
-<head>
+/* =========================
+   ===== BASE STYLES =====
+   ========================= */
+/* Reset dan style dasar untuk seluruh halaman */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- Perbaiki viewport agar mobile tidak zoom out dan tampil proporsional -->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-   <title>PT. Gondola Firdaus Pratama Jaya - Spesialis Gondola Profesional</title>
-   <meta name="description" content="Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat. Solusi aman dan profesional untuk kebutuhan akses ketinggian Anda.">
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+  width: 100%;
+  overflow-x: hidden;
+}
 
-   <!-- Favicon -->
-   <link rel="icon" href="images/favicon.png" type="image/png">
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 1.6rem;
+  overflow-x: hidden;
+}
 
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
-   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-   <!-- Tambahkan sebelum custom CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <!-- =========================
-        ===== CUSTOM CSS =====
-        ========================= -->
-   <link rel="stylesheet" href="css/style.css">
-   <script src="js/animations.js"></script>
-   <style>
-      /* === Proyek Kami Gallery Custom CSS === */
-      .projects .box-container {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 2rem;
-         justify-content: center;
-         margin-top: 2rem;
-      }
-      .projects .box {
-         background: #fff;
-         border-radius: 18px;
-         box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
-         overflow: hidden;
-         width: 380px;
-         max-width: 100%;
-         display: flex;
-         flex-direction: column;
-         text-decoration: none;
-         transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
-         position: relative;
-      }
-      .projects .box:hover {
-         transform: translateY(-10px) scale(1.03);
-         box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.10);
-         z-index: 2;
-      }
-      .projects .box .image {
-         width: 100%;
-         height: 100%;
-         overflow: hidden;
-         background: #f6f6f6;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-      }
-      .projects .box .image img {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: 
-            transform 0.4s cubic-bezier(.10,2,.5,1),
-            filter 0.3s;
-         filter: brightness(0.97) contrast(1.08);
-      }
-      .projects .box:hover .image img {
-         transform: scale(1.07) rotate(-1deg);
-         filter: brightness(1.03) contrast(1.12);
-      }
-      .projects .box .content {
-         padding: 1.3rem 1.2rem 1.1rem 1.2rem;
-         display: flex;
-         flex-direction: column;
-         align-items: flex-start;
-         background: #fff;
-         position: relative;
-      }
-      .projects .box .info h3 {
-         font-size: 1.18rem;
-         font-weight: 700;
-         color: #1a237e;
-         margin-bottom: 0.3rem;
-         letter-spacing: 0.01em;
-      }
-      .projects .box .info p {
-         font-size: 1rem;
-         color: #444;
-         margin-bottom: 0;
-         font-weight: 400;
-      }
-      .projects .box .fas.fa-plus {
-         position: absolute;
-         right: 1.2rem;
-         bottom: 1.2rem;
-         color: #ff7d00;
-         font-size: 1.3rem;
-         opacity: 0.7;
-         transition: color 0.2s, opacity 0.2s;
-      }
-      .projects .box:hover .fas.fa-plus {
-         color: #0056b3;
-         opacity: 1;
-      }
-      .projects .text-center.mt-4 {
-         margin-top: 2.5rem;
-      }
-      .projects .btn.btn-primary {
-         padding: 0.9rem 2.2rem;
-         font-size: 1.1rem;
-         border-radius: 30px;
-         font-weight: 600;
-         background: linear-gradient(90deg,#ff7d00 0%,#ff6600 100%);
-         border: none;
-         color: #fff;
-         box-shadow: 0 2px 8px rgba(255,125,0,0.10);
-         transition: background 0.2s, box-shadow 0.2s;
-      }
-      .projects .btn.btn-primary:hover {
-         background: linear-gradient(90deg,#0056b3 0%,#ff7d00 100%);
-         box-shadow: 0 4px 16px rgba(0,86,179,0.10);
-         color: #fff;
-      }
-      @media (max-width: 900px) {
-         .projects .box-container {
-            gap: 1.2rem;
-         }
-         .projects .box {
-            width: 95vw;
-            max-width: 420px;
-         }
-      }
-      @media (max-width: 600px) {
-         .projects .box-container {
-            flex-direction: column;
-            align-items: center;
-         }
-         .projects .box {
-            width: 100%;
-            min-width: 0;
-         }
-         .projects .box .image {
-            height: 170px;
-         }
-      }
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
 
-      /* Tambahkan style khusus untuk link MCA di footer */
-      .footer-bottom .mca-highlight {
-         color: #ff7d00 !important;
-         font-weight: bold;
-         text-decoration: underline;
-         transition: color 0.2s;
-      }
-      .footer-bottom .mca-highlight:hover {
-         color: #0056b3 !important;
-      }
-   </style>
-</head>
-   <!-- =========================
-        ===== JS LIBRARIES (HEAD) =====
-        ========================= -->
-   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-   <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
-   <script src="js/animations.js"></script>
+p, .section-title, .section-subtitle {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
 
-   <body>
-      <!-- Preloader -->
-      <div class="preloader">
-        <div class="loader"></div>
-      </div>
-      <header class="header mobile-header">
-         <div class="container">
-           <a href="#" class="logo">
-             <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="30" height="30">
-             <span>PT. Gondola Firdaus Pratama Jaya</span>
-           </a>
-           
-           <div class="header-actions">
-             <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
-               <i class="fas fa-phone-alt"></i>
-             </a>
-             <a href="mailto:gfgondola86@gmail.com" class="action-btn email">
-             <i class="fas fa-envelope"></i>
-            </a>
-             <div id="menu-btn" class="fas fa-bars"></div>
-           </div>
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-           <nav class="navbar">
-             <a href="#home" class="nav-link active">Beranda</a>
-             <a href="#about" class="nav-link">Tentang</a>
-             <a href="#services" class="nav-link">Layanan</a>
-             <a href="#projects" class="nav-link">Proyek</a>
-             <a href="#testimonials" class="nav-link">Testimoni</a>
-             <a href="#contact" class="nav-link">Kontak</a>
-           </nav>
-         </div>
-       </header>
-       <div style="height: 75px;"></div>
-      <!-- Header -->
-<header class="header">
-  <div class="container">
-    <a href="#" class="logo">
-      <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="40" height="38">
-      <span>PT. Gondola Firdaus Pratama Jaya</span>
-    </a>
-    
-    <nav class="navbar">
-      <a href="#home" class="nav-link active">Beranda</a>
-      <a href="#about" class="nav-link">Tentang</a>
-      <a href="#services" class="nav-link">Layanan</a>
-      <a href="#projects" class="nav-link">Proyek</a>
-      <a href="#testimonials" class="nav-link">Testimoni</a>
-      <a href="#contact" class="nav-link">Kontak</a>
-    </nav>
-    
-    <div class="header-actions">
-      <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
-        <i class="fas fa-phone-alt"></i>
-      </a>
-      <a href="mailto:gfgondola86@gmail.com" class="action-btn email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <div id="menu-btn" class="fas fa-bars"></div>
-    </div>
-  </div>
-</header>
-<!-- Tambahkan spasi antara header dan banner -->
-<div style="height: 10px;"></div>
-<!-- Hero Section with Enhanced Animations -->
-<section class="hero" id="home">
-  <div class="hero-preloader">
-    <div class="loader-circle"></div>
-    <div class="loader-line-mask">
-      <div class="loader-line"></div>
-    </div>
-  </div>
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Kecuali untuk header */
+.header .container,
+.header.mobile-header .container {
+  padding: 0 0;
+}
+
+.section {
+  padding: 60px 0;
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.section.contact {
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+.section.contact .section-header {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .section.contact {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+}
+
+/* Efek animasi underline dan highlight pada semua judul dan tombol */
+.section-title,
+.section-header h1,
+.section-header h2,
+.section-header h3,
+.section-header h4,
+h1, h2, h3, h4,
+.btn,
+.btn-primary,
+.btn-outline {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s, background 0.3s;
+  /* Untuk tombol, pastikan pointer dan transisi smooth */
+}
+
+.section-title::after,
+.section-header h1::after,
+.section-header h2::after,
+.section-header h3::after,
+.section-header h4::after,
+h1::after, h2::after, h3::after, h4::after,
+.btn::after,
+.btn-primary::after,
+.btn-outline::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff7d00 0%, #0056b3 100%);
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.35s cubic-bezier(.77,0,.18,1);
+  pointer-events: none;
+}
+
+.section-title:hover,
+.section-title:focus,
+.section-header h1:hover,
+.section-header h1:focus,
+.section-header h2:hover,
+.section-header h2:focus,
+.section-header h3:hover,
+.section-header h3:focus,
+.section-header h4:hover,
+.section-header h4:focus,
+h1:hover, h2:hover, h3:hover, h4:hover,
+.btn:hover,
+.btn:focus,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-outline:hover,
+.btn-outline:focus {
+  color: #ff7d00;
+  background: #fff7e600;
+}
+
+.section-title:hover::after,
+.section-title:focus::after,
+.section-header h1:hover::after,
+.section-header h1:focus::after,
+.section-header h2:hover::after,
+.section-header h2:focus::after,
+.section-header h3:hover::after,
+.section-header h3:focus::after,
+.section-header h4:hover::after,
+.section-header h4:focus::after,
+h1:hover::after, h2:hover::after, h3:hover::after, h4:hover::after,
+.btn:hover::after,
+.btn:focus::after,
+.btn-primary:hover::after,
+.btn-primary:focus::after,
+.btn-outline:hover::after,
+.btn-outline:focus::after {
+  width: 100%;
+}
+
+.section-title::selection,
+.section-header h1::selection,
+.section-header h2::selection,
+.section-header h3::selection,
+.section-header h4::selection,
+h1::selection, h2::selection, h3::selection, h4::selection,
+.btn::selection,
+.btn-primary::selection,
+.btn-outline::selection {
+  background: #ffecd200;
+  color: #ff7d00;
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+/* Efek highlight pada subjudul saat hover/seleksi */
+.services .section-subtitle {
+  transition: color 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+.services .section-subtitle:hover,
+.services .section-subtitle:focus {
+  color: #0056b3;
+  background: #fff7e6;
+}
+
+.services .section-subtitle::selection {
+  background: #ffecd2;
+  color: #0056b3;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  width: auto !important;
+  min-width: unset !important;
+  max-width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+  width: auto !important;
+  min-width: unset !important;
+  max-width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow);
+}
+
+.btn-outline {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  width: auto !important;
+  min-width: unset !important;
+  max-width: 100%;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 4rem;
+}
+
+/* =========================
+   ===== PRELOADER =====
+   ========================= */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+.preloader.hide {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #eee;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================
+   ===== HEADER =====
+   ========================= */
+/* Header utama (desktop) */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  border-bottom-left-radius: 48px 32px;
+  border-bottom-right-radius: 48px 32px;
+}
+
+.header.scrolled {
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 8px 32px rgba(0,86,179,0.10);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+}
+
+.logo img {
+  width: 4rem;
+  height: auto;
+}
+
+.navbar {
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  /* text-transform: uppercase; */
+  color: var(--secondary-color);
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  transition: color 0.25s, background 0.25s, box-shadow 0.25s;
+  position: relative;
+  /* Hapus border/garis bawah */
+  /* border-bottom: 2px solid transparent; */
+  /* box-shadow: none; */
+}
+
+/* Hapus garis biru bawah */
+.nav-link::after {
+  display: none !important;
+}
+
+/* Efek hover/active: background dan shadow */
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(0, 86, 179, 0.12);
+  color: var(--primary-color);
+  box-shadow: 0 2px 12px rgba(0,86,179,0.10);
+  /* border-bottom: none; */
+}
+
+/* Untuk mobile nav-link juga */
+.header.mobile-header .nav-link {
+  font-size: 1.3rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: var(--primary-color, #333);
+  text-decoration: none;
+  transition: color 0.2s, background 0.25s, box-shadow 0.25s;
+  border-radius: 8px;
+  /* text-transform: none; */
+}
+
+.header.mobile-header .nav-link:hover,
+.header.mobile-header .nav-link.active {
+  background: rgba(0, 86, 179, 0.12);
+  color: var(--secondary-color, #007bff);
+  box-shadow: 0 2px 12px rgba(0,86,179,0.10);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.action-btn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.action-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+/* Email icon style for both desktop and mobile */
+.action-btn.email {
+  color: #ea4335;
+}
+.action-btn.email:hover {
+  background-color: #ea4335;
+  color: var(--white);
+}
+
+#menu-btn {
+  font-size: 2.5rem;
+  cursor: pointer;
+  display: none; /* default: hidden */
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  .navbar {
+    position: absolute;
+    top: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92vw;
+    max-width: 420px;
+    min-width: 220px;
+    height: auto;
+    background-color: var(--white);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,86,179,0.13), 0 2px 12px rgba(0,0,0,0.09);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    transition: left 0.3s ease, opacity 0.3s;
+    z-index: 998;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .navbar.active {
+    display: flex !important;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    font-size: 2rem;
+  }
+
+  #menu-btn {
+    display: block !important;
+  }
+}
+
+/* Desktop: pastikan hamburger tidak tampil */
+@media (min-width: 769px) {
+  #menu-btn {
+    display: none !important;
+  }
+}
+
+/* =========================
+   ===== MOBILE HEADER =====
+   ========================= */
+/* Header khusus mobile/tablet */
+.header.mobile-header {
+  padding: 0 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed; /* was: sticky */
+  top: 0;
+  width: 100%;     /* ensure full width when fixed */
+  z-index: 1000;
+  border-bottom-left-radius: 36px 24px;
+  border-bottom-right-radius: 36px 24px;
+}
+
+.header.mobile-header .container {
+  padding: 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.header.mobile-header .logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 70%;
+  min-width: 0;
+}
+
+.header.mobile-header .logo img {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: block;
+}
+
+.header.mobile-header .logo span {
+  display: inline-block;
+  min-width: 0;
+  flex-shrink: 1;
+  white-space: nowrap;
+  word-break: normal;
+}
+
+@media (max-width: 360px) {
+  .header.mobile-header .logo span {
+    font-size: 1.2rem;
+  }
+  #menu-btn {
+    font-size: 2rem;
+  }
+}
+
+/* Untuk layar kecil (360px - 480px) */
+@media (max-width: 480px) {
+  .header.mobile-header .logo span {
+    font-size: 1.2rem;
+  }
+  #menu-btn {
+    font-size: 2rem;
+  }
+  .header.mobile-header {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+/* Untuk layar medium (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .header.mobile-header .logo span {
+    font-size: 1.5rem;
+  }
+  #menu-btn {
+    font-size: 2.4rem;
+  }
+}
+
+.header.mobile-header .navbar {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92vw;
+  max-width: 420px;
+  min-width: 220px;
+  height: auto;
+  background-color: var(--white);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,86,179,0.13), 0 2px 12px rgba(0,0,0,0.09);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 2rem 0;
+  transition: left 0.3s ease, opacity 0.3s;
+  z-index: 999;
+  overflow-y: visible;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header.mobile-header .navbar.active {
+  display: flex !important;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.header.mobile-header .nav-link {
+  font-size: 1.3rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: var(--primary-color, #333);
+  text-decoration: none;
+  transition: color 0.2s, background 0.25s, box-shadow 0.25s;
+  border-radius: 8px;
+  /* text-transform: none; */
+}
+
+.header.mobile-header .nav-link:hover,
+.header.mobile-header .nav-link.active {
+  background: rgba(0, 86, 179, 0.12);
+  color: var(--secondary-color, #007bff);
+  box-shadow: 0 2px 12px rgba(0,86,179,0.10);
+}
+
+.header.mobile-header .header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.header.mobile-header .action-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--light-gray, #f5f5f5);
+  color: var(--primary-color, #333);
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.header.mobile-header .action-btn:hover,
+.header.mobile-header .action-btn.email:hover {
+  background: #ea4335;
+  color: #fff;
+}
+
+.header.mobile-header .action-btn.email {
+  color: #ea4335;
+}
+
+#menu-btn {
+  display: block;
+  font-size: 2.2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#menu-btn.active {
+  transform: rotate(90deg);
+}
+
+/* Desktop: sembunyikan header mobile */
+@media (min-width: 769px) {
+  .header.mobile-header {
+    display: none;
+  }
+}
+
+/* Mobile: sembunyikan header desktop, tampilkan header mobile */
+@media (max-width: 768px) {
+  .header:not(.mobile-header) {
+    display: none !important;
+  }
+  .header.mobile-header {
+    display: block !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+/* Perangkat sangat kecil: logo lebih kecil */
+@media (max-width: 480px) {
+  .header.mobile-header .logo {
+    font-size: 1.4rem;
+  }
+  .header.mobile-header .action-btn {
+    width: 3rem;
+    height: 3rem;
+  }
+  .header.mobile-header {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+/* =========================
+   ===== SWIPER STYLES =====
+   ========================= */
+/* ===== Swiper Navigation Buttons (PERBAIKAN) ===== */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: rgba(0,0,0,0.38);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #0056b3;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,86,179,0.13);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 2rem;
+}
+/* =========================
+   ===== ABOUT SECTION =====
+   ========================= */
+/* Tentang perusahaan, fitur, dan statistik */
+.about .row {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex-direction: row;
+}
+
+.about {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Deskripsi lebih kecil */
+.about-content {
+  flex: 0.7;
+  order: 2;
+  padding-left: 1.5rem;
+  max-width: 320px;
+  font-size: 1.4rem;
+}
+
+/* Video lebih besar */
+.about-media {
+  flex: 3.3;
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.video-wrapper {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16/6;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  box-shadow: 0 16px 64px rgba(0,86,179,0.22), 0 2px 12px rgba(0,0,0,0.13);
+  background: transparent !important;
+  position: relative;
+  min-height: 520px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0rem;
+  box-shadow: none;
+  background: transparent !important;
+  display: block;
+}
+
+/* Responsive: video tetap besar dan landscape di tablet/mobile */
+@media (max-width: 1200px) {
+  .video-wrapper {
+    max-width: 98vw;
+    min-height: 320px;
+    aspect-ratio: 16/8;
+  }
+  .about-content {
+    max-width: 98vw;
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 900px) {
+  .about .row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-media, .about-content {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+  }
+  .video-wrapper {
+    min-height: 220px;
+    aspect-ratio: 16/9;
+    border-radius: 1.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .video-wrapper {
+    min-height: 160px;
+    aspect-ratio: 16/10;
+    border-radius: 1rem;
+  }
+  .about-content {
+    font-size: 1.15rem;
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   ===== SERVICES SECTION =====
+   ========================= */
+/* Layanan utama perusahaan */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 3rem;
+}
+
+.services {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.service-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: box-shadow 0.35s cubic-bezier(.77,0,.18,1), transform 0.35s cubic-bezier(.77,0,.18,1);
+  padding: 3rem;
+  text-align: center;
+  will-change: box-shadow, transform;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 32px rgba(0,86,179,0.13), 0 1.5px 8px rgba(0,0,0,0.07);
+}
+
+.service-icon {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto 2rem;
+}
+
+.service-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.service-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+}
+
+.service-card p {
+  margin-bottom: 2rem;
+  color: var(--gray);
+}
+
+.service-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.service-link:hover {
+  color: var(--secondary-color);
+  gap: 1rem;
+}
+
+/* =========================
+   ===== PROJECTS SECTION =====
+   ========================= */
+/* Galeri proyek */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.projects {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.project-item {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  height: 25rem;
+  transition: box-shadow 0.35s cubic-bezier(.77,0,.18,1), transform 0.35s cubic-bezier(.77,0,.18,1);
+  will-change: box-shadow, transform;
+}
+
+.project-item:hover {
+  box-shadow: 0 8px 32px rgba(0,86,179,0.13), 0 1.5px 8px rgba(0,0,0,0.07);
+  transform: translateY(-8px) scale(1.025);
+}
+
+.project-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+/* Tambahan agar gambar proyek lebih tinggi dan tidak memendek */
+.projects-grid .project-item img {
+  height: 260px;         /* Atur tinggi sesuai kebutuhan */
+  object-fit: cover;     /* Agar gambar tetap proporsional */
+  width: 100%;
+  display: block;
+}
+@media (max-width: 768px) {
+  .projects-grid .project-item img {
+    height: 180px;
+  }
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 86, 179, 0.8);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: var(--transition);
+  padding: 2rem;
+  text-align: center;
+}
+
+.project-overlay h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  transform: translateY(2rem);
+  transition: var(--transition);
+}
+
+.project-overlay p {
+  transform: translateY(2rem);
+  transition: var(--transition);
+  margin-bottom: 1.5rem;
+}
+
+.project-overlay i {
+  font-size: 3rem;
+  transform: translateY(2rem);
+  transition: var(--transition);
+}
+
+.project-item:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-item:hover .project-overlay h3,
+.project-item:hover .project-overlay p,
+.project-item:hover .project-overlay i {
+  transform: translateY(0);
+}
+
+/* =========================
+   ===== TESTIMONIALS SECTION =====
+   ========================= */
+/* Testimoni pelanggan */
+.testimonials-slider {
+  padding: 3rem;
+  background: linear-gradient(135deg, #f8fafc 80%, #e9ecef 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
+}
+
+.testimonial-item {
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin: 1rem;
+  transition: box-shadow 0.35s cubic-bezier(.77,0,.18,1), transform 0.35s cubic-bezier(.77,0,.18,1);
+  will-change: box-shadow, transform;
+}
+
+.testimonial-item:hover {
+  box-shadow: 0 8px 32px rgba(0,86,179,0.13), 0 1.5px 8px rgba(0,0,0,0.07);
+  transform: translateY(-8px) scale(1.025);
+}
+
+.testimonial-content {
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: var(--gray);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.testimonial-author img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info h4 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.rating {
+  color: var(--accent-color);
+}
+
+/* =========================
+   ===== CLIENT LOGO SECTION =====
+   ========================= */
+/* Logo client/partner */
+.client-logo-section {
+  padding: 6rem 0;
+  background-color: #f9f9f9;
+}
+
+.logo-slider {
+  padding: 3rem 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.logo-slider .swiper-wrapper {
+  transition-timing-function: linear; /* Untuk pergerakan yang konstan dan smooth */
+  align-items: center; /* Pusatkan logo vertikal */
+}
+
+/* Hilangkan grayscale dan opacity pada logo client */
+.logo-slider .swiper-slide {
+  width: auto !important; /* Lebar menyesuaikan gambar */
+  padding: 0 20px; /* Jarak antar logo */
+  opacity: 1 !important; /* Full opacity */
+  filter: none !important; /* Full color */
+}
+.logo-slider .swiper-slide img {
+  max-height: 50px;
+  max-width: 100px;
+}
+@media (max-width: 900px) {
+  .logo-slider img {
+    max-width: 90px;
+    max-height: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-container h1.heading {
+    font-size: 1.5rem;
+  }
+  .logo-slider img {
+    max-width: 70px;
+    max-height: 40px;
+  }
+}
+
+/* =========================
+   ===== CONTACT SECTION =====
+   ========================= */
+/* Kontak dan form */
+.contact .row {
+  display: flex;
+  gap: 5rem;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-form {
+  flex: 1;
+}
+
+.contact-form .btn,
+.contact-form .btn-primary {
+  width: 100%;
+  display: block;
+}
+
+.info-item {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.info-item i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-top: 0.5rem;
+}
+
+.info-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 1.6rem;
+  transition: var(--transition);
+  background: #f8fafc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+  background: white;
+}
+
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+  color: transparent;
+  transition: color 0.2s;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 15rem;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.contact-section {
+  padding: 8rem 0;
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 86, 179, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(.77,0,.18,1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 86, 179, 0.1);
+}
+
+.info-item {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  align-items: flex-start;
+}
+
+.info-item i {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-top: 0.3rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.info-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.info-item p, 
+.info-item a {
+  color: #555;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  transition: color 0.3s;
+}
+
+.info-item a:hover {
+  color: var(--primary-color);
+}
+
+.contact-social {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.social-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: white;
+}
+
+.social-icon.facebook:hover {
+  background: #3b5998;
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.social-icon.linkedin:hover {
+  background: #0077b5;
+}
+
+.social-icon.whatsapp:hover {
+  background: #25D366;
+}
+
+.contact-form {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(.77,0,.18,1);
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 86, 179, 0.1);
+}
+
+.contact-map {
+  grid-column: span 2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  height: 400px;
+  transition: all 0.4s cubic-bezier(.77,0,.18,1);
+}
+
+.contact-map:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 86, 179, 0.1);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.form-group {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1.7rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border: 1.5px solid #0056b3;
+  box-shadow: 0 0 0 3px rgba(0,86,179,0.09);
+  background: #fff;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1.5rem 3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 86, 179, 0.2);
+}
+
+/* =========================
+   ===== HUBUNGI KAMI SECTION =====
+   ========================= */
+/* Header khusus hubungi kami */
+.hubungi-kami-header {
+  padding-top: 4rem;
+  padding-bottom: 0rem; /* dikurangi agar lebih rapat dengan alamat */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.hubungi-kami-header .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.hubungi-kami-header .section-subtitle {
+  max-width: 600px;
+}
+
+@media (max-width: 600px) {
+  .hubungi-kami-header {
+    padding-top: 2rem;
+    padding-bottom: 1rem; /* dikurangi juga di mobile */
+    margin-top: 2.2rem;
+  }
+}
+
+/* =========================
+   ===== FOOTER =====
+   ========================= */
+/* Footer website */
+.footer {
+  background: #003366 !important;
+  color: var(--white);
+  padding: 8rem 0 0;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  animation: fadeInSection 1.1s cubic-bezier(.77,0,.18,1) both;
+  border-top-left-radius: 48px 32px;
+  border-top-right-radius: 48px 32px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 5rem;
+  margin-bottom: 5rem;
+}
+
+.footer-about {
+  margin-bottom: 3rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.footer-logo img {
+  width: 4rem;
+  height: auto;
+}
+
+.footer p {
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.footer-links h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.footer-links h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 5rem;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.footer-links ul li {
+  margin-bottom: 1.5rem;
+}
+
+.footer-links ul li a {
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.footer-links ul li a:hover {
+  opacity: 1;
+  color: var(--primary-color);
+  padding-left: 0.5rem;
+}
+
+.footer-contact h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.footer-contact h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 5rem;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.footer-contact ul li {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.footer-contact ul li i {
+  margin-top: 0.5rem;
+  color: var(--primary-color);
+}
+
+.footer-contact ul li a {
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.footer-contact ul li a:hover {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(21, 9, 129, 0.1);
+  text-align: center;
+  opacity: 0.7;
+  font-size: 1.4rem;
+}
+
+.footer-bottom p:first-child {
+  margin-bottom: 1rem;
+}
+
+.footer-bottom a {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* =========================
+   ===== WHATSAPP FLOAT BUTTON =====
+   ========================= */
+/* Tombol WhatsApp mengambang */
+.whatsapp-float {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 6rem;
+  height: 6rem;
+  background-color: #25D366;
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+ justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+  z-index: 99;
+  transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float:active {
+  transform: scale(0.93);
+}
+
+/* =========================
+   ===== BACK TO TOP BUTTON =====
+   ========================= */
+/* Tombol kembali ke atas */
+.back-to-top {
+  position: fixed;
+  bottom: 10rem;
+  right: 3rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  box-shadow: var(--box-shadow);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+}
+
+.back-to-top:active {
+  transform: scale(0.93);
+}
+
+/* =========================
+   ===== RESPONSIVE STYLES =====
+   ========================= */
+/* Responsive untuk berbagai ukuran layar */
+@media (max-width: 992px) {
+  .about .row,
+  .contact .row {
+    flex-direction: column;
+  }
   
-  <div class="swiper hero-slider">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide slide" style="background: url(fotofabrikasi/IMG-20241211-WA0011.jpg) no-repeat center/cover;">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title" data-aos="fade-down" data-aos-delay="200">Solusi Gondola Profesional &amp; Aman untuk Gedung Tinggi</h1>
-            <p class="hero-text" data-aos="fade-up" data-aos-delay="300">
-              Layanan gondola custom, pemasangan, perawatan, dan suku cadang dengan standar internasional. 
-              <span class="highlight">Lebih dari 10 tahun pengalaman!</span>
-            </p>
-            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
-              <a href="#contact" class="btn btn-primary pulse-once">Hubungi Kami</a>
-              <a href="#services" class="btn btn-outline pulse-once">Layanan Kami</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide slide" style="background: url(fotofabrikasi/gondolapapua.jpg) no-repeat center/cover;">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title" data-aos="fade-down" data-aos-delay="200">Menghubungkan Ketinggian dengan Keamanan</h1>
-            <p class="hero-text" data-aos="fade-up" data-aos-delay="300">Berpengalaman lebih dari 10 tahun dalam menyediakan layanan gondola terbaik untuk berbagai kebutuhan gedung tinggi di seluruh Indonesia</p>
-            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
-              <a href="#projects" class="btn btn-primary pulse-once">Lihat Proyek</a>
-              <a href="#testimonials" class="btn btn-outline pulse-once">Testimoni Klien</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
+  .about-media,
+  .about-content,
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
   
-  <div class="hero-scroll-indicator">
-    <div class="mouse">
-      <div class="wheel"></div>
-    </div>
-    <div class="arrows">
-      <div class="arrow"></div>
-      <div class="arrow"></div>
-      <div class="arrow"></div>
-    </div>
-  </div>
-</section>
-   <!-- About Section -->
-<section class="section about" id="about" data-aos="fade-up">
-      <div class="container">
-         <div class="section-header" style="text-align:center;">
-            <h2 class="section-title" style="font-size:3.6rem;font-weight:800;letter-spacing:0.01em;">
-              Kenapa Memilih <span style="color:#ff7d00;">PT. Gondola Firdaus Pratama Jaya?</span>
-            </h2>
-            <p class="section-subtitle" style="font-size:2rem;">
-              Mitra terpercaya untuk solusi gondola gedung tinggi di Indonesia
-            </p>
-         </div>
+  /* .hero-title {
+    font-size: 4rem;
+  } */
+}
 
-         <div class="row">
-            <div class="about-content">
-               <!-- Tambahkan deskripsi utama di atas video, beri jarak bawah -->
-               <div class="about-main-desc" style="margin-bottom:2.5rem;">
-                  <h3 class="content-title">Kami Hadirkan Solusi Gondola Terbaik untuk Anda</h3>
-                  <p>Dengan pengalaman lebih dari satu dekade, kami telah dipercaya oleh berbagai klien untuk menyediakan gondola berkualitas tinggi. Tim profesional kami siap memberikan layanan terbaik, mulai dari konsultasi, pemasangan, hingga perawatan rutin.</p>
-               </div>
-               
-               <div class="features-grid">
-                  <div class="feature-item">
-                     <i class="fas fa-award"></i>
-                     <h4>Bersertifikat</h4>
-                     <p>Tenaga kerja bersertifikat dan peralatan standar internasional</p>
-                  </div>
-                  <div class="feature-item">
-                     <i class="fas fa-shield-alt"></i>
-                     <h4>Aman</h4>
-                     <p>Prioritaskan keselamatan dalam setiap proyek</p>
-                  </div>
-                  <div class="feature-item">
-                     <i class="fas fa-clock"></i>
-                     <h4>Tepat Waktu</h4>
-                     <p>Penyelesaian proyek sesuai jadwal yang disepakati</p>
-                  </div>
-               </div>
-               
-               <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
-            </div>
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  /* .hero-buttons {
+    flex-direction: column;
+    gap: 1.5rem;
+  } */
+}
 
-            <div class="about-media">
-               <div class="video-wrapper">
-                  <video id="about-video" src="images/videogf.mp4" loop playsinline></video>
-                  <div class="video-overlay" id="videoOverlay">
-                     <button class="video-play-btn" id="playPauseBtn">
-                        <i class="fas fa-play"></i>
-                        <button class="video-fullscreen-btn" id="fullscreenBtn" type="button" title="Perbesar Video">
-                           <i class="fas fa-expand"></i>
-                        </button>
-                     </button>
-                  </div>
-                  <div class="video-autoplay-hint" id="autoplayHint" style="display:none;">
-                     Klik untuk memutar video
-                  </div>
-               </div>
-            </div>
-         </div>
+@media (max-width: 576px) {
+  html {
+    font-size: 55%;
+  }
+  
+  /* .hero {
+    min-height: 60rem;
+  } */
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
+@media (max-width: 1200px) {
+  .container,
+  .section,
+  /* .hero, */
+  .logo-container,
+  .blogs,
+  .projects,
+  .testimonials,
+  .contact,
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
 
-         <div class="stats-grid" style="display:flex;gap:2.5rem;justify-content:center;align-items:stretch;">
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100" style="flex:1;min-width:150px;text-align:center;">
-               <div class="stat-icon" style="color:#ff7d00;font-size:3rem;margin-bottom:1rem;">
-                  <i class="fas fa-calendar-check"></i>
-               </div>
-               <h3 class="stat-number" data-count="10" style="font-size:3.2rem;font-weight:800;">0</h3>
-               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
-                 Tahun<br><span style="font-weight:600;">Pengalaman</span>
-               </div>
-            </div>
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200" style="flex:1;min-width:150px;text-align:center;">
-               <div class="stat-icon" style="color:#0056b3;font-size:3rem;margin-bottom:1rem;">
-                  <i class="fas fa-briefcase"></i>
-               </div>
-               <h3 class="stat-number" data-count="1500" style="font-size:3.2rem;font-weight:800;">0</h3>
-               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
-                 Proyek<br><span style="font-weight:600;">Selesai</span>
-               </div>
-            </div>
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300" style="flex:1;min-width:150px;text-align:center;">
-               <div class="stat-icon" style="color:#25D366;font-size:3rem;margin-bottom:1rem;">
-                  <i class="fas fa-users"></i>
-               </div>
-               <h3 class="stat-number" data-count="790" style="font-size:3.2rem;font-weight:800;">0</h3>
-               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
-                 Klien<br><span style="font-weight:600;">Puas</span>
-               </div>
-            </div>
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="400" style="flex:1;min-width:150px;text-align:center;">
-               <div class="stat-icon" style="color:#ff6600;font-size:3rem;margin-bottom:1rem;">
-                  <i class="fas fa-user-cog"></i>
-               </div>
-               <h3 class="stat-number" data-count="450" style="font-size:3.2rem;font-weight:800;">0</h3>
-               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
-                 Teknisi<br><span style="font-weight:600;">Aktif</span>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
-   </section>
+@media (max-width: 600px) {
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .section,
+  /* .hero, */
+  .logo-container,
+  .footer,
+  .blogs-slider {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
 
-   <!-- Services Section -->
-   <section class="section services" id="services" data-aos="fade-up">
-      <div class="container">
-         <div class="section-header" style="text-align:center;">
-            <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
-              Layanan Unggulan Kami
-            </h2>
-            <p class="section-subtitle" style="font-size:1.8rem;">
-              Satu tempat untuk semua kebutuhan gondola Anda
-            </p>
-         </div>
-<!-- Contoh pada layanan -->
-<div class="box-container">
-   <div class="box" data-aos="zoom-in" data-aos-delay="100">
-     <!-- konten box -->
-   </div>
-   <div class="box" data-aos="zoom-in" data-aos-delay="200">
-     <!-- konten box -->
-   </div>
+/* =========================
+   ===== MODERN REDESIGN ===== */
 
-         <div class="services-grid">
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-               <div class="service-icon">
-                  <img src="images/service-1.png" alt="Pembuatan Gondola Custom">
-               </div>
-               <h3>Pembuatan Gondola Custom</h3>
-               <p>Desain dan pembuatan gondola sesuai kebutuhan gedung Anda, dengan standar keamanan internasional.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
+/* Header: glassmorphism, floating, shadow, blur */
+.header, .header.mobile-header {
+  background: #fff !important; /* Ubah ke putih solid */
+  box-shadow: 0 8px 32px rgba(0,86,179,0.08);
+  backdrop-filter: blur(14px);
+  border-bottom: 1.5px solid rgba(0,86,179,0.06);
+  transition: background 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.35s cubic-bezier(.77,0,.18,1), padding 0.35s cubic-bezier(.77,0,.18,1);
+}
+.header.scrolled, .header.mobile-header.scrolled {
+  background: #fff !important; /* Tetap putih solid saat discroll */
+  box-shadow: 0 16px 48px rgba(0,86,179,0.13);
+}
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-               <div class="service-icon">
-                  <img src="images/service-7.png" alt="Pemasangan Gondola">
-               </div>
-               <h3>Pemasangan Gondola</h3>
-               <p>Pemasangan gondola oleh tim profesional, memastikan keamanan dan efisiensi operasional.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
+/* Navbar: modern underline, spacing, uppercase */
+.navbar {
+  gap: 2.2rem;
+}
+.nav-link {
+  font-weight: 600;
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  color: var(--secondary-color);
+  padding: 0.7rem 0.8rem;
+  border-radius: 6px;
+  transition: color 0.25s, background 0.25s;
+}
+.nav-link:hover, .nav-link.active {
+  background: rgba(0,86,179,0.08);
+  color: var(--primary-color);
+}
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-               <div class="service-icon">
-                  <img src="images/service-8.png" alt="Perawatan Gondola">
-               </div>
-               <h3>Perawatan & Servis</h3>
-               <p>Layanan perawatan rutin dan perbaikan gondola untuk menjaga performa optimal dan memperpanjang usia pakai.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
+/* =========================
+   ===== STATISTICS SECTION =====
+   ========================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 3rem;
+  justify-items: center;
+  align-items: stretch;
+  margin: 4rem 0 2rem 0;
+}
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-               <div class="service-icon">
-                  <img src="images/service-6.png" alt="Suku Cadang Gondola">
-               </div>
-               <h3>Suku Cadang</h3>
-               <p>Penyediaan sparepart gondola asli dan bergaransi untuk berbagai merek dan tipe.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
-            </div>
-         </div>
-         <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
-      </div>
-      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
-   </section>
+.stat-item {
+  background: rgba(255,255,255,0.93);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 18px rgba(0,86,179,0.10);
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1.5px solid rgba(0,86,179,0.07);
+}
 
-   <!-- Proyek Kami Section -->
-   <section class="section projects" id="projects">
-      <div class="container">
-        <div class="section-header" style="text-align:center;">
-          <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
-            Proyek-Proyek Terbaik Kami
-          </h2>
-          <p class="section-subtitle" style="font-size:1.8rem;">
-            Portofolio instalasi &amp; perawatan gondola di berbagai gedung ternama
-          </p>
-        </div>
-         <div class="box-container">
-            <a href="fotomaintenance/A.jpg" class="box" data-lg-size="1406-1390">
-               <div class="image">
-                  <img src="fotomaintenance/A.jpg" loading="lazy" alt="Gedung Perkantoran Jakarta">
-               </div>
-               <div class="content">
-                  <div class="info">
-                     <h3>Gedung Perkantoran Jakarta</h3>
-                     <p>Instalasi gondola custom</p>
-                  </div>
-                  <i class="fas fa-plus"></i>
-               </div>
-            </a>
-            <a href="fotomaintenance/l.jpg" class="box" data-lg-size="1406-1390">
-               <div class="image">
-                  <img src="fotomaintenance/l.jpg" loading="lazy" alt="Apartemen Surabaya">
-               </div>
-               <div class="content">
-                  <div class="info">
-                     <h3>Apartemen Surabaya</h3>
-                     <p>Pemasangan & pelatihan operator</p>
-                  </div>
-                  <i class="fas fa-plus"></i>
-               </div>
-            </a>
-            <a href="fotomaintenance/i.jpg" class="box" data-lg-size="1406-1390">
-               <div class="image">
-                  <img src="fotomaintenance/i.jpg" loading="lazy" alt="Rumah Sakit Bandung">
-               </div>
-               <div class="content">
-                  <div class="info">
-                     <h3>Rumah Sakit Bandung</h3>
-                     <p>Servis & modernisasi gondola</p>
-                  </div>
-                  <i class="fas fa-plus"></i>
-               </div>
-            </a>
-            <a href="fotomaintenance/m.jpg" class="box" data-lg-size="1406-1390">
-               <div class="image">
-                  <img src="fotomaintenance/m.jpg" loading="lazy" alt="Hotel Bali">
-               </div>
-               <div class="content">
-                  <div class="info">
-                     <h3>Hotel Bali</h3>
-                     <p>Perawatan berkala gondola</p>
-                  </div>
-                  <i class="fas fa-plus"></i>
-               </div>
-            </a>
-            <a href="fotomaintenance/k.jpg" class="box" data-lg-size="1406-1390">
-               <div class="image">
-                  <img src="fotomaintenance/k.jpg" loading="lazy" alt="Pusat Perbelanjaan Medan">
-               </div>
-               <div class="content">
-                  <div class="info">
-                     <h3>Pusat Perbelanjaan Medan</h3>
-                     <p>Audit & inspeksi gondola</p>
-                  </div>
-                  <i class="fas fa-plus"></i>
-               </div>
-            </a>
-            <a href="fotomaintenance/g.jpg" class="box" data-lg-size="1406-1390">
-               <div class="image">
-                  <img src="fotomaintenance/g.jpg" loading="lazy" alt="Gedung Pemerintahan">
-               </div>
-               <div class="content">
-                  <div class="info">
-                     <h3>Gedung Pemerintahan</h3>
-                     <p>Penyediaan suku cadang</p>
-                  </div>
-                  <i class="fas fa-plus"></i>
-               </div>
-            </a>
-         </div>
-         <div class="text-center mt-4">
-            <a href="#contact" class="btn btn-primary">Ajukan Proyek Anda</a>
-         </div>
-      </div>
-   </section>
-   <!-- End Proyek Kami Section -->
+.stat-item:hover {
+  box-shadow: 0 8px 32px rgba(0,86,179,0.13);
+  transform: translateY(-6px) scale(1.04);
+  background: #f8fafc;
+}
 
-   <!-- Blogs Section -->
-   <section class="section blogs" id="blogs">
-      <div class="container">
-        <div class="section-header" style="text-align:center;">
-          <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
-            Wawasan &amp; Tips Seputar Gondola
-          </h2>
-          <p class="section-subtitle" style="font-size:1.7rem;">
-            Artikel, berita, dan inspirasi untuk solusi akses gedung tinggi
-          </p>
-        </div>
-         <div class="swiper blogs-slider">
-            <div class="swiper-wrapper">
-               <div class="swiper-slide slide">
-                  <div class="image">
-                     <img src="fotofabrikasi/fabrikasiunisba.jpg" alt="Teknologi Gondola Terkini">
-                  </div>
-                  <div class="content">
-                     <h3>Teknologi Gondola Terkini</h3>
-                     <p>Artikel tentang inovasi, metode terbaru, dan teknologi gondola untuk gedung tinggi.</p>
-                  </div>
-               </div>
-               <div class="swiper-slide slide">
-                  <div class="image">
-                     <img src="fotofabrikasi/gondolapapua.jpg" alt="Manajemen Proyek Gondola">
-                  </div>
-                  <div class="content">
-                     <h3>Manajemen Proyek Gondola</h3>
-                     <p>Tips dan panduan perencanaan, penjadwalan, serta pengelolaan proyek gondola secara efektif.</p>
-                  </div>
-               </div>
-               <div class="swiper-slide slide">
-                  <div class="image">
-                     <img src="fotofabrikasi/fabrikasiBNI.JPG" alt="Berita Industri Gondola">
-                  </div>
-                  <div class="content">
-                     <h3>Berita Industri Gondola</h3>
-                     <p>Update regulasi, tren pasar, dan event industri gondola di Indonesia.</p>
-                  </div>
-               </div>
-            </div>
-            <div class="swiper-pagination"></div>
-         </div>
-      </div>
-      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
-   </section>
+.stat-number {
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
 
-   <!-- Testimonials Section -->
+.stat-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
 
-   <section class="section testimonials" id="testimonials">
-      <div class="container">
-        <div class="section-header" style="text-align:center;">
-          <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
-            Apa Kata Klien Kami?
-          </h2>
-          <p class="section-subtitle" style="font-size:1.7rem;">
-            Testimoni nyata dari pelanggan yang puas dengan layanan kami
-          </p>
-        </div>
-         <div class="swiper testimonials-slider">
-            <div class="swiper-wrapper">
-               <div class="swiper-slide testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                  <div class="testimonial-content">
-                     <p>"Memilih PT. Gondola Firdaus Pratama Jaya adalah keputusan terbaik untuk proyek gedung kami. Tim sangat profesional, responsif, dan hasil pemasangan gondola sangat memuaskan. Kami sangat merekomendasikan!"</p>
-                  </div>
-                  <div class="testimonial-author">
-                     <img src="images/pic 1.jpg" alt="Budi Santoso">
-                     <div class="author-info">
-                        <h4>Budi Santoso</h4>
-                        <div class="rating">
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+/* =========================
+   ===== CUSTOM STYLES =====
+   ========================= */
+/* Tambahan style khusus untuk proyek ini */
 
-               <div class="swiper-slide testimonial-item" data-aos="fade-up" data-aos-delay="200">
-                  <div class="testimonial-content">
-                     <p>"Sebagai pengelola properti, saya sangat puas dengan layanan perawatan gondola dari PT. Gondola Firdaus. Selalu tepat waktu dan hasil kerja sangat rapi."</p>
-                  </div>
-                  <div class="testimonial-author">
-                     <img src="images/pic 2.jpg" alt="Sri Wahyuni">
-                     <div class="author-info">
-                        <h4>Sri Wahyuni</h4>
-                        <div class="rating">
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+/* Projects section: box layout, hover effects */
+.projects .box-container {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 2rem;
+   justify-content: center;
+   margin-top: 2rem;
+}
+.projects .box {
+   background: #fff;
+   border-radius: 18px;
+   box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+   overflow: hidden;
+   width: 380px;
+   max-width: 100%;
+   display: flex;
+   flex-direction: column;
+   text-decoration: none;
+   transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
+   position: relative;
+}
+.projects .box:hover {
+   transform: translateY(-10px) scale(1.03);
+   box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.10);
+   z-index: 2;
+}
+.projects .box .image {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background: #f6f6f6;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.projects .box .image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: 
+      transform 0.4s cubic-bezier(.10,2,.5,1),
+      filter 0.3s;
+   filter: brightness(0.97) contrast(1.08);
+}
+.projects .box:hover .image img {
+   transform: scale(1.07) rotate(-1deg);
+   filter: brightness(1.03) contrast(1.12);
+}
+.projects .box .content {
+   padding: 1.3rem 1.2rem 1.1rem 1.2rem;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   background: #fff;
+   position: relative;
+}
+.projects .box .info h3 {
+   font-size: 1.18rem;
+   font-weight: 700;
+   color: #1a237e;
+   margin-bottom: 0.3rem;
+   letter-spacing: 0.01em;
+}
+.projects .box .info p {
+   font-size: 1rem;
+   color: #444;
+   margin-bottom: 0;
+   font-weight: 400;
+}
+.projects .box .fas.fa-plus {
+   position: absolute;
+   right: 1.2rem;
+   bottom: 1.2rem;
+   color: #ff7d00;
+   font-size: 1.3rem;
+   opacity: 0.7;
+   transition: color 0.2s, opacity 0.2s;
+}
+.projects .box:hover .fas.fa-plus {
+   color: #0056b3;
+   opacity: 1;
+}
+.projects .text-center.mt-4 {
+   margin-top: 2.5rem;
+}
+.projects .btn.btn-primary {
+   padding: 0.9rem 2.2rem;
+   font-size: 1.1rem;
+   border-radius: 30px;
+   font-weight: 600;
+   background: linear-gradient(90deg,#ff7d00 0%,#ff6600 100%);
+   border: none;
+   color: #fff;
+   box-shadow: 0 2px 8px rgba(255,125,0,0.10);
+   transition: background 0.2s, box-shadow 0.2s;
+}
+.projects .btn.btn-primary:hover {
+   background: linear-gradient(90deg,#0056b3 0%,#ff7d00 100%);
+   box-shadow: 0 4px 16px rgba(0,86,179,0.10);
+   color: #fff;
+}
+@media (max-width: 900px) {
+   .projects .box-container {
+      gap: 1.2rem;
+   }
+   .projects .box {
+      width: 95vw;
+      max-width: 420px;
+   }
+}
+@media (max-width: 600px) {
+   .projects .box-container {
+      flex-direction: column;
+      align-items: center;
+   }
+   .projects .box {
+      width: 100%;
+      min-width: 0;
+   }
+   .projects .box .image {
+      height: 170px;
+   }
+}
 
-               <div class="swiper-slide testimonial-item" data-aos="fade-up" data-aos-delay="300">
-                  <div class="testimonial-content">
-                     <p>"Pelayanan konsultasi dan pemasangan gondola sangat profesional. Semua proses berjalan lancar dan hasilnya sesuai harapan."</p>
-                  </div>
-                  <div class="testimonial-author">
-                     <img src="images/pic 3.jpg" alt="Andi Pratama">
-                     <div class="author-info">
-                        <h4>Andi Pratama</h4>
-                        <div class="rating">
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+/* Tambahkan style khusus untuk link MCA di footer */
+.footer-bottom .mca-highlight {
+   color: #ff7d00 !important;
+   font-weight: bold;
+   text-decoration: underline;
+   transition: color 0.2s;
+}
+.footer-bottom .mca-highlight:hover {
+   color: #0056b3 !important;
+}
+/* =========================
+   ===== HERO SECTION REDESIGN =====
+   ========================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-            <div class="swiper-pagination"></div>
-         </div>
-      </div>
-   </section>
+.hero-slider,
+.hero .swiper,
+.hero .swiper-wrapper,
+.hero .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
 
-   <!-- CLIENT LOGO SECTION -->
-   <div class="section-header" style="text-align:center;">
-  <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
-    Klien &amp; Mitra Kepercayaan Kami
-  </h2>
-  <p class="section-subtitle" style="font-size:1.7rem;">
-    Gedung dan perusahaan ternama yang telah mempercayakan solusi gondola kepada kami
-  </p>
-</div>
-      <div class="swiper logo-slider">
-         <div class="swiper-wrapper">
-            <!-- Contoh pada logo client -->
-<div class="swiper-slide slide">
-  <img src="logoclient/aspen.jpg" loading="lazy" alt="Client 1">
-</div>
-<div class="swiper-slide slide"><img src="logoclient/bankmega.png" alt="Client 2" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/bi.jpg" alt="Client 3" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/bks.jpg" alt="Client 4" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/inalum.png" alt="Client 5" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/keisha.png" alt="Client 6" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/kempinski.jpg" alt="Client 7" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/montsera.png" alt="Client 8" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/mulia.jpg" alt="Client 9" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/nusaraya.jpg" alt="Client 10" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/olive.jpg" alt="Client 11" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/pakkodian.png" alt="Client 12" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/pbs.jpg" alt="Client 13" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/polri.png" alt="Client 14" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/pp.png" alt="Client 15" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/provices.png" alt="Client 16" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/trakindo.jpg" alt="Client 17" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/ugm.jpg" alt="Client 18" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/uresidences.jpg" alt="Client 19" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/wika.png" alt="Client 20" loading="lazy"></div>
-<div class="swiper-slide slide"><img src="logoclient/xlsmart.png" alt="Client 21" loading="lazy"></div>
-         </div>
-      </div>
-   </section>
-   <!-- END CLIENT LOGO SECTION -->
+.hero .swiper-slide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
 
-   <!-- Contact Section -->
-   <!-- Contact Section -->
-<section class="contact-section" id="contact">
-   <div class="container">
-     <div class="section-header" style="text-align:center;">
-       <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
-         Hubungi Tim Gondola Profesional Kami
-       </h2>
-       <p class="section-subtitle" style="font-size:1.7rem;">
-         Konsultasikan kebutuhan gondola Anda bersama kami, gratis!
-       </p>
-     </div>
- 
-     <div class="contact-grid">
-       <!-- Contact Info -->
-       <div class="contact-info">
-         <div class="info-item">
-           <i class="fas fa-map-marker-alt"></i>
-           <div>
-             <h3>Alamat Kantor</h3>
-             <p>Jl. Raya Pondok Petir No.118 RT 002/100<br>Bojongsari - Depok</p>
-           </div>
-         </div>
-         
-         <div class="info-item">
-           <i class="fas fa-phone-alt"></i>
-           <div>
-             <h3>Telepon</h3>
-             <p><a href="tel:081220200680">0812-2020-0680</a></p>
-           </div>
-         </div>
-         
-         <div class="info-item">
-           <i class="fas fa-envelope"></i>
-           <div>
-             <h3>Email</h3>
-             <p><a href="mailto:gfgondola86@gmail.com">gfgondola86@gmail.com</a></p>
-           </div>
-         </div>
-         
-         <div class="info-item">
-           <i class="fas fa-clock"></i>
-           <div>
-             <h3>Jam Operasional</h3>
-             <p>Senin - Sabtu: 08.00 - 17.00 WIB</p>
-           </div>
-         </div>
- 
-         <!-- Social Media Links -->
-         <div class="contact-social">
-           <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-           <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-           <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-           <a href="https://wa.me/6281220200690" class="social-icon whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-         </div>
-       </div>
- 
-       <!-- Contact Form -->
-       <div class="contact-form">
-         <form id="contactForm">
-           <div class="form-group">
-             <input type="text" name="nama" placeholder="Nama Lengkap" required>
-           </div>
-           <div class="form-group">
-             <input type="email" name="email" placeholder="Alamat Email" required>
-           </div>
-           <div class="form-group">
-             <input type="tel" name="telepon" placeholder="Nomor Telepon" required>
-           </div>
-           <div class="form-group">
-             <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
-           </div>
-           <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-         </form>
-       </div>
- 
-       <!-- Google Maps Embed -->
-       <div class="contact-map">
-         <iframe 
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1277154841987!2d106.7256441!3d-6.377510099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efe7f8fe5e2d%3A0xba7042e6d99bad88!2sKantor%20GF%202!5e0!3m2!1sid!2sid!4v1748254798901!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-           width="600" 
-           height="450" 
-           style="border:0;" 
-           allowfullscreen="" 
-           loading="lazy">
-         </iframe>
-       </div>
-     </div>
-   </div>
- </section>
-   <!-- Footer -->
-   <footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-about">
-        <a href="#" class="footer-logo">
-          <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="40" height="38">
-          <span>PT. Gondola Firdaus Pratama Jaya</span>
-        </a>
-        <p style="font-size:1.2rem;">
-          Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat di seluruh Indonesia.
-        </p>
-        
-        <div class="social-links">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Tautan Cepat</h3>
-        <ul>
-          <li><a href="#home">Beranda</a></li>
-          <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="#services">Layanan</a></li>
-          <li><a href="#projects">Proyek</a></li>
-          <li><a href="#contact">Kontak</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Layanan Kami</h3>
-        <ul>
-          <li><a href="#services">Pembuatan Gondola</a></li>
-          <li><a href="#services">Pemasangan</a></li>
-          <li><a href="#services">Perawatan</a></li>
-          <li><a href="#services">Suku Cadang</a></li>
-          <li><a href="#services">Konsultasi</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-contact">
-        <h3>Hubungi Kami</h3>
-        <ul>
-          <li><i class="fas fa-map-marker-alt"></i> Jl. Raya Pondok Petir No.118, Depok</li>
-          <li><i class="fas fa-phone-alt"></i> <a href="tel:081220200690">0812-2020-0690</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="mailto:gfgondola86@gmail.com">gfgondola86@gmail.com</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="footer-bottom" style="font-size:1.1rem;">
-      <p>&copy; 2023 PT. Gondola Firdaus Pratama Jaya. Seluruh hak cipta dilindungi undang-undang.</p>
-      <p>Website oleh <a href="https://www.facebook.com/lieinsid" target="_blank" class="mca-highlight">MCA</a></p>
-    </div>
-  </div>
-</footer>
+/* HERO BANNER IMAGE SMOOTH ANIMATION */
+.hero .swiper-slide img {
+  opacity: 0;
+  transform: scale(1.08) translateY(40px);
+  transition: opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1);
+  will-change: opacity, transform;
+}
+.hero .swiper-slide-active img.hero-img-animate {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+  transition: opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1);
+}
 
-   <!-- WhatsApp Float Button -->
-   <a href="https://wa.me/6281220200690" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-   </a>
+.hero .swiper-slide .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
 
-   <!-- Back to Top Button -->
-   <a href="#home" class="back-to-top" aria-label="Kembali ke atas">
-      <i class="fas fa-arrow-up"></i>
-   </a>
+.hero .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
 
-   <!-- JavaScript Libraries -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/lg-zoom/1.1.0/lg-zoom.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/lg-thumbnail/1.1.0/lg-thumbnail.min.js"></script>
-   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+  /* background: rgba(0, 86, 179, 0.2); */ /* Hapus background blur */
+  /* backdrop-filter: blur(8px); */         /* Hapus blur */
+  background: none;                         /* Tidak ada background */
+  backdrop-filter: none;                    /* Tidak ada blur */
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
 
-   <!-- Custom JS -->
-   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-   <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
-   <script src="js/animations.js"></script>
-   <script src="js/script.js"></script>
-   <script>
-     // Inisialisasi LightGallery
-     document.addEventListener('DOMContentLoaded', function() {
-       if (document.querySelector('.projects .box-container')) {
-         lightGallery(document.querySelector('.projects .box-container'), {
-           selector: '.box',
-           download: false
-           // Jika ingin plugin zoom/thumbnail, pastikan sudah include plugin-nya
-           // plugins: [lgZoom, lgThumbnail],
-           // speed: 500
-         });
-       }
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
-       // Animasi masuk box proyek (fadeInUp)
-       const projectBoxes = document.querySelectorAll('.projects .box');
-       projectBoxes.forEach((box, idx) => {
-         box.style.opacity = 0;
-         box.style.transform = 'translateY(40px)';
-         setTimeout(() => {
-           box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
-           box.style.opacity = 1;
-           box.style.transform = 'translateY(0)';
-         }, 200 + idx * 120);
-       });
-     });
+.hero-text {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
 
-     // === AUTOPLAY VIDEO ABOUT ===
-     document.addEventListener('DOMContentLoaded', function() {
-       var video = document.getElementById('about-video');
-       var overlay = document.getElementById('videoOverlay');
-       var autoplayHint = document.getElementById('autoplayHint');
+.hero-text .highlight {
+  font-weight: 700;
+  color: #ff7d00;
+  display: inline-block;
+}
 
-       if (video) {
-         // Coba autoplay
-         var playPromise = video.play();
-         if (playPromise !== undefined) {
-           playPromise.then(function() {
-             // Autoplay berhasil, sembunyikan hint
-             if (autoplayHint) autoplayHint.style.display = 'none';
-           }).catch(function() {
-             // Autoplay gagal, tampilkan hint
-             if (autoplayHint) autoplayHint.style.display = 'block';
-           });
-         }
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
 
-         // Jika user klik overlay, play video dan sembunyikan hint
-         if (overlay) {
-           overlay.addEventListener('click', function() {
-             video.play();
-             if (autoplayHint) autoplayHint.style.display = 'none';
-           });
-         }
-       }
-     });
-   </script>
-</body>
-</html>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Swiper Navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(0, 86, 179, 0.7);
+  transform: scale(1.1);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5rem;
+}
+
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.6;
+  width: 12px;
+  height: 12px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff7d00;
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 30px 20px;
+    margin: 0 15px;
+    /* backdrop-filter: blur(5px); */ /* Hapus blur di mobile */
+    backdrop-filter: none;
+    background: none;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 25px 15px;
+    backdrop-filter: none;
+    background: none;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================
+   ===== BLOGS SECTION CUSTOM =====
+   ========================= */
+.section.blogs {
+  background: linear-gradient(120deg, #f8fafc 0%, #e9ecef 100%);
+  border-radius: 2.5rem;
+  margin-bottom: 3rem;
+  padding: 6rem 0 4rem 0;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
+  animation: fadeInSection 1.1s cubic-bezier(.77,0,.18,1) both;
+  /* pastikan overflow visible agar gambar tidak terpotong */
+  overflow: visible;
+}
+.section.blogs .section-header {
+  margin-bottom: 3.5rem;
+}
+.section.blogs .section-title {
+  color: #003366;
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.2rem;
+}
+.section.blogs .section-subtitle {
+  font-size: 1.7rem;
+  color: #0056b3;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.blogs-slider {
+  padding-bottom: 2.5rem;
+  /* pastikan overflow visible agar gambar tidak terpotong */
+  overflow: visible;
+}
+.blogs-slider .swiper-slide.slide {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  overflow: visible; /* fix: jangan hidden agar gambar tampil penuh */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.35s cubic-bezier(.77,0,.18,1), transform 0.35s cubic-bezier(.77,0,.18,1);
+  will-change: box-shadow, transform;
+}
+.blogs-slider .image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blogs-slider .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* pastikan gambar tidak tersembunyi */
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.blogs-slider .swiper-slide.slide:hover .image img {
+  transform: scale(1.05);
+}
+.blogs-slider .content {
+  padding: 24px 20px 20px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.blogs-slider .content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1a2236;
+}
+.blogs-slider .content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0;
+}
+.blogs-slider .swiper-pagination {
+  margin-top: 16px;
+  position: static;
+}
+@media (max-width: 900px) {
+  .section.blogs {
+    border-radius: 1.2rem;
+    padding: 3rem 0 2rem 0;
+  }
+  .blogs-slider .swiper-slide.slide {
+    border-radius: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .section.blogs {
+    padding: 1.5rem 0 1.5rem 0;
+    border-radius: 1.2rem;
+  }
+  .blogs-slider .swiper-slide.slide {
+    border-radius: 1rem;
+  }
+  .blogs-slider .image {
+    aspect-ratio: 16/10;
+  }
+  .blogs-slider .content {
+    padding: 1rem 0.5rem 0.8rem 0.5rem;
+  }
+  .blogs-slider .content h3 {
+    font-size: 1rem;
+  }
+  .blogs-slider .content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* BLOGS SLIDER: Tampilkan 3 slide di desktop, 1 di mobile, beri jarak & pemisah */
+.blogs-slider .swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.2rem; /* Jarak antar card */
+}
+.blogs-slider .swiper-slide.slide {
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+  margin-right: 0 !important;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  position: relative;
+  /* Tambahkan border kanan kecuali terakhir */
+}
+.blogs-slider .swiper-slide.slide:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: -1.1rem;
+  width: 2px;
+  height: 80%;
+  background: linear-gradient(to bottom, #e9ecef 0%, #b5c6d6 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+  z-index: 2;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .blogs-slider .swiper-slide.slide {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .blogs-slider .swiper-slide.slide:not(:last-child)::after {
+    right: -1.1rem;
+  }
+}
+@media (max-width: 600px) {
+  .blogs-slider .swiper-wrapper {
+    gap: 1rem;
+  }
+  .blogs-slider .swiper-slide.slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .blogs-slider .swiper-slide.slide:not(:last-child)::after {
+    display: none;
+  }
+}
+ /*baru*/
+  /* Preloader Animation */
+  .hero-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .loader-circle {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    border-top-color: #0018f5;
+    animation: spin 1s linear infinite;
+  }
+  
+  .loader-line-mask {
+    width: 100px;
+    height: 4px;
+    background: rgb(211, 202, 202);
+    margin-top: 30px;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  
+  .loader-line {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    animation: load 1.5s ease-in-out;
+  }
+  
+  /* Hero Entry Animation */
+  .hero-slider {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroEntry 1s ease-out 0.5s forwards;
+  }
+  
+  /* Button Animation */
+  .btn.pulse-once {
+    animation: pulseOnce 1.5s ease-in-out;
+  }
+  
+  /* Scroll Indicator Animation */
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+  }
+  
+  .arrows {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.808);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.678);
+    transform: rotate(45deg);
+    margin: -3px 0;
+    animation: arrowBounce 2s infinite;
+  }
+  
+  .arrow:nth-child(1) { animation-delay: 0.1s; }
+  .arrow:nth-child(2) { animation-delay: 0.2s; }
+  .arrow:nth-child(3) { animation-delay: 0.3s; }
+  
+  /* Keyframes */
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes load {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+  
+  @keyframes heroEntry {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulseOnce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes scrollWheel {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(5px); opacity: 0; }
+  }
+  
+  @keyframes arrowBounce {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  /* =========================
+   ===== CLIENT CARD SECTION =====
+   ========================= */
+.client-cards-section {
+  padding: 5rem 0 4rem 0;
+  background: linear-gradient(120deg, #f8fafc 0%, #e9ecef 100%);
+  border-radius: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
+  animation: fadeInSection 1.1s cubic-bezier(.77,0,.18,1) both;
+  overflow: visible;
+}
+
+.client-cards-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.client-cards-header .section-title {
+  font-size: 2.6rem;
+  color: #003366;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+}
+.client-cards-header .section-subtitle {
+  font-size: 1.3rem;
+  color: #0056b3;
+  font-weight: 500;
+  margin-bottom: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.client-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
+  align-items: stretch;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.client-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 18px rgba(0,86,179,0.10);
+  padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.35s cubic-bezier(.77,0,.18,1), transform 0.35s cubic-bezier(.77,0,.18,1);
+  will-change: box-shadow, transform;
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  animation: clientCardFadeUp 0.8s cubic-bezier(.77,0,.18,1) forwards;
+}
+.client-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.client-card:hover {
+  box-shadow: 0 8px 32px rgba(0,86,179,0.13);
+  transform: translateY(-8px) scale(1.04);
+}
+
+.client-card-logo {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,86,179,0.07);
+  overflow: hidden;
+}
+.client-card-logo img {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.client-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+.client-card-desc {
+  font-size: 0.98rem;
+  color: #444;
+  text-align: center;
+  opacity: 0.85;
+}
+
+/* Animasi masuk card */
+@keyframes clientCardFadeUp {
+  0% { opacity: 0; transform: translateY(40px) scale(0.96);}
+  
+  100% { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .client-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.2rem;
+  }
+  .client-card-logo {
+    width: 54px;
+    height: 54px;
+  }
+  .client-card-logo img {
+    max-width: 44px;
+    max-height: 44px;
+  }
+}
+@media (max-width: 600px) {
+  .client-cards-section {
+    padding: 1.5rem 0 1.5rem 0;
+    border-radius: 1.2rem;
+  }
+  .client-cards-header .section-title {
+    font-size: 1.3rem;
+  }
+  .client-cards-header .section-subtitle {
+    font-size: 1rem;
+  }
+  .client-card {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 1rem;
+  }
+  .client-card-logo {
+    width: 40px;
+    height: 40px;
+  }
+  .client-card-logo img {
+    max-width: 32px;
+    max-height: 32px;
+  }
+}
+
+/* =========================
+   ===== FULL WIDTH MAPS =====
+   ========================= */
+/* Agar maps (misal iframe Google Maps di section contact) menjadi full width */
+.section.contact .maps,
+.section.contact iframe,
+.contact .maps,
+.contact iframe {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-width: 100vw !important;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  position: relative;
+  border: 0;
+  display: block;
+  height: 400px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .section.contact .maps,
+  .section.contact iframe,
+  .contact .maps,
+  .contact iframe {
+    height: 280px;
+  }
+}
+@media (max-width: 600px) {
+  .section.contact .maps,
+  .section.contact iframe,
+  .contact .maps,
+  .contact iframe {
+    height: 180px;
+  }
+}
+
+/* =========================
+   ===== UNIFORM BUTTON STYLE ===== */
+.btn,
+.btn-primary,
+.btn-outline,
+button,
+input[type="button"],
+input[type="submit"] {
+  display: inline-block;
+  min-width: 120px;
+  max-width: 220px;
+  width: auto;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 2.2rem;
+  border: 2px solid var(--primary-color);
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s, border 0.25s;
+  box-shadow: 0 2px 8px rgba(0,86,179,0.08);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.03em;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.btn-outline,
+button.btn-outline,
+input[type="button"].btn-outline,
+input[type="submit"].btn-outline {
+  background: #fff;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn:hover,
+.btn:focus,
+.btn-primary:hover,
+.btn-primary:focus,
+button:hover,
+button:focus,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background: var(--secondary-color);
+  color: #fff;
+  border-color: var(--secondary-color);
+  box-shadow: 0 4px 16px rgba(0,86,179,0.13);
+  outline: none;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+button.btn-outline:hover,
+button.btn-outline:focus,
+input[type="button"].btn-outline:hover,
+input[type="button"].btn-outline:focus,
+input[type="submit"].btn-outline:hover,
+input[type="submit"].btn-outline:focus {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.btn:active,
+.btn-primary:active,
+.btn-outline:active,
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,86,179,0.10);
+}
+
+/* Remove width:100% for contact form buttons */
+.contact-form .btn,
+.contact-form .btn-primary {
+  width: auto !important;
+  min-width: 120px;
+  max-width: 220px;
+  display: inline-block;
+}
+
+/* Responsive: stack buttons on small screens */
+@media (max-width: 600px) {
+  .btn,
+  .btn-primary,
+  .btn-outline,
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    min-width: 100px;
+    max-width: 100%;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.9rem 1.2rem;
+  }
+  .contact-form .btn,
+  .contact-form .btn-primary {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* ===== VIDEO BUTTONS & OVERLAY FIX ===== */
+.video-play-btn,
+.video-fullscreen-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  pointer-events: auto;
+  box-shadow: 0 2px 8px rgba(0,86,179,0.10);
+  aspect-ratio: 1/1;
+}
+
+.video-fullscreen-btn {
+  left: auto;
+  right: 2.5rem;
+  top: 2.5rem;
+  transform: none;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  font-size: 1.4rem;
+  opacity: 0.85;
+  aspect-ratio: 1/1;
+}
+
+.video-play-btn:hover,
+.video-fullscreen-btn:hover {
+  background: rgba(0,86,179,0.8);
+  transform: scale(1.08) translate(-50%, -50%);
+}
+
+.video-fullscreen-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Responsive: video button size on mobile */
+@media (max-width: 600px) {
+  .video-play-btn,
+  .video-fullscreen-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    font-size: 1.3rem;
+  }
+}
