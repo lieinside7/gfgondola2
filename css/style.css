@@ -1992,6 +1992,59 @@ html, body {
   margin-bottom: 0.2rem;
 }
 
+/* Responsive: stats-grid mendatar & font kecil di mobile */
+@media (max-width: 600px) {
+  .stats-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.7rem !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    padding: 0 0.2rem !important;
+  }
+  .stat-item {
+    min-width: 80px !important;
+    max-width: 100px !important;
+    flex: 1 1 0;
+    padding: 1.1rem 0.3rem 1rem 0.3rem !important;
+    margin: 0 !important;
+    border-radius: 0.7rem !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    font-size: 0.9rem !important;
+  }
+  .stat-number {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+  .stat-label {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.1rem !important;
+    line-height: 1.1 !important;
+    word-break: break-word;
+  }
+}
+
+/* Extra small: lebih kecil lagi */
+@media (max-width: 400px) {
+  .stat-item {
+    min-width: 60px !important;
+    max-width: 80px !important;
+    padding: 0.7rem 0.1rem 0.7rem 0.1rem !important;
+    font-size: 0.8rem !important;
+  }
+  .stat-number {
+    font-size: 1.1rem !important;
+  }
+  .stat-label {
+    font-size: 0.6rem !important;
+  }
+}
+
 /* =========================
    ===== CUSTOM STYLES =====
    ========================= */
@@ -2496,8 +2549,8 @@ html, body {
   }
 }
  /*baru*/
-  /* Preloader Animation */
-  .hero-preloader {
+/* Preloader Animation */
+.hero-preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -2809,77 +2862,87 @@ html, body {
    ========================= */
 /* Slimfit Contact Form & Map for Mobile */
 @media (max-width: 600px) {
+  .contact-grid {
+    flex-direction: column !important;
+    display: flex !important;
+    gap: 0.7rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    overflow-x: hidden;
+    padding-bottom: 0;
+  }
+  .contact-info,
   .contact-form {
-    padding: 1.2rem 0.5rem !important;
+    flex-basis: auto;
+    flex-grow: 0;
+    min-width: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding: 0.7rem 0.3rem !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
     border-radius: 0.7rem !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    margin: 0 auto !important;
-  }
-  .contact-form form {
-    width: 100%;
-    max-width: 100vw;
-  }
-  .contact-form .form-group {
-    margin-bottom: 1.1rem !important;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 1.05rem !important;
-    padding: 0.9rem 0.8rem !important;
-    border-radius: 0.5rem !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    box-sizing: border-box;
-  }
-  .contact-form textarea {
-    min-height: 80px !important;
-    max-height: 180px !important;
-    resize: vertical;
-  }
-  .contact-form .btn,
-  .contact-form .btn-primary {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100vw !important;
-    font-size: 1.1rem !important;
-    padding: 0.9rem 0 !important;
-    border-radius: 1.2rem !important;
-    margin-top: 0.5rem !important;
+    background: #fff;
   }
   .contact-map {
+    order: 3;
     width: 100vw !important;
     max-width: 100vw !important;
     min-width: 0 !important;
-    margin: 1.2rem 0 0 0 !important;
+    margin: 0.7rem 0 0 0 !important;
     border-radius: 0.7rem !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
-    height: 160px !important;
+    height: 180px !important;
     overflow: hidden !important;
   }
   .contact-map iframe {
     width: 100vw !important;
     max-width: 100vw !important;
     min-width: 0 !important;
-    height: 160px !important;
+    height: 180px !important;
     border-radius: 0.7rem !important;
     display: block;
   }
-  /* Stack vertically and remove extra gap */
-  .contact .row,
-  .contact-grid {
-    flex-direction: column !important;
-    display: flex !important;
-    gap: 0.5rem !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
+  .contact-form form {
+    width: 100%;
+    max-width: 100%;
+  }
+  .contact-form .form-group {
+    margin-bottom: 0.7rem !important;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem !important;
+    padding: 0.7rem 0.7rem !important;
+    border-radius: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100%;
     min-width: 0 !important;
+    box-sizing: border-box;
+  }
+  .contact-form textarea {
+    min-height: 60px !important;
+    max-height: 120px !important;
+    resize: vertical;
+  }
+  .contact-form .btn,
+  .contact-form .btn-primary {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100%;
+    font-size: 1rem !important;
+    padding: 0.7rem 0 !important;
+    border-radius: 1rem !important;
+    margin-top: 0.3rem !important;
   }
 }
-
 /* Tambahan untuk layar sangat kecil */
 @media (max-width: 400px) {
   .contact-form {
