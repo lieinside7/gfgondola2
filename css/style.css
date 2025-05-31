@@ -775,14 +775,14 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   order: 2;
   padding-left: 1.5rem;
   max-width: 320px;
-  font-size: 1.4rem;
+  font-size: 2.0rem;
 }
 
 /* Video lebih besar */
 .about-media {
-  flex: 3.3;
-  order: 1;
-  display: flex;
+  flex: 4;
+  border: 2;
+  display: 100%;
   align-items: center;
   justify-content: center;
   min-width: 0;
@@ -791,13 +791,13 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 .video-wrapper {
   width: 100%;
   max-width: 100%;
-  aspect-ratio: 16/6;
-  border-radius: 2.5rem;
+  aspect-ratio: 16/9;
+  border-radius: 1.5rem; /* sebelumnya 2.5rem */
   overflow: hidden;
   box-shadow: 0 16px 64px rgba(0,86,179,0.22), 0 2px 12px rgba(0,0,0,0.13);
   background: transparent !important;
   position: relative;
-  min-height: 520px;
+  min-height: 380px; /* sebelumnya 520px */
 }
 
 .video-wrapper video {
@@ -1098,7 +1098,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   filter: none !important; /* Full color */
 }
 .logo-slider .swiper-slide img {
-  max-height: 50px;
+  max-height: 90px;
   max-width: 100px;
 }
 @media (max-width: 900px) {
@@ -1372,7 +1372,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 .form-group input:focus,
 .form-group textarea:focus {
   border: 1.5px solid #0056b3;
-  box-shadow: 0 0 0 3px rgba(0,86,179,0.09);
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.09);
   background: #fff;
 }
 
@@ -1591,8 +1591,10 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 /* =========================
    ===== WHATSAPP FLOAT BUTTON =====
    ========================= */
-/* Tombol WhatsApp mengambang */
+/* Tombol WhatsApp mengambang dengan animasi lebih hidup */
 .whatsapp-float {
+  animation: wa-float-bounce-smooth 2.8s infinite cubic-bezier(.77,0,.18,1);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
   position: fixed;
   bottom: 3rem;
   right: 3rem;
@@ -1602,21 +1604,66 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   color: var(--white);
   border-radius: 50%;
   display: flex;
- justify-content: center;
+  justify-content: center;
   align-items: center;
   font-size: 2.5rem;
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
   z-index: 99;
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .whatsapp-float:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  background: linear-gradient(135deg, #25D366 60%, #128C7E 100%);
+  color: #fff;
+  transform: scale(1.08) rotate(-8deg);
+  box-shadow: 0 12px 32px rgba(37,211,102,0.45);
+  animation: wa-float-shake-smooth 0.9s;
 }
 
 .whatsapp-float:active {
   transform: scale(0.93);
+}
+
+/* Icon animasi pulse */
+.whatsapp-float i {
+  animation: wa-icon-pulse 2.2s infinite cubic-bezier(.77,0,.18,1);
+}
+
+/* Keyframes untuk animasi mengambang dan pulse yang lebih halus */
+@keyframes wa-float-bounce-smooth {
+  0%, 100% { transform: translateY(0);}
+  15% { transform: translateY(-7px);}
+  30% { transform: translateY(-13px);}
+  45% { transform: translateY(-8px);}
+  60% { transform: translateY(-4px);}
+  75% { transform: translateY(0);}
+  85% { transform: translateY(-3px);}
+  92% { transform: translateY(-6px);}
+}
+
+@keyframes wa-float-shake-smooth {
+  0% { transform: scale(1.08) rotate(-8deg);}
+  20% { transform: scale(1.11) rotate(7deg);}
+  40% { transform: scale(1.08) rotate(-7deg);}
+  60% { transform: scale(1.11) rotate(7deg);}
+  80% { transform: scale(1.08) rotate(-8deg);}
+  100% { transform: scale(1.08) rotate(-8deg);}
+}
+
+@keyframes wa-icon-pulse {
+  0%, 100% { filter: drop-shadow(0 0 0 #25D366);}
+  50% { filter: drop-shadow(0 0 16px #25D366);}
+}
+
+/* Responsive: kecilkan tombol di mobile */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    font-size: 1.3rem !important;
+    bottom: 1.5rem !important;
+    right: 1rem !important;
+  }
 }
 
 /* =========================
@@ -1877,7 +1924,6 @@ h1::selection, h2::selection, h3::selection, h4::selection,
     font-size: 52%;
     width: 100vw;
     max-width: 100vw;
-    overflow-x: hidden;
   }
   .hero-content {
     padding: 10px 2px !important;
@@ -2236,441 +2282,138 @@ html, body {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero .container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1200px;
+  max-width: flex;
   padding: 0 20px;
 }
 
+/* Konsistensi tampilan hero-content, hero-title, hero-text, hero-buttons di semua perangkat */
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 32px 16px;
   text-align: center;
   color: #fff;
-  /* background: rgba(0, 86, 179, 0.2); */ /* Hapus background blur */
-  /* backdrop-filter: blur(8px); */         /* Hapus blur */
-  background: none;                         /* Tidak ada background */
-  backdrop-filter: none;                    /* Tidak ada blur */
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: all 0.5s ease;
+  background: none !important;
+  backdrop-filter: none !important;
+  border-radius: 0 !important;
+  transition: none !important;
 }
-
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-bottom: 1.5rem;
+  font-size: 4.8rem !important;
+  margin-bottom: 1.2rem;
   font-weight: 800;
   line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  animation: fadeInUp 0.8s ease-out forwards;
+  text-align: center;
+  word-break: break-word;
+  text-shadow: none !important;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s, background 0.3s;
 }
-
+.hero-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff7d00 0%, #0056b3 100%);
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.35s cubic-bezier(.77,0,.18,1);
+  pointer-events: none;
+}
+.hero-title:hover,
+.hero-title:focus {
+  color: #ff7d00;
+  background: #fff7e600;
+}
+.hero-title:hover::after,
+.hero-title:focus::after {
+  width: 100%;
+}
+.hero-title::selection {
+  background: #ffecd200;
+  color: #ff7d00;
+}
 .hero-text {
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-out 0.2s forwards;
-  opacity: 0;
+  font-size: 2.25rem !important;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+  word-break: break-word;
+  opacity: 1 !important;
+  text-shadow: none !important;
 }
-
 .hero-text .highlight {
   font-weight: 700;
-  color: #ff7d00;
-  display: inline-block;
+  color: #ff7d00 !important;
+  background: none !important;
+  font-size: inherit !important;
 }
-
 .hero-buttons {
   display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
   flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease-out 0.4s forwards;
-  opacity: 0;
+}
+.btn,
+.btn-primary,
+.btn-outline {
+  width: 100%;
+  min-width: 0;
+  max-width: 100vw;
+  font-size: 1rem;
+  padding: 0.7rem 0.7rem;
+  border-radius: 1.2rem;
+  margin: 0;
+  text-align: center;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Swiper Navigation */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #ffffff9f;
-  background: rgba(255, 255, 255, 0);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: rgba(255, 255, 255, 0.342);
-  transform: scale(1.1);
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 1.5rem;
-}
-
-.swiper-pagination-bullet {
-  background: #fff;
-  opacity: 0.6;
-  width: 12px;
-  height: 12px;
-  transition: all 0.3s ease;
-}
-
-.swiper-pagination-bullet-active {
-  background: #ff7d00;
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .hero-content {
-    padding: 30px 20px;
-    margin: 0 15px;
-    /* backdrop-filter: blur(5px); */ /* Hapus blur di mobile */
-    backdrop-filter: none;
-    background: none;
-  }
-  
+/* Pastikan tidak ada media query yang mengubah hero-title, hero-text, hero-content, hero-buttons */
+@media (max-width: 1200px), (max-width: 900px), (max-width: 768px), (max-width: 600px), (max-width: 480px) {
+  .hero-title,
+  .hero-text,
+  .hero-content,
   .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
+    font-size: inherit !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    text-shadow: none !important;
+    color: #fff !important;
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
-  
-  .btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-content {
-    padding: 25px 15px;
-    backdrop-filter: none;
-    background: none;
-  }
-  
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.4rem !important;
+    margin-bottom: 1.2rem !important;
   }
-  
   .hero-text {
-    font-size: 1.1rem;
+    font-size: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+  .hero-text .highlight {
+    font-size: inherit !important;
+    color: #ff7d00 !important;
+    background: none !important;
   }
 }
 
 /* =========================
-   ===== BLOGS SECTION CUSTOM =====
-   ========================= */
-.section.blogs {
-  background: linear-gradient(120deg, #f8fafc 0%, #e9ecef 100%);
-  border-radius: 2.5rem;
-  margin-bottom: 3rem;
-  padding: 6rem 0 4rem 0;
-  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
-  animation: fadeInSection 1.1s cubic-bezier(.77,0,.18,1) both;
-  /* pastikan overflow visible agar gambar tidak terpotong */
-  overflow: visible;
-}
-.section.blogs .section-header {
-  margin-bottom: 3.5rem;
-}
-.section.blogs .section-title {
-  color: #003366;
-  font-size: 3.2rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  margin-bottom: 1.2rem;
-}
-.section.blogs .section-subtitle {
-  font-size: 1.7rem;
-  color: #0056b3;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-.blogs-slider {
-  padding-bottom: 2.5rem;
-  /* pastikan overflow visible agar gambar tidak terpotong */
-  overflow: visible;
-}
-.blogs-slider .swiper-slide.slide {
-  background: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-  overflow: visible; /* fix: jangan hidden agar gambar tampil penuh */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: box-shadow 0.35s cubic-bezier(.77,0,.18,1), transform 0.35s cubic-bezier(.77,0,.18,1);
-  will-change: box-shadow, transform;
-}
-.blogs-slider .image {
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.blogs-slider .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  /* pastikan gambar tidak tersembunyi */
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-.blogs-slider .swiper-slide.slide:hover .image img {
-  transform: scale(1.05);
-}
-.blogs-slider .content {
-  padding: 24px 20px 20px 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.blogs-slider .content h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #1a2236;
-}
-.blogs-slider .content p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 0;
-}
-.blogs-slider .swiper-pagination {
-  margin-top: 16px;
-  position: static;
-}
-@media (max-width: 900px) {
-  .section.blogs {
-    border-radius: 1.2rem;
-    padding: 3rem 0 2rem 0;
-  }
-  .blogs-slider .swiper-slide.slide {
-    border-radius: 1rem;
-  }
-}
-@media (max-width: 600px) {
-  .section.blogs {
-    padding: 1.5rem 0 1.5rem 0;
-    border-radius: 1.2rem;
-  }
-  .blogs-slider .swiper-slide.slide {
-    border-radius: 1rem;
-  }
-  .blogs-slider .image {
-    aspect-ratio: 16/10;
-  }
-  .blogs-slider .content {
-    padding: 1rem 0.5rem 0.8rem 0.5rem;
-  }
-  .blogs-slider .content h3 {
-    font-size: 1rem;
-  }
-  .blogs-slider .content p {
-    font-size: 0.9rem;
-  }
-}
-
-/* BLOGS SLIDER: Tampilkan 3 slide di desktop, 1 di mobile, beri jarak & pemisah */
-.blogs-slider .swiper-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 2.2rem; /* Jarak antar card */
-}
-.blogs-slider .swiper-slide.slide {
-  flex: 0 0 33.3333%;
-  max-width: 33.3333%;
-  margin-right: 0 !important;
-  background: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-  position: relative;
-  /* Tambahkan border kanan kecuali terakhir */
-}
-.blogs-slider .swiper-slide.slide:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 10%;
-  right: -1.1rem;
-  width: 2px;
-  height: 80%;
-  background: linear-gradient(to bottom, #e9ecef 0%, #b5c6d6 100%);
-  border-radius: 2px;
-  opacity: 0.7;
-  z-index: 2;
-  pointer-events: none;
-}
-@media (max-width: 900px) {
-  .blogs-slider .swiper-slide.slide {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  .blogs-slider .swiper-slide.slide:not(:last-child)::after {
-    right: -1.1rem;
-  }
-}
-@media (max-width: 600px) {
-  .blogs-slider .swiper-wrapper {
-    gap: 1rem;
-  }
-  .blogs-slider .swiper-slide.slide {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .blogs-slider .swiper-slide.slide:not(:last-child)::after {
-    display: none;
-  }
-}
- /*baru*/
-/* Preloader Animation */
-.hero-preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fafafa;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease-out;
-  }
-  
-  .loader-circle {
-    width: 60px;
-    height: 60px;
-    border: 4px solid rgb(255, 255, 255);
-    border-radius: 50%;
-    border-top-color: #0018f5;
-    animation: spin 1s linear infinite;
-  }
-  
-  .loader-line-mask {
-    width: 100px;
-    height: 4px;
-    background: rgb(211, 202, 202);
-    margin-top: 30px;
-    overflow: hidden;
-    border-radius: 2px;
-  }
-  
-  .loader-line {
-    height: 100%;
-    width: 0%;
-    background: #fff;
-    animation: load 1.5s ease-in-out;
-  }
-  
-  /* Hero Entry Animation */
-  .hero-slider {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: heroEntry 1s ease-out 0.5s forwards;
-  }
-  
-  /* Button Animation */
-  .btn.pulse-once {
-    animation: pulseOnce 1.5s ease-in-out;
-  }
-  
-  /* Scroll Indicator Animation */
-  .hero-scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    opacity: 0;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-  }
-  
-  .arrows {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .arrow {
-    width: 20px;
-    height: 20px;
-    border-right: 2px solid rgba(255, 255, 255, 0.808);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.678);
-    transform: rotate(45deg);
-    margin: -3px 0;
-    animation: arrowBounce 2s infinite;
-  }
-  
-  .arrow:nth-child(1) { animation-delay: 0.1s; }
-  .arrow:nth-child(2) { animation-delay: 0.2s; }
-  .arrow:nth-child(3) { animation-delay: 0.3s; }
-  
-  /* Keyframes */
-  @keyframes spin {
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes load {
-    0% { width: 0%; }
-    100% { width: 100%; }
-  }
-  
-  @keyframes heroEntry {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes pulseOnce {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @keyframes scrollWheel {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(5px); opacity: 0; }
-  }
-  
-  @keyframes arrowBounce {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
-
-  /* =========================
-   ===== CLIENT CARD SECTION =====
+   ===== CLIENT CARD SECTION
    ========================= */
 .client-cards-section {
   padding: 5rem 0 4rem 0;
@@ -2718,6 +2461,7 @@ html, body {
   border-radius: 1.5rem;
   box-shadow: 0 4px 18px rgba(0,86,179,0.10);
   padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2786,6 +2530,7 @@ html, body {
   .client-card-logo {
     width: 54px;
     height: 54px;
+ 
   }
   .client-card-logo img {
     max-width: 44px;
@@ -2819,6 +2564,7 @@ html, body {
 
 /* =========================
    ===== FULL WIDTH MAPS =====
+
    ========================= */
 /* Agar maps (misal iframe Google Maps di section contact) menjadi full width */
 .section.contact .maps,
@@ -3016,4 +2762,37 @@ html, body {
   box-shadow: none !important;
   color: #202d3b !important;
   padding: 0 !important;
+}
+/* Swiper pagination dots di hero slider */
+.hero .swiper-pagination {
+  position: absolute;
+  bottom: 32px;         /* Jarak dari bawah gambar/banner */
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+}
+
+.hero .swiper-pagination-bullets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero .swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  opacity: 1;
+  transition: background 0.2s, transform 0.2s;
+  margin: 0 4px;
+  border: 2px solid #ff7d00;
+}
+
+.hero .swiper-pagination-bullet-active {
+  background: #ff7d00;
+  transform: scale(1.2);
+  border-color: #ff7d00;
 }
