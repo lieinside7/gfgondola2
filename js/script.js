@@ -39,49 +39,230 @@ document.addEventListener('DOMContentLoaded', function() {
      });
    }
  
-// ===== HERO SLIDER (HANYA SEKALI) =====
-  const heroSlider = new Swiper('.hero-slider', {
-    loop: true,
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
-    autoplay: {
-      delay: 7000,
-      disableOnInteraction: false,
+// ===== ENHANCED HERO SLIDER =====
+const heroSlider = new Swiper('.hero-slider', {
+  loop: true,
+  effect: 'creative',
+  creativeEffect: {
+    prev: {
+      shadow: true,
+      translate: ['-20%', 0, -1],
+      opacity: 0
     },
-    speed: 1000,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+    next: {
+      translate: ['100%', 0, 0],
     },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+  },
+  parallax: true,
+  autoplay: {
+    delay: 8000,
+    disableOnInteraction: false,
+  },
+  speed: 1200,
+  grabCursor: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    renderBullet: function (index, className) {
+      return `<span class="${className}">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+        </svg>
+      </span>`;
     },
-    on: {
-      init: function() {
-        this.slides[this.activeIndex].style.opacity = 1;
-        const activeImg = this.slides[this.activeIndex].querySelector('img');
-        if (activeImg) {
-          activeImg.classList.add('hero-img-animate');
-        }
-      },
-      slideChangeTransitionStart: function() {
-        this.slides.forEach(slide => {
-          const img = slide.querySelector('img');
-          if (img) img.classList.remove('hero-img-animate');
-        });
-      },
-      slideChangeTransitionEnd: function() {
-        const activeImg = this.slides[this.activeIndex].querySelector('img');
-        if (activeImg) {
-          void activeImg.offsetWidth;
-          activeImg.classList.add('hero-img-animate');
-        }
-      }
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  on: {
+    init: function() {
+      this.slides[this.activeIndex].style.opacity = 1;
+      const activeSlide = this.slides[this.activeIndex];
+      animateSlideIn(activeSlide);
+      setHeroBannerButtonEffects(activeSlide);
+      initParallax(activeSlide);
+    },
+    slideChangeTransitionStart: function() {
+      this.slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) img.classList.remove('hero-img-animate');
+        removeHeroBannerButtonEffects(slide);
+      });
+    },
+    slideChangeTransitionEnd: function() {
+      const activeSlide = this.slides[this.activeIndex];
+      animateSlideIn(activeSlide);
+      setHeroBannerButtonEffects(activeSlide);
+      initParallax(activeSlide);
     }
+  }
+});
+
+// Enhanced slide animation
+function animateSlideIn(slide) {
+  if (!slide) return;
+  
+  const activeImg = slide.querySelector('img');
+  const title = slide.querySelector('.hero-title');
+  const text = slide.querySelector('.hero-text');
+  const buttons = slide.querySelector('.hero-buttons');
+  
+  if (activeImg) {
+    void activeImg.offsetWidth;
+    activeImg.classList.add('hero-img-animate');
+  }
+  
+  // Staggered animations for content
+  setTimeout(() => {
+    if (title) {
+      title.style.opacity = '1';
+      title.style.transform = 'translateY(0)';
+    }
+  }, 300);
+  
+  setTimeout(() => {
+    if (text) {
+      text.style.opacity = '1';
+      text.style.transform = 'translateY(0)';
+    }
+  }, 500);
+  
+  setTimeout(() => {
+    if (buttons) {
+      buttons.style.opacity = '1';
+      buttons.style.transform = 'translateY(0)';
+    }
+  }, 700);
+}
+
+// Parallax effect initialization
+function initParallax(slide) {
+  if (!slide) return;
+  
+  const img = slide.querySelector('img');
+  if (img) {
+    img.style.transform = 'translateY(0)';
+    slide.addEventListener('mousemove', handleParallax);
+  }
+}
+
+function handleParallax(e) {
+  const slide = this;
+  const img = slide.querySelector('img');
+  if (!img) return;
+  
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+  
+  img.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+}
+
+// Enhanced button effects
+function setHeroBannerButtonEffects(slide) {
+  if (!slide) return;
+  
+  const heroBtns = slide.querySelectorAll('.hero-buttons .btn, .hero-buttons .btn-primary, .hero-buttons .btn-outline');
+  
+  heroBtns.forEach(btn => {
+    removeSingleHeroBannerButtonEffects(btn);
+    
+    // Magnetic button effect
+    btn._magneticHandler = function(e) {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      btn.style.setProperty('--x', `${x}px`);
+      btn.style.setProperty('--y', `${y}px`);
+    };
+    
+    btn.addEventListener('mousemove', btn._magneticHandler);
+    
+    // Enhanced ripple effect
+    btn._rippleHandler = function(e) {
+      btn.querySelectorAll('.ripple').forEach(r => r.remove());
+      
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      ripple.style.setProperty('--ripple-x', `${x}px`);
+      ripple.style.setProperty('--ripple-y', `${y}px`);
+      
+      btn.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.style.transform = 'scale(20)';
+        ripple.style.opacity = '0';
+      }, 10);
+      
+      setTimeout(() => ripple.remove(), 1000);
+    };
+    
+    btn.addEventListener('click', btn._rippleHandler);
+    
+    // Focus effects
+    btn._focusHandler = function() {
+      this.classList.add('focus');
+    };
+    btn._blurHandler = function() {
+      this.classList.remove('focus');
+    };
+    
+    btn.addEventListener('mouseenter', btn._focusHandler);
+    btn.addEventListener('focus', btn._focusHandler);
+    btn.addEventListener('mouseleave', btn._blurHandler);
+    btn.addEventListener('blur', btn._blurHandler);
+    
+    if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');
   });
- 
-   // ===== TESTIMONIALS SLIDER =====
+}
+
+// Cleanup functions remain the same
+function removeHeroBannerButtonEffects(slide) {
+  if (!slide) return;
+  const heroBtns = slide.querySelectorAll('.hero-buttons .btn, .hero-buttons .btn-primary, .hero-buttons .btn-outline');
+  heroBtns.forEach(removeSingleHeroBannerButtonEffects);
+}
+
+function removeSingleHeroBannerButtonEffects(btn) {
+  if (btn._rippleHandler) btn.removeEventListener('click', btn._rippleHandler);
+  if (btn._magneticHandler) btn.removeEventListener('mousemove', btn._magneticHandler);
+  if (btn._focusHandler) btn.removeEventListener('mouseenter', btn._focusHandler);
+  if (btn._focusHandler) btn.removeEventListener('focus', btn._focusHandler);
+  if (btn._blurHandler) btn.removeEventListener('mouseleave', btn._blurHandler);
+  if (btn._blurHandler) btn.removeEventListener('blur', btn._blurHandler);
+  btn.classList.remove('focus');
+}
+
+// Font size consistency (optimized)
+function fixHeroFontSize() {
+  const heroTitle = document.querySelector('.hero-title');
+  const heroText = document.querySelector('.hero-text');
+  const heroBtns = document.querySelectorAll('.hero-buttons .btn');
+  
+  if (heroTitle) {
+    heroTitle.style.fontSize = 'clamp(2.5rem, 8vw, 4.8rem)';
+    heroTitle.style.lineHeight = '1.2';
+  }
+  
+  if (heroText) {
+    heroText.style.fontSize = 'clamp(1.25rem, 3vw, 2.1rem)';
+    heroText.style.lineHeight = '1.5';
+  }
+  
+  heroBtns.forEach(btn => {
+    btn.style.fontSize = 'clamp(1rem, 2vw, 1.8rem)';
+    btn.style.padding = 'clamp(0.8rem, 2vw, 1.4rem) clamp(1.5rem, 4vw, 3.2rem)';
+  });
+}
+
+fixHeroFontSize();
+window.addEventListener('resize', fixHeroFontSize);
+
+// ===== TESTIMONIALS SLIDER =====
    const testimonialsSlider = new Swiper('.testimonials-slider', {
      loop: true,
      spaceBetween: 30,
@@ -269,21 +450,40 @@ const logoSlider = new Swiper('.logo-slider', {
  
    // ===== CONTACT FORM SUBMISSION =====
    const contactForm = document.getElementById('contactForm');
-   
+
    if (contactForm) {
      contactForm.addEventListener('submit', function(e) {
        e.preventDefault();
-       
-       // Get form values
+
+       // Ambil data form
        const formData = new FormData(contactForm);
-       const data = Object.fromEntries(formData);
-       
-       // Here you would typically send the data to a server
-       // For demonstration, we'll just show an alert
-       alert(`Terima kasih ${data.nama}! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.`);
-       
-       // Reset form
-       contactForm.reset();
+       // Ganti key agar sesuai dengan kebutuhan email
+       const data = {
+         Nama: formData.get('Nama'),
+         Email: formData.get('Email'),
+         Telepon: formData.get('Telepon'),
+         Pesan: formData.get('Pesan')
+       };
+
+       // Kirim data ke Formspree (atau endpoint email lain)
+       fetch('https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com', {
+         method: 'POST',
+         headers: {
+           'Accept': 'application/json'
+         },
+         body: new FormData(contactForm)
+       })
+       .then(response => {
+         if (response.ok) {
+           alert('Terima kasih ' + data.Nama + '! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+           contactForm.reset();
+         } else {
+           alert('Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi kami langsung.');
+         }
+       })
+       .catch(() => {
+         alert('Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi kami langsung.');
+       });
      });
    }
 
@@ -359,10 +559,13 @@ const logoSlider = new Swiper('.logo-slider', {
      var heroText = document.querySelector('.hero-text');
      var heroBtns = document.querySelectorAll('.hero-buttons .btn, .hero-buttons .btn-primary, .hero-buttons .btn-outline');
      if (heroTitle) {
+       // Jangan override style yang menyebabkan efek hover/focus hilang
        heroTitle.style.fontSize = '4.8rem';
        heroTitle.style.lineHeight = '1.2';
        heroTitle.style.overflowWrap = 'break-word';
        heroTitle.style.wordBreak = 'break-word';
+       // Jangan set background atau color di sini!
+       // Jangan set textShadow di sini!
      }
      if (heroText) {
        heroText.style.fontSize = '2.1rem';
@@ -643,17 +846,4 @@ AOS.init({
         preloader.style.display = 'none';
       }, 500);
     }, 1500);
-  });
-  
-  // Add smooth scroll to buttons
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
-    });
   });
