@@ -39,54 +39,47 @@ document.addEventListener('DOMContentLoaded', function() {
      });
    }
  
-   // ===== HERO SLIDER =====
-   const heroSlider = new Swiper('.hero-slider', {
-     loop: true,
-     effect: 'fade',
-     fadeEffect: {
-       crossFade: true
-     },
-     autoplay: {
-       delay: 7000,
-       disableOnInteraction: false,
-     },
-     speed: 1000,
-     pagination: {
-       el: '.swiper-pagination',
-       clickable: true,
-     },
-     navigation: {
-       nextEl: '.swiper-button-next',
-       prevEl: '.swiper-button-prev',
-     },
-     on: {
-       init: function() {
-         // Pastikan slide aktif terlihat di awal
-         this.slides[this.activeIndex].style.opacity = 1;
-         // Tambahkan animasi smooth pada gambar banner saat landing
-         const activeImg = this.slides[this.activeIndex].querySelector('img');
-         if (activeImg) {
-           activeImg.classList.add('hero-img-animate');
-         }
-       },
-       slideChangeTransitionStart: function() {
-         // Hapus animasi dari semua gambar
-         this.slides.forEach(slide => {
-           const img = slide.querySelector('img');
-           if (img) img.classList.remove('hero-img-animate');
-         });
-       },
-       slideChangeTransitionEnd: function() {
-         // Tambahkan animasi ke gambar slide aktif
-         const activeImg = this.slides[this.activeIndex].querySelector('img');
-         if (activeImg) {
-           // Trigger reflow to restart animation if needed
-           void activeImg.offsetWidth;
-           activeImg.classList.add('hero-img-animate');
-         }
-       }
-     },
-   });
+// ===== HERO SLIDER (HANYA SEKALI) =====
+  const heroSlider = new Swiper('.hero-slider', {
+    loop: true,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    autoplay: {
+      delay: 7000,
+      disableOnInteraction: false,
+    },
+    speed: 1000,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      init: function() {
+        this.slides[this.activeIndex].style.opacity = 1;
+        const activeImg = this.slides[this.activeIndex].querySelector('img');
+        if (activeImg) {
+          activeImg.classList.add('hero-img-animate');
+        }
+      },
+      slideChangeTransitionStart: function() {
+        this.slides.forEach(slide => {
+          const img = slide.querySelector('img');
+          if (img) img.classList.remove('hero-img-animate');
+        });
+      },
+      slideChangeTransitionEnd: function() {
+        const activeImg = this.slides[this.activeIndex].querySelector('img');
+        if (activeImg) {
+          void activeImg.offsetWidth;
+          activeImg.classList.add('hero-img-animate');
+        }
+      }
+    }
+  });
  
    // ===== TESTIMONIALS SLIDER =====
    const testimonialsSlider = new Swiper('.testimonials-slider', {
@@ -190,11 +183,13 @@ const logoSlider = new Swiper('.logo-slider', {
    }
  
    // ===== STATS COUNTER =====
-   const statItems = document.querySelectorAll('.stat-item h3');
-   
+   const statItems = document.querySelectorAll('.stat-item h3, .stat-number');
    if (statItems.length > 0) {
      statItems.forEach(stat => {
-       const target = parseInt(stat.getAttribute('data-count'));
+       const dataCount = stat.getAttribute('data-count');
+       if (!dataCount) return;
+       const isPlus = dataCount.endsWith && dataCount.endsWith('+');
+       const target = parseInt(dataCount);
        const speed = 2000;
        const count = target / speed;
        let current = 0;
@@ -202,10 +197,10 @@ const logoSlider = new Swiper('.logo-slider', {
        const updateCount = () => {
          current += count;
          if (current < target) {
-           stat.textContent = Math.floor(current);
-           setTimeout(updateCount, 1);
+           stat.textContent = Math.floor(current) + (isPlus ? '' : '');
+           setTimeout(updateCount, 4);
          } else {
-           stat.textContent = target;
+           stat.textContent = target + (isPlus ? '+' : '');
          }
        };
        
@@ -633,86 +628,11 @@ const logoSlider = new Swiper('.logo-slider', {
 AOS.init({
   duration: 800,
   easing: 'ease-in-out',
-  once: true
+  once: true,
+  offset: 100,
+  delay: 100,
+  disable: window.innerWidth < 768 // Nonaktifkan di mobile jika perlu
 });
-  AOS.init({
-    duration: 800,          // Durasi animasi
-    easing: 'ease-in-out',  // Jenis easing
-    once: true,             // Hanya animasi sekali
-    offset: 100,            // Mulai animasi sedikit lebih awal
-    delay: 100,             // Delay default antara item
-  });
-  if (window.innerWidth < 768) {
-    AOS.init({
-      disable: true // Nonaktifkan di mobile jika perlu
-    });
-  }
-  // Hero Slider dengan efek fade
-const heroSlider = new Swiper('.hero-slider', {
-  loop: true,
-  effect: 'fade',
-  fadeEffect: {
-    crossFade: true
-  },
-  autoplay: {
-    delay: 7000,
-    disableOnInteraction: false,
-  },
-  speed: 1000,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  on: {
-    init: function() {
-      // Pastikan slide aktif terlihat di awal
-      this.slides[this.activeIndex].style.opacity = 1;
-      // Tambahkan animasi smooth pada gambar banner saat landing
-      const activeImg = this.slides[this.activeIndex].querySelector('img');
-      if (activeImg) {
-        activeImg.classList.add('hero-img-animate');
-      }
-    },
-    slideChangeTransitionStart: function() {
-      // Hapus animasi dari semua gambar
-      this.slides.forEach(slide => {
-        const img = slide.querySelector('img');
-        if (img) img.classList.remove('hero-img-animate');
-      });
-    },
-    slideChangeTransitionEnd: function() {
-      // Tambahkan animasi ke gambar slide aktif
-      const activeImg = this.slides[this.activeIndex].querySelector('img');
-      if (activeImg) {
-        // Trigger reflow to restart animation if needed
-        void activeImg.offsetWidth;
-        activeImg.classList.add('hero-img-animate');
-      }
-    }
-  }
-});
-// Tambahkan CSS animasi untuk gambar banner hero
-(function() {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .hero .swiper-slide img {
-      opacity: 0;
-      transform: scale(1.08) translateY(40px);
-      transition: opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1);
-      will-change: opacity, transform;
-    }
-    .hero .swiper-slide-active img.hero-img-animate {
-      opacity: 1 !important;
-      transform: scale(1) translateY(0) !important;
-      transition: opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1);
-    }
-  `;
-  document.head.appendChild(style);
-})();
 //baru//
   // Remove preloader when page loads
   window.addEventListener('load', function() {
@@ -728,9 +648,12 @@ const heroSlider = new Swiper('.hero-slider', {
   // Add smooth scroll to buttons
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     });
   });
