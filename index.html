@@ -10,6 +10,7 @@
    <!-- Favicon -->
    <link rel="icon" href="images/favicon.png" type="image/png">
 
+   <!-- Hapus duplikat animate.css, font-awesome, dan scrollreveal di head -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,117 +18,62 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-   <!-- Tambahkan sebelum custom CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <!-- =========================
         ===== CUSTOM CSS =====
         ========================= -->
    <link rel="stylesheet" href="css/style.css">
    <script src="js/animations.js"></script>
    <style>
-      /* === Proyek Kami Gallery Custom CSS === */
-      .projects .box-container {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 2rem;
-         justify-content: center;
-         margin-top: 2rem;
-      }
-      .projects .box {
-         background: #fff;
-         border-radius: 18px;
-         box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
-         overflow: hidden;
-         width: 380px;
-         max-width: 100%;
-         display: flex;
-         flex-direction: column;
-         text-decoration: none;
-         transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
-         position: relative;
-      }
-      .projects .box:hover {
-         transform: translateY(-10px) scale(1.03);
-         box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.10);
-         z-index: 2;
-      }
-      .projects .box .image {
-         width: 100%;
-         height: 100%;
-         overflow: hidden;
-         background: #f6f6f6;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-      }
-      .projects .box .image img {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: 
-            transform 0.4s cubic-bezier(.10,2,.5,1),
-            filter 0.3s;
-         filter: brightness(0.97) contrast(1.08);
-      }
-      .projects .box:hover .image img {
-         transform: scale(1.07) rotate(-1deg);
-         filter: brightness(1.03) contrast(1.12);
-      }
-      .projects .box .content {
-         padding: 1.3rem 1.2rem 1.1rem 1.2rem;
-         display: flex;
-         flex-direction: column;
-         align-items: flex-start;
-         background: #fff;
-         position: relative;
-      }
-      .projects .box .info h3 {
-         font-size: 1.18rem;
-         font-weight: 700;
-         color: #1a237e;
-         margin-bottom: 0.3rem;
-         letter-spacing: 0.01em;
-      }
-      .projects .box .info p {
-         font-size: 1rem;
-         color: #444;
-         margin-bottom: 0;
-         font-weight: 400;
-      }
-      .projects .box .fas.fa-plus {
-         position: absolute;
-         right: 1.2rem;
-         bottom: 1.2rem;
-         color: #ff7d00;
-         font-size: 1.3rem;
-         opacity: 0.7;
-         transition: color 0.2s, opacity 0.2s;
-      }
-      .projects .box:hover .fas.fa-plus {
-         color: #0056b3;
-         opacity: 1;
-      }
-      .projects .text-center.mt-4 {
-         margin-top: 2.5rem;
-      }
-      .projects .btn.btn-primary {
-         padding: 0.9rem 2.2rem;
-         font-size: 1.1rem;
-         border-radius: 30px;
-         font-weight: 600;
-         background: linear-gradient(90deg,#ff7d00 0%,#ff6600 100%);
-         border: none;
-         color: #fff;
-         box-shadow: 0 2px 8px rgba(255,125,0,0.10);
-         transition: background 0.2s, box-shadow 0.2s;
-      }
-      .projects .btn.btn-primary:hover {
-         background: linear-gradient(90deg,#0056b3 0%,#ff7d00 100%);
-         box-shadow: 0 4px 16px rgba(0,86,179,0.10);
-         color: #fff;
-      }
+  /* === Proyek Kami Gallery Custom CSS === */
+.projects .box {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 380px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
+  position: relative;
+  height: auto; /* Tinggi box otomatis mengikuti isi */
+}
+
+.projects .box .image {
+  width: 100%;
+  height: 80%; /* Foto tetap 80% dari tinggi box */
+  min-height: 160px; /* Opsional: agar gambar tidak terlalu kecil */
+  max-height: 320px; /* Opsional: batasi tinggi maksimum gambar */
+  overflow: hidden;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects .box .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.4s cubic-bezier(.10,2,.5,1),
+    filter 0.3s;
+  filter: brightness(0.97) contrast(1.08);
+  display: block;
+}
+
+.projects .box .content {
+  flex: 1 1 auto;
+  padding: 1.3rem 1.2rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #fff;
+  position: relative;
+  min-height: 0;
+}
       @media (max-width: 900px) {
          .projects .box-container {
             gap: 1.2rem;
@@ -265,7 +211,7 @@
         ===== JS LIBRARIES (HEAD) =====
         ========================= -->
    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-   <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
+   <!-- Hapus duplikat scrollreveal dan animations.js di sini -->
    <script src="js/animations.js"></script>
 
    <body>
@@ -284,9 +230,9 @@
              <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
                <i class="fas fa-phone-alt"></i>
              </a>
-             <a href="mailto:gfgondola86@gmail.com" class="action-btn email">
-             <i class="fas fa-envelope"></i>
-            </a>
+             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com" class="action-btn email" target="_blank" rel="noopener" title="Kirim Email via Gmail">
+               <i class="fas fa-envelope"></i>
+             </a>
              <div id="menu-btn" class="fas fa-bars"></div>
            </div>
 
@@ -322,7 +268,7 @@
       <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
         <i class="fas fa-phone-alt"></i>
       </a>
-      <a href="mailto:gfgondola86@gmail.com" class="action-btn email">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com" class="action-btn email" target="_blank" rel="noopener" title="Kirim Email via Gmail">
         <i class="fas fa-envelope"></i>
       </a>
       <div id="menu-btn" class="fas fa-bars"></div>
@@ -375,17 +321,6 @@
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-  </div>
-  
-  <div class="hero-scroll-indicator">
-    <div class="mouse">
-      <div class="wheel"></div>
-    </div>
-    <div class="arrows">
-      <div class="arrow"></div>
-      <div class="arrow"></div>
-      <div class="arrow"></div>
-    </div>
   </div>
 </section>
    <!-- About Section -->
@@ -821,18 +756,18 @@
      <div class="contact-grid">
              <!-- Contact Form -->
        <div class="contact-form">
-         <form id="contactForm">
+         <form id="contactForm" action="https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com" method="POST" enctype="text/plain">
            <div class="form-group">
-             <input type="text" name="nama" placeholder="Nama Lengkap" required>
+             <input type="text" name="Nama" placeholder="Nama Lengkap" required>
            </div>
            <div class="form-group">
-             <input type="email" name="email" placeholder="Alamat Email" required>
+             <input type="email" name="Email" placeholder="Alamat Email" required>
            </div>
            <div class="form-group">
-             <input type="tel" name="telepon" placeholder="Nomor Telepon" required>
+             <input type="tel" name="Telepon" placeholder="Nomor Telepon" required>
            </div>
            <div class="form-group">
-             <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
+             <textarea name="Pesan" placeholder="Pesan Anda" rows="5" required></textarea>
            </div>
            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
          </form>
@@ -1032,5 +967,13 @@
        }
      });
    </script>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-368598657"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-368598657'); 
+</script>
 </body>
 </html>
