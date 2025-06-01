@@ -1129,26 +1129,31 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 
 .contact-info {
   flex: 1;
-  font-size: 1.7rem; /* sama dengan .contact-form input/textarea */
-  line-height: 1.6;  /* konsisten dengan .contact-form */
+  font-size: 1.7rem;
+  line-height: 1.6;
+  background: white;
+  padding: 3rem; /* sama dengan .contact-form */
+  border-radius: 12px; /* sama dengan .contact-form */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* sama dengan .contact-form */
+  transition: all 0.4s cubic-bezier(.77,0,.18,1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 100%; /* pastikan tidak lebih kecil dari .contact-form */
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.contact-form {
+  flex: 1;
   background: white;
   padding: 3rem;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.4s cubic-bezier(.77,0,.18,1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.contact-form {
-  flex: 1;
-}
-
-.contact-form .btn,
-.contact-form .btn-primary {
-  width: 100%;
-  display: block;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .info-item {
@@ -2569,5 +2574,8 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
     box-sizing: border-box;
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    border-radius: 8px !important;
   }
 }
