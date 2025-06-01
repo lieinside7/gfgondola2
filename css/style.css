@@ -2288,8 +2288,8 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 100vh;
+  height: 90vh;         /* sebelumnya 100vh */
+  min-height: 90vh;     /* sebelumnya 100vh */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2301,7 +2301,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 .hero .swiper-wrapper,
 .hero .swiper-slide {
   width: 100%;
-  height: 100%;
+  height: 90vh;         /* sebelumnya 100%/100vh */
 }
 
 .hero .swiper-slide {
@@ -2309,7 +2309,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  min-height: 90vh;     /* sebelumnya 100vh */
   display: flex;
   align-items: center;
 }
