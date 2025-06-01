@@ -2288,8 +2288,8 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 .hero {
   position: relative;
   width: 100%;
-  height: 90vh;         /* sebelumnya 100vh */
-  min-height: 90vh;     /* sebelumnya 100vh */
+  height: 100vh;         /* sebelumnya 100vh */
+  min-height: 100vh;     /* sebelumnya 100vh */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2301,7 +2301,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 .hero .swiper-wrapper,
 .hero .swiper-slide {
   width: 100%;
-  height: 90vh;         /* sebelumnya 100%/100vh */
+  height: 100vh;         /* sebelumnya 100%/100vh */
 }
 
 .hero .swiper-slide {
@@ -2577,5 +2577,101 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
     padding-top: 1.5rem !important;
     padding-bottom: 1.5rem !important;
     border-radius: 8px !important;
+  }
+}
+
+/* =========================
+   ===== VIDEO BUTTONS: BULAT =====
+   ========================= */
+/* Untuk tombol play dan perbesar di dalam video */
+.video-wrapper .video-play-btn,
+.video-wrapper .video-fullscreen-btn,
+.video-wrapper button,
+.video-wrapper .btn,
+.video-wrapper .play,
+.video-wrapper .fullscreen {
+  aspect-ratio: 1/1 !important;
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.26);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,86,179,0.18);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  font-size: 2.2rem;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.video-wrapper .video-play-btn:hover,
+.video-wrapper .video-fullscreen-btn:hover,
+.video-wrapper button:hover,
+.video-wrapper .btn:hover,
+.video-wrapper .play:hover,
+.video-wrapper .fullscreen:hover {
+  background: #ff7d00;
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px rgba(255,125,0,0.18);
+}
+
+/* Jika tombol play berupa svg/icon, pastikan icon di tengah */
+.video-wrapper .video-play-btn i,
+.video-wrapper .video-fullscreen-btn i,
+.video-wrapper button i,
+.video-wrapper .btn i,
+.video-wrapper .play i,
+.video-wrapper .fullscreen i,
+.video-wrapper .video-play-btn svg,
+.video-wrapper .video-fullscreen-btn svg,
+.video-wrapper button svg,
+.video-wrapper .btn svg,
+.video-wrapper .play svg,
+.video-wrapper .fullscreen svg {
+  display: block;
+  margin: auto;
+  font-size: 2.2rem;
+  pointer-events: none;
+}
+
+/* Responsive: tombol lebih kecil di mobile */
+@media (max-width: 600px) {
+  .video-wrapper .video-play-btn,
+  .video-wrapper .video-fullscreen-btn,
+  .video-wrapper button,
+  .video-wrapper .btn,
+  .video-wrapper .play,
+  .video-wrapper .fullscreen {
+    aspect-ratio: 1/1 !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    font-size: 1.3rem;
+  }
+  .video-wrapper .video-play-btn i,
+  .video-wrapper .video-fullscreen-btn i,
+  .video-wrapper button i,
+  .video-wrapper .btn i,
+  .video-wrapper .play i,
+  .video-wrapper .fullscreen i,
+  .video-wrapper .video-play-btn svg,
+  .video-wrapper .video-fullscreen-btn svg,
+  .video-wrapper button svg,
+  .video-wrapper .btn svg,
+  .video-wrapper .play svg,
+  .video-wrapper .fullscreen svg {
+    font-size: 1.3rem;
   }
 }
