@@ -2504,7 +2504,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 /* MOBILE: Samakan tampilan dengan zoom 300% di PC */
 @media (max-width: 600px) {
   html {
-    font-size: 58% !important;
+    font-size: 59% !important;
   }
   body {
     /* Pastikan tidak ada overflow dan scaling proporsional */
