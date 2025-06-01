@@ -1129,6 +1129,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 
 .contact-info {
   flex: 1;
+  font-size: 1.6rem; /* default, sama dengan body */
 }
 
 .contact-form {
@@ -1972,6 +1973,23 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   }
 }
 
+/* Konsistensi ukuran font di contact-info */
+.contact-info {
+  font-size: 1.6rem; /* default, sama dengan body */
+}
+
+/* Responsive font-size untuk contact-info */
+@media (max-width: 600px) {
+  .contact-info {
+    font-size: 1.15rem !important; /* atau sesuai dengan .about-content di mobile */
+  }
+}
+@media (max-width: 400px) {
+  .contact-info {
+    font-size: 0.95rem !important;
+  }
+}
+
 /* Hindari overflow-x di semua elemen utama */
 html, body, .container, .section, .footer, .projects, .testimonials, .contact, .client-cards-section {
   overflow-x: hidden !important;
@@ -2112,9 +2130,6 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   }
 }
 
-/* =========================
-   ===== CUSTOM STYLES =====
-   ========================= */
 /* Tambahan style khusus untuk proyek ini */
 
 /* Projects section: box layout, hover effects */
@@ -2444,7 +2459,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 }
 
 /* Hapus override font-size kecil pada hero di media query lain */
-@media (max-width: 1200px), (max-width: 900px), (max-width: 768px), (max-width: 600px), (max-width: 480px) {
+@media (max-width:  1200px), (max-width: 900px), (max-width: 768px), (max-width: 600px), (max-width: 480px) {
   .hero-title {
     font-size: 2.8rem !important;
   }
@@ -2489,7 +2504,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 /* MOBILE: Samakan tampilan dengan zoom 300% di PC */
 @media (max-width: 600px) {
   html {
-    font-size: 65% !important;
+    font-size: 58% !important;
   }
   body {
     /* Pastikan tidak ada overflow dan scaling proporsional */
@@ -2532,7 +2547,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   /* Pastikan .contact .row tetap row agar dua kolom */
   .contact .row {
     flex-direction: row !important;
-    gap: 0rem !important;
+    gap: 1rem !important;
   }
   .contact-info,
   .contact-form {
