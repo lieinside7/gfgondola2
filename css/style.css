@@ -2489,7 +2489,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 /* MOBILE: Samakan tampilan dengan zoom 300% di PC */
 @media (max-width: 600px) {
   html {
-    font-size: 100% !important;
+    font-size: 65% !important;
   }
   body {
     /* Pastikan tidak ada overflow dan scaling proporsional */
@@ -2532,11 +2532,11 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   /* Pastikan .contact .row tetap row agar dua kolom */
   .contact .row {
     flex-direction: row !important;
-    gap: 2rem !important;
+    gap: 0rem !important;
   }
   .contact-info,
   .contact-form {
-    width: 50% !important;
+    width: 100% !important;
     max-width: 50vw !important;
     min-width: 0 !important;
     box-sizing: border-box;
