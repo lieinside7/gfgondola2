@@ -1167,7 +1167,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 /* Kontak dan form */
 .contact .row {
   display: flex;
-  gap: 0,5rem; /* dari 2rem, diperkecil */
+  gap: 0.5rem; /* dari 2rem, diperkecil */
 }
 
 .contact-info {
