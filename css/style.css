@@ -795,104 +795,99 @@ h1::selection, h2::selection, h3::selection, h4::selection,
     font-size: 1.1rem;
   }
 }
-
-/* =========================
-   ===== ABOUT SECTION =====
-   ========================= */
-/* Tentang perusahaan, fitur, dan statistik */
+/* About Section Layout */
 .about .row {
   display: flex;
-  gap: 3rem;
+  flex-wrap: wrap;
+  gap: 4rem;
   align-items: center;
-  flex-direction: row;
 }
 
-.about {
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-/* Deskripsi lebih kecil */
-.about-content {
-  flex: 0.7;
-  order: 2;
-  padding-left: 1.5rem;
-  max-width: 320px;
-  font-size: 2.0rem;
-}
-
-/* Video lebih besar */
 .about-media {
-  flex: 4;
-  border: 2;
-  display: 100%;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 300px;
 }
 
 .video-wrapper {
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 1.5rem; /* sebelumnya 2.5rem */
-  overflow: hidden;
-  box-shadow: 0 16px 64px rgba(0,86,179,0.22), 0 2px 12px rgba(0,0,0,0.13);
-  background: transparent !important;
   position: relative;
-  min-height: 380px; /* sebelumnya 520px */
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .video-wrapper video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0rem;
-  box-shadow: none;
-  background: transparent !important;
   display: block;
 }
 
-/* Responsive: video tetap besar dan landscape di tablet/mobile */
-@media (max-width: 1200px) {
-  .video-wrapper {
-    max-width: 98vw;
-    min-height: 320px;
-    aspect-ratio: 16/8;
-  }
-  .about-content {
-    max-width: 98vw;
-    font-size: 1.3rem;
-  }
-}
-@media (max-width: 900px) {
-  .about .row {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .about-media, .about-content {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 0;
-  }
-  .video-wrapper {
-    min-height: 220px;
-    aspect-ratio: 16/9;
-    border-radius: 1.5rem;
-  }
-}
-@media (max-width: 600px) {
-  .video-wrapper {
-    min-height: 160px;
-    aspect-ratio: 16/10;
-    border-radius: 1rem;
-  }
-  .about-content {
-    font-size: 1.15rem;
-    max-width: 100%;
-  }
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
+.feature-item {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.feature-item h4 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  font-size: 1.4rem;
+  color: var(--gray);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about .row {
+    flex-direction: column;
+  }
+  
+  .about-media, 
+  .about-content {
+    width: 100%;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
+}
 /* =========================
    ===== SERVICES SECTION =====
    ========================= */
@@ -1167,7 +1162,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 /* Kontak dan form */
 .contact .row {
   display: flex;
-  gap: 0.5rem; /* dari 2rem, diperkecil */
+  gap: 0,5rem; /* dari 2rem, diperkecil */
 }
 
 .contact-info {
