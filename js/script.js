@@ -870,3 +870,11 @@ AOS.init({
       }, 500);
     }, 1500);
   });
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('preloader').classList.add('hide');
+    setTimeout(function() {
+      document.getElementById('preloader').style.display = 'none';
+    }, 500);
+  }, 400); // loader tampil minimal 400ms, bisa diubah
+});
