@@ -69,65 +69,71 @@ ul {
   list-style: none;
 }
 
+/* Hilangkan padding pada .container */
 .container {
   width: 100vw;
   max-width: 100vw;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   box-sizing: border-box;
 }
 @media (max-width: 900px) {
   .container {
     max-width: 98vw;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 @media (max-width: 600px) {
   .container {
     max-width: 100vw;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
-/* Kecuali untuk header */
+/* Tambahkan/ubah di bawah ini */
 .header .container,
 .header.mobile-header .container {
-  padding: 0 0;
+  padding-left: 31px !important;
+  padding-right: 37px !important;
 }
 
+@media (max-width: 600px) {
+  .header .container,
+  .header.mobile-header .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* Hilangkan padding pada .section */
 .section {
   padding: 60px 0;
   width: 100%;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
 .section.contact {
-  padding-left: 3rem !important;
-  padding-right: 3rem !important;
-}
-
-.section.contact .section-header {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 @media (max-width: 600px) {
   .section.contact {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
@@ -345,12 +351,12 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 /* Header utama (desktop) */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 1;
+  left: 1;
   width: 100%;
-  padding: 2rem 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 2.5rem 0;
+  padding-left: 1;
+  padding-right: 1;
   background-color: var(--white);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
@@ -371,7 +377,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   align-items: center;
   max-width: auto;
   margin: 0 auto;
-  padding: 0 20px;
+  /*padding: 0 20px;*/
 }
 
 .logo {
@@ -560,7 +566,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  max-width: 70%;
+  max-width: 75%;
   min-width: 0;
 }
 
@@ -585,7 +591,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
     font-size: 1.2rem;
   }
   #menu-btn {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 
@@ -808,15 +814,106 @@ h1::selection, h2::selection, h3::selection, h4::selection,
     font-size: 1.1rem;
   }
 }
-/* About Section Layout */
+/* About Section Layout: Tinggi dan lebar rata */
+.about {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box;
+}
+.about,
+.about .row,
+.about-media,
+.about-content {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
 .about .row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
-  align-items: center;
-  justify-content: center; /* Tambahkan ini agar row center */
+  align-items: stretch;
+  justify-content: center;
+  gap: 3rem; /* atau 4rem sesuai selera */
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+.about-media,
+.about-content {
+  flex: 1 1 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+.video-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  aspect-ratio: 16/9;
+}
+.video-autoplay-hint {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  z-index: 3;
+  pointer-events: none;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: opacity 0.2s;
+}
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* Agar video proporsional dan penuh */
+  display: block;
+  border-radius: 12px;
 }
 
+/* Responsive: Stack di mobile */
+@media (max-width: 900px) {
+  .about .row {
+    flex-direction: column;
+    gap: 0;
+    width: 100vw;
+    max-width: 100vw;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .about-media,
+  .about-content {
+    max-width: 100vw;
+    min-width: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+@media (max-width: 900px) {
+  .about .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .about {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+  .video-wrapper {
+    min-height: 180px;
+    height: auto;
+  }
 .about-media {
   flex: 1;
   min-width: 300px;
@@ -1883,12 +1980,12 @@ h1::selection, h2::selection, h3::selection, h4::selection,
     margin-right: 0 !important;
     box-sizing: border-box;
     overflow-x: hidden !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   .section {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     width: 100vw !important;
@@ -2658,5 +2755,182 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
     padding-top: 1.5rem !important;
     padding-bottom: 1.5rem !important;
     border-radius: 8px !important;
+  }
+}
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.about-features .feature-item {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,86,179,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.about-features .feature-item i {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.about-features .feature-item h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.about-features .feature-item p {
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+/* Responsive: stack di mobile */
+@media (max-width: 900px) {
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+/* Atur tombol di dalam .about-content agar vertikal dan rapi */
+.about-content .about-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start; /* atau center jika ingin tengah */
+  margin-top: 2rem;
+}
+
+.about-content .about-buttons .btn,
+.about-content .about-buttons .btn-primary,
+.about-content .about-buttons .btn-outline {
+  width: auto;
+  min-width: 160px;
+  max-width: 100%;
+}
+.about-content .about-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .about-content .about-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+@media (max-width: 600px) {
+  /* Hilangkan padding di parent */
+  .container,
+  .section,
+  .footer,
+  .footer-content,
+  .footer-about,
+  .footer-links,
+  .footer-contact,
+  .logo-container,
+  .projects,
+  .testimonials,
+  .contact,
+  .client-cards-section,
+  .client-cards-header,
+  .client-cards-grid,
+  .client-card,
+  .about,
+  .about-content,
+  .about-media,
+  .contact-info,
+  .contact-form,
+  .blogs-slider {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+    overflow-x: hidden !important;
+  }
+  /* Terapkan padding hanya di .row */
+  .row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 765px) {
+  .about {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .about .row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+  .about-media,
+  .about-content {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 765px) {
+  .container,
+  .section,
+  .footer,
+  .footer-content,
+  .footer-about,
+  .footer-links,
+  .footer-contact,
+  .logo-container,
+  .projects,
+  .testimonials,
+  .contact,
+  .client-cards-section,
+  .client-cards-header,
+  .client-cards-grid,
+  .client-card,
+  .about,
+  .about-content,
+  .about-media,
+  .contact-info,
+  .contact-form,
+  .blogs-slider {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    box-sizing: border-box;
   }
 }
