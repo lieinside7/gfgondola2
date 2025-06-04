@@ -325,7 +325,13 @@ const logoSlider = new Swiper('.logo-slider', {
        playBtn.id = 'playPauseBtn';
        playBtn.className = 'video-play-btn';
        playBtn.type = 'button';
-       playBtn.style.display = 'flex';
+       // --- Ubah style agar tombol play selalu di pojok kiri bawah video, tidak bergerak ---
+       playBtn.style.position = 'absolute';
+       playBtn.style.left = '16px';
+       playBtn.style.bottom = '16px';
+       playBtn.style.top = '';
+       playBtn.style.right = '';
+       playBtn.style.transform = 'none';
        playBtn.innerHTML = '<i class="fas fa-play"></i>';
        videoWrapper.appendChild(playBtn);
      }
@@ -337,6 +343,13 @@ const logoSlider = new Swiper('.logo-slider', {
        fullscreenBtn.id = 'fullscreenBtn';
        fullscreenBtn.className = 'video-fullscreen-btn';
        fullscreenBtn.type = 'button';
+       // --- Ubah style agar tombol fullscreen selalu di pojok kanan bawah video, tidak bergerak ---
+       fullscreenBtn.style.position = 'absolute';
+       fullscreenBtn.style.right = '16px';
+       fullscreenBtn.style.bottom = '16px';
+       fullscreenBtn.style.top = '';
+       fullscreenBtn.style.left = '';
+       fullscreenBtn.style.transform = 'none';
        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
        videoWrapper.appendChild(fullscreenBtn);
      }
