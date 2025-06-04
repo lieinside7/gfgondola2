@@ -70,14 +70,27 @@ ul {
 }
 
 .container {
-  width: 100%;
-  max-width: 100%;
-  padding: 0 20px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  min-width: 0;
+  width: 100vw;
   max-width: 100vw;
-  overflow-x: hidden;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .container {
+    max-width: 98vw;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    max-width: 100vw;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
 }
 
 /* Kecuali untuk header */
