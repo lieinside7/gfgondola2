@@ -71,8 +71,8 @@ ul {
 
 .container {
   width: 100%;
-  max-width: 100%;
-  padding: 0 20px;
+  max-width: 1200px; /* Batas maksimum untuk desktop */
+  padding: 0 15px;
   margin: 0 auto;
   box-sizing: border-box;
   min-width: 0;
@@ -87,7 +87,7 @@ ul {
 }
 
 .section {
-  padding: 60px 0;
+  padding: 6rem 0;
   width: 100%;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -124,7 +124,7 @@ ul {
 }
 
 .section-title {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   margin-bottom: 1.5rem;
   color: var(--secondary-color);
 }
@@ -222,7 +222,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 }
 
 .section-subtitle {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--gray);
   font-weight: 400;
 }
@@ -1784,11 +1784,11 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 
 @media (max-width: 768px) {
   .section {
-    padding: 6rem 0;
+    padding: 4rem 0;
   }
   
   .section-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
   
   /* .hero-buttons {
@@ -2417,7 +2417,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   transition: none !important;
 }
 .hero-title {
-  font-size: 4.8rem !important;
+  font-size: 4rem !important;
   margin-bottom: 1.2rem;
   font-weight: 800;
   line-height: 1.2;
@@ -2455,7 +2455,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   color: #ff7d00;
 }
 .hero-text {
-  font-size: 2.25rem !important;
+  font-size: 1.8rem !important;
   margin-bottom: 1.5rem;
   line-height: 1.5;
   text-align: center;
@@ -2580,7 +2580,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 /* MOBILE: Samakan tampilan dengan zoom 300% di PC */
 @media (max-width: 600px) {
   html {
-    font-size: 49% !important;
+    font-size: 52% !important; /* Lebih besar dari sebelumnya (49%) */
   }
   body {
     /* Pastikan tidak ada overflow dan scaling proporsional */
