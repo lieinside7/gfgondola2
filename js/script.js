@@ -596,6 +596,20 @@ const logoSlider = new Swiper('.logo-slider', {
    }
    fixHeroFontSize();
    window.addEventListener('resize', fixHeroFontSize);
+
+   // Responsive helper for hero and container padding
+function handleResize() {
+  // Sesuaikan tinggi hero
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.style.height = window.innerHeight + 'px';
+  }
+  // Sesuaikan padding container
+  const containerPadding = window.innerWidth < 576 ? '10px' : (window.innerWidth < 768 ? '12px' : '15px');
+  document.documentElement.style.setProperty('--container-padding', containerPadding);
+}
+window.addEventListener('resize', handleResize);
+window.addEventListener('load', handleResize);
  });
  
  // Function for contact form submission (used in HTML onclick)
