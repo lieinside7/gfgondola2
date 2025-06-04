@@ -325,13 +325,7 @@ const logoSlider = new Swiper('.logo-slider', {
        playBtn.id = 'playPauseBtn';
        playBtn.className = 'video-play-btn';
        playBtn.type = 'button';
-       // --- Ubah style agar tombol play selalu di pojok kiri bawah video, tidak bergerak ---
-       playBtn.style.position = 'absolute';
-       playBtn.style.left = '16px';
-       playBtn.style.bottom = '16px';
-       playBtn.style.top = '';
-       playBtn.style.right = '';
-       playBtn.style.transform = 'none';
+       playBtn.style.display = 'flex';
        playBtn.innerHTML = '<i class="fas fa-play"></i>';
        videoWrapper.appendChild(playBtn);
      }
@@ -343,13 +337,6 @@ const logoSlider = new Swiper('.logo-slider', {
        fullscreenBtn.id = 'fullscreenBtn';
        fullscreenBtn.className = 'video-fullscreen-btn';
        fullscreenBtn.type = 'button';
-       // --- Ubah style agar tombol fullscreen selalu di pojok kanan bawah video, tidak bergerak ---
-       fullscreenBtn.style.position = 'absolute';
-       fullscreenBtn.style.right = '16px';
-       fullscreenBtn.style.bottom = '16px';
-       fullscreenBtn.style.top = '';
-       fullscreenBtn.style.left = '';
-       fullscreenBtn.style.transform = 'none';
        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
        videoWrapper.appendChild(fullscreenBtn);
      }
@@ -596,20 +583,6 @@ const logoSlider = new Swiper('.logo-slider', {
    }
    fixHeroFontSize();
    window.addEventListener('resize', fixHeroFontSize);
-
-   // Responsive helper for hero and container padding
-function handleResize() {
-  // Sesuaikan tinggi hero
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    hero.style.height = window.innerHeight + 'px';
-  }
-  // Sesuaikan padding container
-  const containerPadding = window.innerWidth < 576 ? '10px' : (window.innerWidth < 768 ? '12px' : '15px');
-  document.documentElement.style.setProperty('--container-padding', containerPadding);
-}
-window.addEventListener('resize', handleResize);
-window.addEventListener('load', handleResize);
  });
  
  // Function for contact form submission (used in HTML onclick)
@@ -670,6 +643,7 @@ window.addEventListener('load', handleResize);
    border-radius: 50%;
    width: 64px;
    height: 64px;
+   aspect-ratio: 1/1; /* Tambahkan agar selalu bulat */
    display: flex;
    align-items: center;
    justify-content: center;
@@ -686,11 +660,33 @@ window.addEventListener('load', handleResize);
    transform: none;
    width: 44px;
    height: 44px;
+   aspect-ratio: 1/1; /* Tambahkan agar selalu bulat */
    font-size: 1.6rem;
    opacity: 0.85;
+   border-radius: 50%;
  }
  .video-play-btn:hover, .video-fullscreen-btn:hover {
    background: rgba(0,86,179,0.8);
+ }
+ /* Pastikan tombol bulat di mobile */
+ @media (max-width: 600px) {
+   .video-play-btn, .video-fullscreen-btn {
+     border-radius: 50% !important;
+     width: 48px !important;
+     height: 48px !important;
+     aspect-ratio: 1/1 !important;
+     padding: 0 !important;
+     /* Hapus min/max width/height agar tidak override aspect ratio */
+     min-width: unset !important;
+     min-height: unset !important;
+     max-width: unset !important;
+     max-height: unset !important;
+   }
+   .video-fullscreen-btn {
+     width: 36px !important;
+     height: 36px !important;
+     aspect-ratio: 1/1 !important;
+   }
  }
  .video-overlay {
    position: absolute;
