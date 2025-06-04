@@ -2,6 +2,8 @@
 <html lang="id">
 
 <head>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
    <!-- Tambahkan/cek baris berikut agar favicon muncul di tab browser -->
    <!-- Favicon universal (ico, fallback for all browsers) -->
    <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -9,8 +11,6 @@
    <link rel="icon" href="images/Logo.png" type="image/png">
    <title>PT. Gondola Firdaus Pratama Jaya - Spesialis Gondola Profesional</title>
    <meta name="description" content="Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat. Solusi aman dan profesional untuk kebutuhan akses ketinggian Anda.">
-   <!-- Perbaiki meta viewport -->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
    <!-- Hapus duplikat animate.css, font-awesome, dan scrollreveal di head -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,9 +218,7 @@
 
    <body>
       <!-- Preloader -->
-      <div class="preloader">
-        <div class="loader"></div>
-      </div>
+      <div class="preloader loader-dots"><span></span></div>
       <header class="header mobile-header">
          <div class="container">
            <a href="#" class="logo">
@@ -325,17 +323,18 @@
     <div class="swiper-button-prev"></div>
   </div>
 </section>
-<!-- About Section -->
+   <!-- About Section -->
 <section class="section about" id="about" data-aos="fade-up">
   <div class="container">
-    <div class="section-header text-center">
-      <h2 class="section-title">
+    <div class="section-header" style="text-align:center;">
+      <h2 class="section-title" style="font-size:3.6rem;font-weight:800;letter-spacing:0.01em;">
         Kenapa Memilih <span style="color:#ff7d00;">PT. Gondola Firdaus Pratama Jaya?</span>
       </h2>
-      <p class="section-subtitle">
+      <p class="section-subtitle" style="font-size:2rem;">
         Mitra terpercaya untuk solusi gondola gedung tinggi di Indonesia
       </p>
     </div>
+
     <div class="row">
       <div class="about-media">
         <div class="video-wrapper">
@@ -353,9 +352,11 @@
           </div>
         </div>
       </div>
+
       <div class="about-content">
         <h3 class="content-title">Kami Hadirkan Solusi Gondola Terbaik untuk Anda</h3>
         <p>Dengan pengalaman lebih dari satu dekade, kami telah dipercaya oleh berbagai klien untuk menyediakan gondola berkualitas tinggi. Tim profesional kami siap memberikan layanan terbaik, mulai dari konsultasi, pemasangan, hingga perawatan rutin.</p>
+        
         <div class="features-grid">
           <div class="feature-item">
             <i class="fas fa-award"></i>
@@ -373,23 +374,74 @@
             <p>Penyelesaian proyek sesuai jadwal yang disepakati</p>
           </div>
         </div>
+        
         <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
       </div>
     </div>
   </div>
 </section>
-
+</section>
+         <div class="stats-grid" style="display:flex;gap:2.5rem;justify-content:center;align-items:stretch;">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#ff7d00;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-calendar-check"></i>
+               </div>
+               <h3 class="stat-number" data-count="10+" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Tahun<br><span style="font-weight:600;">Pengalaman</span>
+               </div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#0056b3;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-briefcase"></i>
+               </div>
+               <h3 class="stat-number" data-count="300+" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Proyek<br><span style="font-weight:600;">Selesai</span>
+               </div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#25D366;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-users"></i>
+               </div>
+               <h3 class="stat-number" data-count="250+" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Klien<br><span style="font-weight:600;">Puas</span>
+               </div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="400" style="flex:1;min-width:150px;text-align:center;">
+               <div class="stat-icon" style="color:#ff6600;font-size:3rem;margin-bottom:1rem;">
+                  <i class="fas fa-user-cog"></i>
+               </div>
+               <h3 class="stat-number" data-count="30+" style="font-size:3.2rem;font-weight:800;">0</h3>
+               <div class="stat-label" style="font-size:1.15rem;line-height:1.2;">
+                 Teknisi<br>Aktif<span style="font-weight:600;"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
+  </section>
    <!-- Services Section -->
    <section class="section services" id="services" data-aos="fade-up">
       <div class="container">
-         <div class="section-header text-center">
-            <h2 class="section-title">
+         <div class="section-header" style="text-align:center;">
+            <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
               Layanan Unggulan Kami
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" style="font-size:1.8rem;">
               Satu tempat untuk semua kebutuhan gondola Anda
             </p>
          </div>
+<!-- Contoh pada layanan -->
+<div class="box-container">
+   <div class="box" data-aos="zoom-in" data-aos-delay="100">
+     <!-- konten box -->
+   </div>
+   <div class="box" data-aos="zoom-in" data-aos-delay="200">
+     <!-- konten box -->
+   </div>
+
          <div class="services-grid">
             <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                <div class="service-icon">
@@ -427,17 +479,19 @@
                <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
             </div>
          </div>
+         <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
       </div>
+      <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
    </section>
 
    <!-- Proyek Kami Section -->
    <section class="section projects" id="projects">
       <div class="container">
-        <div class="section-header text-center">
-          <h2 class="section-title">
+        <div class="section-header" style="text-align:center;">
+          <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
             Proyek-Proyek Terbaik Kami
           </h2>
-          <p class="section-subtitle">
+          <p class="section-subtitle" style="font-size:1.8rem;">
             Portofolio instalasi &amp; perawatan gondola di berbagai gedung ternama
           </p>
         </div>
@@ -525,11 +579,11 @@
    <!-- Blogs Section -->
    <section class="section blogs" id="blogs">
       <div class="container">
-        <div class="section-header text-center">
-          <h2 class="section-title">
+        <div class="section-header" style="text-align:center;">
+          <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
             Wawasan &amp; Tips Seputar Gondola
           </h2>
-          <p class="section-subtitle">
+          <p class="section-subtitle" style="font-size:1.7rem;">
             Artikel, berita, dan inspirasi untuk solusi akses gedung tinggi
           </p>
         </div>
@@ -571,11 +625,11 @@
 
    <section class="section testimonials" id="testimonials">
       <div class="container">
-        <div class="section-header text-center">
-          <h2 class="section-title">
+        <div class="section-header" style="text-align:center;">
+          <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
             Apa Kata Klien Kami?
           </h2>
-          <p class="section-subtitle">
+          <p class="section-subtitle" style="font-size:1.7rem;">
             Testimoni nyata dari pelanggan yang puas dengan layanan kami
           </p>
         </div>
@@ -645,11 +699,11 @@
    </section>
 
    <!-- CLIENT LOGO SECTION -->
-   <div class="section-header text-center">
-  <h2 class="section-title">
+   <div class="section-header" style="text-align:center;">
+  <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
     Klien &amp; Mitra Kepercayaan Kami
   </h2>
-  <p class="section-subtitle">
+  <p class="section-subtitle" style="font-size:1.7rem;">
     Gedung dan perusahaan ternama yang telah mempercayakan solusi gondola kepada kami
   </p>
 </div>
@@ -686,15 +740,15 @@
 
    <!-- Contact Section -->
 <section class="contact-section" id="contact">
-  <div class="container">
-    <div class="section-header text-center">
-      <h2 class="section-title">
-        Hubungi Tim Gondola Profesional Kami
-      </h2>
-      <p class="section-subtitle">
-        Konsultasikan kebutuhan gondola Anda bersama kami, gratis!
-      </p>
-    </div>
+   <div class="container">
+     <div class="section-header" style="text-align:center;">
+       <h2 class="section-title" style="font-size:3.2rem;font-weight:800;letter-spacing:0.01em;">
+         Hubungi Tim Gondola Profesional Kami
+       </h2>
+       <p class="section-subtitle" style="font-size:1.7rem;">
+         Konsultasikan kebutuhan gondola Anda bersama kami, gratis!
+       </p>
+     </div>
  
      <div class="contact-grid">
              <!-- Contact Form -->
@@ -782,7 +836,7 @@
           <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="40" height="38">
           <span>PT. Gondola Firdaus Pratama Jaya</span>
         </a>
-        <p>
+        <p style="font-size:1.2rem;">
           Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat di seluruh Indonesia.
         </p>
         
@@ -826,7 +880,7 @@
       </div>
     </div>
     
-    <div class="footer-bottom">
+    <div class="footer-bottom" style="font-size:1.1rem;">
       <p>&copy; 2023 PT. Gondola Firdaus Pratama Jaya. Seluruh hak cipta dilindungi undang-undang.</p>
       <p>Website oleh <a href="https://www.facebook.com/lieinsid" target="_blank" class="mca-highlight">MCA</a></p>
     </div>
