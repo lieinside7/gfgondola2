@@ -71,8 +71,8 @@ ul {
 
 .container {
   width: 100%;
-  max-width: 1200px; /* Batas maksimum untuk desktop */
-  padding: 0 15px;
+  max-width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   box-sizing: border-box;
   min-width: 0;
@@ -87,7 +87,7 @@ ul {
 }
 
 .section {
-  padding: 6rem 0;
+  padding: 60px 0;
   width: 100%;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -124,7 +124,7 @@ ul {
 }
 
 .section-title {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
   color: var(--secondary-color);
 }
@@ -222,7 +222,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 }
 
 .section-subtitle {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--gray);
   font-weight: 400;
 }
@@ -314,16 +314,56 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   pointer-events: none;
   visibility: hidden;
 }
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #eee;
-  border-top: 6px solid #007bff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+
+/* Loader Dots Animation */
+.loader-dots {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
 }
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.loader-dots::before,
+.loader-dots::after,
+.loader-dots > span {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #0056b3;
+  opacity: 0.7;
+  animation: loader-dots-bounce 1.2s cubic-bezier(.77,0,.18,1) infinite both;
+}
+.loader-dots::before {
+  animation-delay: 0s;
+}
+.loader-dots > span {
+  animation-delay: 0.2s;
+  background: #0056b3;
+  position: relative;
+  z-index: 1;
+}
+.loader-dots::after {
+  animation-delay: 0.4s;
+}
+@keyframes loader-dots-bounce {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.7; }
+  40% { transform: scale(1.2); opacity: 1; }
+}
+/* Responsive: loader-dots lebih kecil di mobile */
+@media (max-width: 600px) {
+  .loader-dots::before,
+  .loader-dots::after,
+  .loader-dots > span {
+    width: 9px;
+    height: 9px;
+    margin: 0 2px;
+  }
 }
 
 /* =========================
@@ -1784,11 +1824,11 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 
 @media (max-width: 768px) {
   .section {
-    padding: 4rem 0;
+    padding: 6rem 0;
   }
   
   .section-title {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
   
   /* .hero-buttons {
@@ -2417,7 +2457,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   transition: none !important;
 }
 .hero-title {
-  font-size: 4rem !important;
+  font-size: 4.8rem !important;
   margin-bottom: 1.2rem;
   font-weight: 800;
   line-height: 1.2;
@@ -2455,7 +2495,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   color: #ff7d00;
 }
 .hero-text {
-  font-size: 1.8rem !important;
+  font-size: 2.25rem !important;
   margin-bottom: 1.5rem;
   line-height: 1.5;
   text-align: center;
@@ -2580,7 +2620,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 /* MOBILE: Samakan tampilan dengan zoom 300% di PC */
 @media (max-width: 600px) {
   html {
-    font-size: 52% !important; /* Lebih besar dari sebelumnya (49%) */
+    font-size: 49% !important;
   }
   body {
     /* Pastikan tidak ada overflow dan scaling proporsional */
@@ -2636,101 +2676,5 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
     padding-top: 1.5rem !important;
     padding-bottom: 1.5rem !important;
     border-radius: 8px !important;
-  }
-}
-
-/* =========================
-   ===== VIDEO BUTTONS: BULAT =====
-   ========================= */
-/* Untuk tombol play dan perbesar di dalam video */
-.video-wrapper .video-play-btn,
-.video-wrapper .video-fullscreen-btn,
-.video-wrapper button,
-.video-wrapper .btn,
-.video-wrapper .play,
-.video-wrapper .fullscreen {
-  aspect-ratio: 1/1 !important;
-  width: 56px !important;
-  height: 56px !important;
-  min-width: 56px !important;
-  min-height: 56px !important;
-  max-width: 56px !important;
-  max-height: 56px !important;
-  border-radius: 50% !important;
-  background: rgba(0, 0, 0, 0.26);
-  color: #fff;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,86,179,0.18);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-  font-size: 2.2rem;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-}
-
-.video-wrapper .video-play-btn:hover,
-.video-wrapper .video-fullscreen-btn:hover,
-.video-wrapper button:hover,
-.video-wrapper .btn:hover,
-.video-wrapper .play:hover,
-.video-wrapper .fullscreen:hover {
-  background: #ff7d00;
-  color: #fff;
-  transform: scale(1.08);
-  box-shadow: 0 8px 32px rgba(255,125,0,0.18);
-}
-
-/* Jika tombol play berupa svg/icon, pastikan icon di tengah */
-.video-wrapper .video-play-btn i,
-.video-wrapper .video-fullscreen-btn i,
-.video-wrapper button i,
-.video-wrapper .btn i,
-.video-wrapper .play i,
-.video-wrapper .fullscreen i,
-.video-wrapper .video-play-btn svg,
-.video-wrapper .video-fullscreen-btn svg,
-.video-wrapper button svg,
-.video-wrapper .btn svg,
-.video-wrapper .play svg,
-.video-wrapper .fullscreen svg {
-  display: block;
-  margin: auto;
-  font-size: 2.2rem;
-  pointer-events: none;
-}
-
-/* Responsive: tombol lebih kecil di mobile */
-@media (max-width: 600px) {
-  .video-wrapper .video-play-btn,
-  .video-wrapper .video-fullscreen-btn,
-  .video-wrapper button,
-  .video-wrapper .btn,
-  .video-wrapper .play,
-  .video-wrapper .fullscreen {
-    aspect-ratio: 1/1 !important;
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
-    max-width: 38px !important;
-    max-height: 38px !important;
-    font-size: 1.3rem;
-  }
-  .video-wrapper .video-play-btn i,
-  .video-wrapper .video-fullscreen-btn i,
-  .video-wrapper button i,
-  .video-wrapper .btn i,
-  .video-wrapper .play i,
-  .video-wrapper .fullscreen i,
-  .video-wrapper .video-play-btn svg,
-  .video-wrapper .video-fullscreen-btn svg,
-  .video-wrapper button svg,
-  .video-wrapper .btn svg,
-  .video-wrapper .play svg,
-  .video-wrapper .fullscreen svg {
-    font-size: 1.3rem;
   }
 }
