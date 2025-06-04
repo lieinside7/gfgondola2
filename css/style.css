@@ -2960,3 +2960,44 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   pointer-events: none;
   transition: opacity 0.4s;
 }
+/*tammbahhhhhhhhhhhhhhhhh*/
+/* Batasi tinggi hero di mobile agar tidak terlalu tinggi */
+@media (max-width: 600px) {
+  .hero,
+  .hero-slider,
+  .hero .swiper,
+  .hero .swiper-wrapper,
+  .hero .swiper-slide {
+    height: 60vh !important;   /* Ubah 70vh sesuai selera, misal 60vh */
+    min-height: 320px !important; /* Batas minimum agar tidak terlalu kecil */
+    max-height: 90vh !important;
+  }
+  .hero .swiper-slide .overlay {
+    min-height: 320px !important;
+  }
+  .hero .swiper-slide > .container {
+    height: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+  .hero-content {
+    padding: 16px 4vw !important;
+    max-width: 98vw !important;
+  }
+  .hero-title {
+    font-size: 2.2rem !important;
+  }
+  .hero-text {
+    font-size: 1.1rem !important;
+  }
+}
+.hero .swiper-slide img {
+  width: 100vw;
+  height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
