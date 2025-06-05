@@ -263,31 +263,31 @@ fixHeroFontSize();
 window.addEventListener('resize', fixHeroFontSize);
 
 // ===== TESTIMONIALS SLIDER =====
-   const testimonialsSlider = new Swiper('.testimonials-slider', {
-     loop: true,
-     spaceBetween: 30,
-     centeredSlides: true,
-     autoplay: {
-       delay: 5000,
-       disableOnInteraction: false,
-     },
-     pagination: {
-       el: '.swiper-pagination',
-       clickable: true,
-     },
-     breakpoints: {
-       0: {
-         slidesPerView: 1,
-       },
-       768: {
-         slidesPerView: 2,
-       },
-       992: {
-         slidesPerView: 3,
-       },
-     },
-   });
- 
+const testimonialsSlider = new Swiper('.testimonials-slider', {
+  loop: true,
+  spaceBetween: 30,
+  centeredSlides: true,
+  speed: 1000, // Tambahkan speed agar transisi lebih halus (1000ms = 1 detik)
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    992: {
+      slidesPerView: 3,
+    },
+  },
+});
 // Inisialisasi Client Logo Slider
 const logoSlider = new Swiper('.logo-slider', {
    loop: true,
