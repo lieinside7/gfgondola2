@@ -4,15 +4,19 @@
 <head>
 
    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-   <!-- Tambahkan/cek baris berikut agar favicon muncul di tab browser -->
    <!-- Favicon universal (ico, fallback for all browsers) -->
    <link rel="icon" href="favicon.ico" type="image/x-icon">
    <!-- Optional: PNG favicon for modern browsers -->
    <link rel="icon" href="images/Logo.png" type="image/png">
    <title>PT. Gondola Firdaus Pratama Jaya - Spesialis Gondola Profesional</title>
    <meta name="description" content="Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat. Solusi aman dan profesional untuk kebutuhan akses ketinggian Anda.">
+   <!-- Favicon -->
+   <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+   <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+   <link rel="shortcut icon" href="/favicon/favicon.ico" />
+   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+   <link rel="manifest" href="/favicon/site.webmanifest" />
 
-   <!-- Hapus duplikat animate.css, font-awesome, dan scrollreveal di head -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,13 +25,12 @@
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-   <!-- =========================
-        ===== CUSTOM CSS =====
-        ========================= -->
+   
+   <!-- ==========CUSTOM CSS===========!-->
    <link rel="stylesheet" href="css/style.css">
    <script src="js/animations.js"></script>
    <style>
-  /* === Proyek Kami Gallery Custom CSS === */
+  /* === Galeri Proyek Kami (Custom CSS) === */
 .projects .box {
   background: #fff;
   border-radius: 10px;
@@ -40,14 +43,14 @@
   text-decoration: none;
   transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
   position: relative;
-  height: auto; /* Tinggi box otomatis mengikuti isi */
+  height: auto; /* Batas: tinggi box mengikuti isi */
 }
 
 .projects .box .image {
   width: 100%;
-  height: 80%; /* Foto tetap 80% dari tinggi box */
-  min-height: 160px; /* Opsional: agar gambar tidak terlalu kecil */
-  max-height: 320px; /* Opsional: batasi tinggi maksimum gambar */
+  height: 80%; /* Batas: gambar 80% dari tinggi box */
+  min-height: 160px; /* Batas minimum tinggi gambar */
+  max-height: 320px; /* Batas maksimum tinggi gambar */
   overflow: hidden;
   background: #f6f6f6;
   display: flex;
@@ -76,42 +79,45 @@
   position: relative;
   min-height: 0;
 }
-      @media (max-width: 900px) {
-         .projects .box-container {
-            gap: 1.2rem;
-         }
-         .projects .box {
-            width: 95vw;
-            max-width: 420px;
-         }
-      }
-      @media (max-width: 600px) {
-         .projects .box-container {
-            flex-direction: column;
-            align-items: center;
-         }
-         .projects .box {
-            width: 100%;
-            min-width: 0;
-         }
-         .projects .box .image {
-            height: 170px;
-         }
-      }
 
-      /* Tambahkan style khusus untuk link MCA di footer */
-      .footer-bottom .mca-highlight {
-         color: #ff7d00 !important;
-         font-weight: bold;
-         text-decoration: underline;
-         transition: color 0.2s;
-      }
-      .footer-bottom .mca-highlight:hover {
-         color: #0056b3 !important;
-      }
+/* Responsif Proyek */
+@media (max-width: 900px) {
+  .projects .box-container {
+    gap: 1.2rem;
+  }
+  .projects .box {
+    width: 95vw;
+    max-width: 420px;
+  }
+}
+@media (max-width: 600px) {
+  .projects .box-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .projects .box {
+    width: 100%;
+    min-width: 0;
+  }
+  .projects .box .image {
+    height: 170px;
+  }
+}
 
-      /* === Blogs Section Slimfit === */
+/* Penanda khusus link MCA di footer */
+.footer-bottom .mca-highlight {
+  color: #ff7d00 !important;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.footer-bottom .mca-highlight:hover {
+  color: #0056b3 !important;
+}
+
+/* === Bagian Blog (Tata Letak Grid) === */
 .blogs-grid {
+  /* Batas grid blog: mengatur tata letak dan jarak antar kartu */
   display: flex;
   gap: 1.2rem;
   justify-content: center;
@@ -120,6 +126,7 @@
   flex-wrap: wrap;
 }
 .blog-card {
+  /* Batas kartu blog: tampilan dan batasan kartu */
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.07);
@@ -132,10 +139,12 @@
   min-width: 0;
 }
 .blog-card:hover {
+  /* Efek hover pada kartu blog */
   box-shadow: 0 6px 24px rgba(0,0,0,0.13);
   transform: translateY(-4px) scale(1.02);
 }
 .blog-card .image {
+  /* Batas gambar blog: rasio dan posisi gambar */
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden;
@@ -170,7 +179,7 @@
   margin: 0;
   font-weight: 400;
   line-height: 1.4;
-  /* Batasi tinggi deskripsi agar tidak keluar card */
+  /* Batas tinggi deskripsi agar tidak keluar dari kartu */
   max-height: 2.8em;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -179,6 +188,8 @@
   line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+/* Responsif Blog */
 @media (max-width: 900px) {
   .blogs-grid {
     gap: 0.8rem;
@@ -195,16 +206,13 @@
     flex-direction: row;
     gap: 0.7rem;
     justify-content: space-between;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .blog-card {
     width: 32vw;
     min-width: 0;
     max-width: 100%;
-  }
-  /* Pastikan tiga card selalu berdampingan, tidak stack */
-  .blogs-grid {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
