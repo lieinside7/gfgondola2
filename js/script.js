@@ -878,3 +878,28 @@ window.addEventListener('load', function() {
     }, 500);
   }, 400); // loader tampil minimal 400ms, bisa diubah
 });
+if(window.innerWidth <= 900) {
+  new Swiper('#blogs-swiper', {
+    slidesPerView: 1.1,
+    spaceBetween: 16,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    loop: false,
+  });
+}
+// Inisialisasi Swiper Blog agar otomatis slide (autoplay)
+new Swiper('#blogs-swiper', {
+  slidesPerView: 1.1,
+  spaceBetween: 16,
+  pagination: { el: '.swiper-pagination', clickable: true },
+  loop: true,
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 24,
+    }
+  }
+});
