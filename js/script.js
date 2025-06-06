@@ -434,7 +434,6 @@ const logoSlider = new Swiper('.logo-slider', {
          // speed: 500
        });
      }
-
      // Animasi masuk box proyek (fadeInUp)
      const projectBoxes = document.querySelectorAll('.projects .box');
      projectBoxes.forEach((box, idx) => {
@@ -902,4 +901,58 @@ new Swiper('#blogs-swiper', {
       spaceBetween: 24,
     }
   }
+});
+document.addEventListener('DOMContentLoaded', function() {
+  // Fungsi untuk mengatur tab project
+  function initProjectTabs() {
+    const tabs = document.querySelectorAll('.project-tab');
+    const panes = document.querySelectorAll('.tab-pane');
+    
+    // Fungsi untuk mengaktifkan tab
+    function activateTab(tab) {
+      // Hapus class active dari semua tab dan pane
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      
+      // Tambahkan class active ke tab yang diklik
+      tab.classList.add('active');
+      
+      // Tampilkan pane yang sesuai
+      const tabId = tab.getAttribute('data-tab');
+      if (tabId && document.getElementById(tabId)) {
+        document.getElementById(tabId).classList.add('active');
+      }
+    }
+    
+    // Tambahkan event listener untuk setiap tab
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        activateTab(this);
+      });
+    });
+    
+    // Aktifkan tab pertama secara default
+    if (tabs.length > 0) {
+      activateTab(tabs[0]);
+    }
+  }
+  
+  // Fungsi untuk mengatur lightbox (opsional)
+  function initLightbox() {
+    const boxes = document.querySelectorAll('.box');
+    
+    boxes.forEach(box => {
+      box.addEventListener('click', function(e) {
+        // Jika lightbox library tersedia
+        if (typeof lightbox !== 'undefined') {
+          e.preventDefault();
+          lightbox(this);
+        }
+      });
+    });
+  }
+  
+  // Inisialisasi fungsi
+  initProjectTabs();
+  initLightbox();
 });
