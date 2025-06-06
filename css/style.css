@@ -1036,7 +1036,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 
 .service-card:hover {
   transform: translateY(-12px) scale(1.04);
-  box-shadow: 0 6px rgb(233, 165, 19), 0 4px 16px rgba(0,86,179,0.10);
+  box-shadow: 0 1px 6px rgb(233, 165, 19), 0 4px 16px rgba(0,86,179,0.10);
   background: #fcfbf8;
 }
 
