@@ -1305,34 +1305,34 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   margin: 0 auto;
 }
 
-/* Tab Styles */
+/*TOMBOL TAB*/
 .project-tabs {
   display: flex;
   position: sticky;
-  top: 72px; /* Atur sesuai tinggi header Anda, misal 0 jika tidak ada header sticky */
+  top: 72px;
   z-index: 100;
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
   gap: 0;
-  background: #000000;
+  background: #f8fafa; /* Lebih terang, menyatu dengan section */
   border-radius: 2.5rem;
-  box-shadow: 0 2px 12px rgba(130, 189, 20, 0.07);
+  box-shadow: 0 2px 12px rgba(0,86,179,0.07);
   padding: 6px;
   min-width: 220px;
+  min-height: 80px;
   max-width: 100vw;
   margin-left: auto;
   margin-right: auto;
   overflow-x: auto;
-  /* Tambahan transisi dan border agar lebih smooth saat sticky */
   transition: box-shadow 0.25s, background 0.25s;
-  border: 1px solid #222;
+  border: 1px solid #e3eaf6;
 }
 
 .project-tab {
   border: none;
   background: transparent;
-  color: #52a3f9;
+  color: #000000; /* Warna teks utama, lebih gelap */
   font-size: 2.15rem;
   font-weight: 600;
   padding: 12px 32px;
@@ -1347,14 +1347,10 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   letter-spacing: 0.01em;
 }
 
-.project-tab:not(:last-child) {
-  border-right: 1px solid #e3eaf6;
-}
-
 .project-tab.active,
 .project-tab:focus {
   background: linear-gradient(90deg, #ff7d00 0%, #ffae00 100%);
-  color: #fff;
+  color: #fff !important;
   box-shadow: 0 2px 12px rgba(255,125,0,0.10);
   z-index: 2;
 }
@@ -1363,7 +1359,31 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   background: #e3eaf6;
   color: #0056b3;
 }
+.project-tab.active,
+.project-tab:focus {
+  background: linear-gradient(90deg, #ff7d00 0%, #ffae00 100%);
+  color: #fff !important;
+  box-shadow: 0 2px 12px rgba(255,125,0,0.10);
+  z-index: 2;
+  position: relative;
+}
 
+/* Panah ke bawah di bawah tab aktif */
+.project-tab.active::after,
+.project-tab:focus::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -14px; /* Jarak panah dari tab */
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 13px solid #ffae00; /* Warna sesuai gradasi bawah tab */
+  z-index: 3;
+  pointer-events: none;
+}
 /* Tab Content Styles */
 .tab-pane {
   display: none;
