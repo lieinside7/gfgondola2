@@ -39,7 +39,6 @@
    <!-- Hapus duplikat scrollreveal dan animations.js di sini -->
    <script src="js/animations.js"></script>
    <script src="swiper-bundle.min.js"></script>
-
    <body>
      <div id="preloader">
       <div class="loader-dots">
@@ -85,6 +84,7 @@
     <nav class="navbar">
       <a href="#home" class="nav-link active">Beranda</a>
       <a href="#about" class="nav-link">Tentang</a>
+      
       <a href="#services" class="nav-link">Layanan</a>
       <a href="#projects" class="nav-link">Proyek</a>
       <a href="#testimonials" class="nav-link">Testimoni</a>
@@ -262,7 +262,7 @@
                </div>
                <h3>Pembuatan Gondola Custom</h3>
                <p>Desain dan pembuatan gondola sesuai kebutuhan gedung Anda, dengan standar keamanan internasional.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+               <a href="#projects" class="service-link" data-tab="custom">Detail Layanan <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="service-card" data-aos="fade-up" data-aos-delay="200">
@@ -271,7 +271,7 @@
                </div>
                <h3>Pemasangan Gondola</h3>
                <p>Pemasangan gondola oleh tim profesional, memastikan keamanan dan efisiensi operasional.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+              <a href="#projects" class="service-link" data-tab="pemasangan">Detail Layanan <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="service-card" data-aos="fade-up" data-aos-delay="300">
@@ -280,7 +280,7 @@
                </div>
                <h3>Perawatan & Servis</h3>
                <p>Layanan perawatan rutin dan perbaikan gondola untuk menjaga performa optimal dan memperpanjang usia pakai.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+               <a href="#projects" class="service-link" data-tab="perawatan">Detail Layanan <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="service-card" data-aos="fade-up" data-aos-delay="400">
@@ -289,7 +289,7 @@
                </div>
                <h3>Suku Cadang</h3>
                <p>Penyediaan sparepart gondola asli dan bergaransi untuk berbagai merek dan tipe.</p>
-               <a href="#contact" class="service-link">Info Selengkapnya <i class="fas fa-arrow-right"></i></a>
+               <a href="#projects" class="service-link" data-tab="sukucadang">Detail Layanan <i class="fas fa-arrow-right"></i></a>
             </div>
          </div>
          <div class=" " data-aos="fade-up" data-aos-delay="100"></div>
@@ -1080,6 +1080,26 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-368598657'); 
+</script>
+<script>
+  // Membuka tab proyek sesuai tombol layanan yang diklik
+  document.querySelectorAll('.service-link[data-tab]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      // Tunggu sampai scroll ke #projects
+      setTimeout(function() {
+        var tab = link.getAttribute('data-tab');
+        // Nonaktifkan semua tab dan konten
+        document.querySelectorAll('.project-tab, .tab-pane').forEach(function(el) {
+          el.classList.remove('active');
+        });
+        // Aktifkan tab dan konten yang sesuai
+        var tabBtn = document.querySelector('.project-tab[data-tab="' + tab + '"]');
+        var tabPane = document.getElementById(tab);
+        if(tabBtn) tabBtn.classList.add('active');
+        if(tabPane) tabPane.classList.add('active');
+      }, 300); // delay agar scroll selesai
+    });
+  });
 </script>
 </body>
 </html>
