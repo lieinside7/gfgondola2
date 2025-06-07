@@ -3155,41 +3155,42 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 }
 /* === Blog Card Modern Redesign === */
 .blog-card {
-  background: #fff !important;
-  border-radius: 18px !important;
-  box-shadow: 0 4px 24px rgba(0,86,179,0.10) !important;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.10);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 1.2rem 1.2rem 1.7rem 1.2rem !important;
+  padding: 1.2rem 1.2rem 1.7rem 1.2rem;
   transition: box-shadow 0.25s, transform 0.25s;
-  border: 1.5px solid #e3eaf6 !important;
-  min-height: 200px;
+  border: 1.5px solid #e3eaf6;
+  min-height: 260px;
 }
+
 .blogs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
-  height: flex;
+  gap: 1.5rem;
   width: 100%;
-  overflow-x: auto;
-  /* Tambahan agar bisa scroll horizontal di mobile */
+  padding: 0 0 1.5rem 0;
+  box-sizing: border-box;
 }
+
 .blog-card:hover {
-  box-shadow: 0 12px 32px rgba(0,86,179,0.16), 0 2px 12px rgba(0,86,179,0.09) !important;
+  box-shadow: 0 12px 32px rgba(0,86,179,0.16), 0 2px 12px rgba(0,86,179,0.09);
   transform: translateY(-8px) scale(1.03);
-  background: #f8fafc !important;
+  background: #f8fafc;
 }
 
 .blog-image {
   width: 100%;
   max-width: 320px;
-  height: 180px;
+  height: 160px;
   margin: 0 auto 1.2rem auto;
-  border-radius: 14px !important;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,86,179,0.07);
   display: flex;
@@ -3202,7 +3203,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 14px !important;
+  border-radius: 14px;
   display: block;
   transition: transform 0.4s cubic-bezier(.10,2,.5,1);
 }
@@ -3212,10 +3213,10 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 }
 
 .blog-content {
-  padding: 0.7rem 0 0 0 !important;
-  background: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+  padding: 0.7rem 0 0 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3224,7 +3225,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 }
 
 .blog-title {
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: #003366;
   margin-bottom: 0.5rem;
@@ -3238,7 +3239,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 }
 
 .blog-desc {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: #444;
   opacity: 0.93;
   margin-bottom: 0.7rem;
@@ -3247,28 +3248,107 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 
 .blog-meta {
   margin-top: auto;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: #888;
   opacity: 0.8;
 }
 
-/* Responsive: tetap 3 kolom, card mengecil otomatis */
-@media (max-width: 900px) {
-  .blogs-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.7rem;
-  }
-  .blog-title { font-size: 0.95rem; }
-  .blog-desc { font-size: 0.9rem; }
+/* Tombol Selengkapnya */
+.blog-card .btn-selengkapnya {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  padding: 0.85rem 1.7rem;
+  border-radius: 2rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.2rem;
+  background: linear-gradient(90deg, #ff7d00 0%, #ffae00 100%);
+  color: #fff !important;
+  border: none;
+  box-shadow: 0 2px 12px rgba(255,125,0,0.10);
+  transition: background 0.22s, box-shadow 0.22s, transform 0.18s;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 16px rgba(255,125,0,0.10);
+  position: relative;
+  overflow: hidden;
 }
 
+.blog-card .btn-selengkapnya i {
+  font-size: 1.1em;
+  margin-left: 0.3em;
+  transition: transform 0.2s;
+}
+
+.blog-card .btn-selengkapnya:hover,
+.blog-card .btn-selengkapnya:focus {
+  background: linear-gradient(90deg, #0056b3 0%, #ff7d00 100%);
+  color: #fff !important;
+  box-shadow: 0 6px 20px rgba(0,86,179,0.13);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.blog-card .btn-selengkapnya:hover i,
+.blog-card .btn-selengkapnya:focus i {
+  transform: translateX(4px);
+}
+
+/* Responsive: Blog grid 3 kolom di mobile, card tetap proporsional */
+@media (max-width: 900px) {
+  .blogs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
 @media (max-width: 600px) {
   .blogs-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    gap: 0.7rem;
+    padding: 0 0.5rem 1rem 0.5rem;
   }
-  .blog-title { font-size: 0.9rem; }
-  .blog-desc { font-size: 0.85rem; }
+  .blog-card {
+    padding: 0.7rem 0.5rem 1.1rem 0.5rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    aspect-ratio: 4/5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .blog-image {
+    height: 70px;
+    min-height: 70px;
+    max-height: 80px;
+    aspect-ratio: 16/9;
+    margin-bottom: 0.5rem;
+  }
+  .blog-title {
+    font-size: 0.95rem;
+  }
+  .blog-desc {
+    font-size: 0.82rem;
+  }
+  .blog-meta {
+    font-size: 0.75rem;
+  }
+  .blog-card .btn-selengkapnya {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.7rem;
+    border-radius: 1.2rem;
+    min-width: 80px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.7rem;
+  }
 }
       /* === About Section Improvements === */
 .about .content-title {
