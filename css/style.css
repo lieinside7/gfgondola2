@@ -3639,3 +3639,97 @@ body::-webkit-scrollbar,
   width: 0 !important;
   height: 0 !important;
 }
+/* === MODERN LIGHTGALLERY CONTROLS === */
+
+/* Tombol Close (X) */
+.lg-close {
+  color: #ff3b3b !important;
+  font-size: 2.8rem !important;
+  top: 28px !important;
+  right: 32px !important;
+  opacity: 1 !important;
+  background: rgba(255,255,255,0.85) !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border: 1.5px solid #ff3b3b22;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  z-index: 100;
+}
+.lg-close:hover {
+  color: #fff !important;
+  background: #ff3b3b !important;
+  box-shadow: 0 4px 18px #ff3b3b44;
+}
+
+/* Tombol Panah Navigasi */
+.lg-next, .lg-prev {
+  color: #0056b3 !important;
+  font-size: 2.8rem !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: rgba(255,255,255,0.85) !important;
+  border-radius: 50% !important;
+  top: 50% !important;
+  margin-top: -24px !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border: 1.5px solid #0056b322;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  z-index: 100;
+}
+.lg-next:hover, .lg-prev:hover {
+  background: #0056b3 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 18px #0056b344;
+}
+
+/* Indikator Slide (Counter) */
+.lg-counter {
+  color: #fff !important;
+  font-size: 1.25rem !important;
+  background: rgba(0,0,0,0.55) !important;
+  padding: 7px 22px !important;
+  border-radius: 1.5em !important;
+  top: 28px !important;
+  left: 32px !important;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border: 1.5px solid #fff2;
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}
+
+/* Efek shadow halus saat hover */
+.lg-close:active,
+.lg-next:active,
+.lg-prev:active {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.13);
+  transform: scale(0.95);
+}
+
+/* Responsive: kecilkan tombol di mobile */
+@media (max-width: 600px) {
+  .lg-close, .lg-next, .lg-prev {
+    font-size: 1.5rem !important;
+    width: 34px !important;
+    height: 34px !important;
+    top: 10px !important;
+    right: 10px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+  .lg-counter {
+    font-size: 0.95rem !important;
+    padding: 3px 10px !important;
+    top: 10px !important;
+    left: 10px !important;
+  }
+}
