@@ -5,7 +5,7 @@
 
    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
    <!-- Favicon universal (ico, fallback for all browsers) -->
-   <link rel="icon" href="favicon.ico" type="image/x-icon">
+   <link rel="icon" href="favicon.ico" type="favicon/favicon.ico">
    <!-- Optional: PNG favicon for modern browsers -->
    <link rel="icon" href="images/Logo.png" type="image/png">
    <title>PT. Gondola Firdaus Pratama Jaya - Spesialis Gondola Profesional</title>
@@ -36,9 +36,12 @@
         ===== JS LIBRARIES (HEAD) =====
         ========================= -->
    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-   <!-- Hapus duplikat scrollreveal dan animations.js di sini -->
    <script src="js/animations.js"></script>
    <script src="swiper-bundle.min.js"></script>
+   <script src="js/script.js" defer></script>
+   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.umd.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.umd.min.js"></script>
+   
    <body>
      <div id="preloader">
       <div class="loader-dots">
@@ -102,7 +105,7 @@
     </div>
   </div>
 </header>
-<!-- Tambahkan spasi antara header dan banner -->
+<!--header END  -->
 
 <!-- Hero Section with Enhanced Animations -->
 <section class="hero" id="home">
@@ -245,7 +248,7 @@
 </div>
 </section>
    <!-- Services Section -->
-   <section class="section services" id="services" data-aos="fade-up">
+   <section></section>
       <div class="container">
          <div class="section-header" style="text-align:center;">
             <h2 class="section-title" style="font-size:3.4rem;font-weight:800;letter-spacing:0.01em;">
@@ -309,7 +312,7 @@
     
     <div class="project-tabs">
       <button class="project-tab active" data-tab="custom">Pembuatan Gondola Custom</button>
-      <button class="project-tab" data-tab="pemasangan">Pemasangan Gondola</button>
+      <button class="project-tab active" data-tab="pemasangan">Pemasangan Gondola</button>
       <button class="project-tab" data-tab="perawatan">Perawatan & Service</button>
       <button class="project-tab" data-tab="sukucadang">Suku Cadang</button>
     </div>
@@ -1098,6 +1101,37 @@
         if(tabBtn) tabBtn.classList.add('active');
         if(tabPane) tabPane.classList.add('active');
       }, 300); // delay agar scroll selesai
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Inisialisasi LightGallery pada semua .box-container aktif
+    function initActiveGallery() {
+      if (window.lgInstance && typeof window.lgInstance.destroy === 'function') {
+        window.lgInstance.destroy(true);
+      }
+      var activeBoxContainer = document.querySelector('.projects .tab-pane.active .box-container');
+      if (activeBoxContainer) {
+        window.lgInstance = lightGallery(activeBoxContainer, {
+          selector: '.box',
+          download: false,
+          plugins: [lgZoom, lgThumbnail],
+          zoom: true,
+          actualSize: true,
+          thumbnail: true
+        });
+      }
+    }
+
+    // Inisialisasi pertama kali
+    initActiveGallery();
+
+    // Inisialisasi ulang saat tab proyek diganti
+    document.querySelectorAll('.project-tab[data-tab]').forEach(function(tabBtn) {
+      tabBtn.addEventListener('click', function() {
+        setTimeout(initActiveGallery, 350);
+      });
     });
   });
 </script>
