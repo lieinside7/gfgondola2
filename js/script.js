@@ -488,7 +488,7 @@ const logoSlider = new Swiper('.logo-slider', {
 
    // ===== SECTION ANIMATION ON SCROLL =====
    const animatedSections = document.querySelectorAll(
-     '.section, .section-header, .hero-content, .about-content, .about-media, .stats-grid, .services-grid, .projects-grid, .blogs-slider, .testimonials-slider, .contact-section, .footer'
+     '.section, .section-header, .hero-content, .about-content, .about-media, .stats-grid, .projects-grid, .blogs-slider, .testimonials-slider, .contact-section, .footer'
    );
    const animateOnScroll = (entries, observer) => {
      entries.forEach(entry => {
@@ -956,3 +956,44 @@ document.addEventListener('DOMContentLoaded', function() {
   initProjectTabs();
   initLightbox();
 });
+// Fungsi untuk inisialisasi LightGallery pada box-container aktif
+function initActiveGallery() {
+  // Hapus instance sebelumnya jika ada
+  if (window.lgInstance) {
+    window.lgInstance.destroy(true);
+  }
+  var activeBoxContainer = document.querySelector('.projects .tab-pane.active .box-container');
+  if (activeBoxContainer) {
+    window.lgInstance = lightGallery(activeBoxContainer, {
+      selector: '.box',
+      download: false,
+      plugins: [lgZoom], // Aktifkan plugin zoom
+      zoom: true
+    });
+  }
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initActiveGallery();
+
+    // Animasi masuk box proyek (fadeInUp)
+    const projectBoxes = document.querySelectorAll('.projects .box');
+    projectBoxes.forEach((box, idx) => {
+      box.style.opacity = 0;
+      box.style.transform = 'translateY(40px)';
+      setTimeout(() => {
+        box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
+        box.style.opacity = 1;
+        box.style.transform = 'translateY(0)';
+      }, 200 + idx * 120);
+    });
+
+    // Event listener untuk tab proyek
+    document.querySelectorAll('.project-tab[data-tab]').forEach(function(tabBtn) {
+      tabBtn.addEventListener('click', function() {
+        setTimeout(function() {
+          initActiveGallery();
+        }, 350); // delay agar tab-pane sudah aktif
+      });
+    });
+  });
