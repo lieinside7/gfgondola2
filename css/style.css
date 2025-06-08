@@ -1315,7 +1315,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   margin-bottom: 30px;
   gap: 0;
   background: #000000; /* Lebih terang, menyatu dengan section */
-  border-radius: 2.5rem;
+  border-radius: 4.5rem;
   box-shadow: 0 2px 12px rgba(0,86,179,0.07);
   padding: 6px;
   min-width: 83vw;
@@ -1331,10 +1331,10 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   border: none;
   background: transparent;
   color: #ffae00; /* Warna teks utama, lebih gelap */
-  font-size: 2.15rem;
+  font-size: 2.99rem;
   font-weight: 600;
   padding: 12px 32px;
-  border-radius: 2rem;
+  border-radius: 4.5rem;
   cursor: pointer;
   transition: background 0.22s, color 0.22s, box-shadow 0.22s;
   margin: 0;
@@ -3574,6 +3574,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 .footer-links,
 .footer-contact,
 .logo-container,
+.project-tab,
 .projects,
 .testimonials,
 .contact,
@@ -3613,6 +3614,7 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
   .client-cards-header,
   .client-cards-grid,
   .client-card,
+  .project-tab,
   .contact-section,
   .contact-info,
   .contact-form,
