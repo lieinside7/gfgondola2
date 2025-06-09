@@ -4131,7 +4131,7 @@ body {
 
 /* 6. Responsive grid lebih rapi di mobile */
 @media (max-width: 600px) {
-  .services-grid, .blogs-grid, .box-container {
+  .box-container {
     grid-template-columns: 1fr !important;
     gap: 1.2rem !important;
   }
