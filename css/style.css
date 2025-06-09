@@ -1303,114 +1303,112 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   max-width: 800px;
   margin: 0 auto;
 }
-
-/*TOMBOL TAB*/
+/* ======== PROJECT TABS MODERN REDESIGN ======== */
 .project-tabs {
   display: flex;
-  position: sticky;
-  top: 72px;
-  z-index: 10; /* Turunkan z-index agar tidak menutupi gambar project */
   justify-content: center;
   align-items: center;
-  gap: 0;
-  background: #fff;
-  border-radius: 2rem 2rem 0 0;
-  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
-  margin-bottom: 0;
-  border-bottom: 1.5px solid #e3eaf6;
-  border: 1px solid #e3eaf6;
-  padding: 6px;
-  min-width: 83vw;
-  min-height: 90px;
-  max-width: 83vw;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 0.5rem;
+  background: #f9f9f9; /* Sama dengan section.projects */
+  border-radius: 2.5rem 2.5rem 0 0;
+  box-shadow: none; /* Hilangkan shadow */
+  margin-bottom: 0; /* Hilangkan jarak bawah */
+  border: none;
+  border-top: 1.5px solid #e3eaf6; /* Transisi lembut */
+  padding: 8px 8px;
+  min-width: 0;
+  max-width: 100vw;
   overflow-x: auto;
-  transition: box-shadow 0.25s, background 0.25s;
-}
-.project-tabs {
-  background: #fff;
-  border-radius: 2rem 2rem 0 0;
-  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
-  margin-bottom: 0;
-  border-bottom: 1.5px solid #e3eaf6;
   position: relative;
-  z-index: 10; /* Samakan z-index agar tidak overlap dengan gambar */
-}
-
-.box-container {
-  background: #fff;
-  border-radius: 0 0 2rem 2rem;
-  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
-  margin-top: 0; /* Hapus overlap agar gambar tidak tertutup tab */
-  padding-top: 2rem;
-  position: relative;
-  z-index: 1;
-  border-top: none;
-}
-
-/* Hilangkan border pada .project-tab agar lebih clean */
-.project-tab {
-  border: none;
-  background: transparent;
-  box-shadow: none;
+  z-index: 10;
 }
 
 .project-tab {
   border: none;
-  background: transparent;
-  color: #bb8104; /* Warna teks utama, lebih gelap */
-  font-size: 1.99rem;
-  font-weight: 600;
-  padding: 12px 32px;
-  border-radius: 4.5rem;
+  background: linear-gradient(90deg, #f8fafc 60%, #e3f0ff 100%);
+  color: #0056b3;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
   cursor: pointer;
-  transition: background 0.22s, color 0.22s, box-shadow 0.22s;
-  margin: 0;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.18s;
+  margin: 0 0.2rem;
   outline: none;
-  box-shadow: none;
-  position: relative;
-  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,86,179,0.07);
   letter-spacing: 0.01em;
+  position: relative;
+  min-width: 120px;
 }
 
 .project-tab.active,
 .project-tab:focus {
   background: linear-gradient(90deg, #ff7d00 0%, #ffae00 100%);
   color: #fff !important;
-  box-shadow: 0 2px 12px rgba(255,125,0,0.10);
+  box-shadow: 0 4px 16px rgba(255,125,0,0.13);
+  transform: scale(1.07);
   z-index: 2;
 }
 
 .project-tab:hover:not(.active) {
-  background: #ffae00;
-  color: #ffffff;
-}
-.project-tab.active,
-.project-tab:focus {
-  background: linear-gradient(90deg, #ff7d00 0%, #ffae00 100%);
-  color: #fff !important;
-  box-shadow: 0 2px 12px rgba(255,125,0,0.10);
-  z-index: 2;
-  position: relative;
+  background: #e3f0ff;
+  color: #ff7d00;
+  transform: scale(1.03);
 }
 
-/* Panah ke bawah di bawah tab aktif */
 .project-tab.active::after,
 .project-tab:focus::after {
   content: '';
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -14px; /* Jarak panah dari tab */
+  bottom: -10px;
   width: 0;
   height: 0;
   border-left: 13px solid transparent;
   border-right: 13px solid transparent;
-  border-top: 13px solid #ffae00; /* Warna sesuai gradasi bawah tab */
+  border-top: 13px solid #ffae00;
   z-index: 3;
   pointer-events: none;
 }
+
+@media (max-width: 900px) {
+  .project-tabs {
+    border-radius: 1.2rem;
+    padding: 4px 2px;
+    gap: 0.2rem;
+  }
+  .project-tab {
+    font-size: 1.05rem;
+    padding: 0.7rem 1.2rem;
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-tabs {
+    border-radius: 1rem;
+    padding: 2px 1px;
+    gap: 0.1rem;
+    margin-bottom: 1rem;
+    min-width: 0;
+    max-width: 100vw;
+  }
+  .project-tab {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.8rem;
+    min-width: 70px;
+    border-radius: 1rem;
+  }
+  .project-tab.active::after,
+  .project-tab:focus::after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #ffae00;
+    bottom: -7px;
+  }
+}
+
 /* Tab Content Styles */
 .tab-pane {
   display: none;
