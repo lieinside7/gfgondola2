@@ -222,7 +222,7 @@
     <div class="stat-icon stat-blue">
       <i class="fas fa-briefcase"></i>
     </div>
-    <h3 class="stat-number" data-count="300+">0</h3>
+    <h3 class="stat-number" data-count="312+">0</h3>
     <div class="stat-label">
       Proyek<br><span>Selesai</span>
     </div>
@@ -231,7 +231,7 @@
     <div class="stat-icon stat-green">
       <i class="fas fa-users"></i>
     </div>
-    <h3 class="stat-number" data-count="250+">0</h3>
+    <h3 class="stat-number" data-count="257+">0</h3>
     <div class="stat-label">
       Klien<br><span>Puas</span>
     </div>
@@ -240,7 +240,7 @@
     <div class="stat-icon stat-orange2">
       <i class="fas fa-user-cog"></i>
     </div>
-    <h3 class="stat-number" data-count="30+">0</h3>
+    <h3 class="stat-number" data-count="25+">0</h3>
     <div class="stat-label">
       Teknisi<br><span>Aktif</span>
     </div>
@@ -999,10 +999,28 @@
   </div>
 </footer>
 
-   <!-- WhatsApp Float Button -->
-   <a href="https://wa.me/6281220200690" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-   </a>
+<!-- WhatsApp Floating Button -->
+<div class="wa-float" id="wa-float-btn">
+  <i class="fab fa-whatsapp"></i>
+</div>
+<!-- WhatsApp Chat Popup -->
+<div class="wa-popup" id="wa-popup">
+  <div class="wa-popup-header">
+    <span><i class="fab fa-whatsapp"></i> WhatsApp</span>
+    <button id="wa-close">&times;</button>
+  </div>
+  <div class="wa-popup-body">
+    <div class="wa-bubble">
+      <div class="wa-bubble-text">
+        Hallo<br>
+        Silakan bertanya kepada kami. Kami siap membantu Anda.
+      </div>
+    </div>
+    <a class="wa-popup-send" href="https://wa.me/6281220200690" target="_blank">
+      Mulai Percakapan <i class="fas fa-paper-plane"></i>
+    </a>
+  </div>
+</div>
 
    <!-- Back to Top Button -->
    <a href="#home" class="back-to-top" aria-label="Kembali ke atas">
@@ -1134,6 +1152,35 @@
       });
     });
   });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('wa-float-btn');
+  var popup = document.getElementById('wa-popup');
+  var close = document.getElementById('wa-close');
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    popup.classList.add('active');
+  });
+
+  close.addEventListener('click', function(e) {
+    e.stopPropagation();
+    popup.classList.remove('active');
+  });
+
+  // Tutup popup jika klik di luar area popup
+  document.addEventListener('click', function(e) {
+    if (popup.classList.contains('active') && !popup.contains(e.target) && e.target !== btn) {
+      popup.classList.remove('active');
+    }
+  });
+
+  // Agar klik di dalam popup tidak menutup popup
+  popup.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+});
 </script>
 </body>
 </html>
