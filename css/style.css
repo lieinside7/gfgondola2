@@ -1442,7 +1442,7 @@ h1::selection, h2::selection, h3::selection, h4::selection,
     margin-bottom: 1.5rem !important; /* Perkecil jarak bawah judul */
   }
   .project-tabs {
-    min-height: 65px !important;      /* Perkecil tinggi tab */
+    min-height: 66px !important;      /* Perkecil tinggi tab */
     padding: 3px 3px !important;      /* Perkecil padding tab */
     margin-bottom: 0 !important;      /* Hilangkan jarak bawah tab */
   }
