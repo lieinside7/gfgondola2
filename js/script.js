@@ -972,7 +972,6 @@ function initActiveGallery() {
     });
   }
 }
-
   document.addEventListener('DOMContentLoaded', function() {
     initActiveGallery();
 
