@@ -1439,16 +1439,16 @@ h1::selection, h2::selection, h3::selection, h4::selection,
 }
 @media (max-width: 600px) {
   .section.projects .section-header {
-    margin-bottom: 2.0rem !important; /* Perkecil jarak bawah judul */
+    margin-bottom: 1.5rem !important; /* Perkecil jarak bawah judul */
   }
   .project-tabs {
-    min-height: 60px !important;      /* Perkecil tinggi tab */
-    padding: 1px 1px !important;      /* Perkecil padding tab */
+    min-height: 62px !important;      /* Perkecil tinggi tab */
+    padding: 3px 3px !important;      /* Perkecil padding tab */
     margin-bottom: 0 !important;      /* Hilangkan jarak bawah tab */
   }
   .box-container {
     padding-top: 0.5rem !important;   /* Perkecil jarak atas konten */
-    margin-top:5rem !important;         /* Hilangkan overlap ke atas */
+    margin-top: 5rem !important;         /* Hilangkan overlap ke atas */
   }
 }
 /* Project Box Styles */
