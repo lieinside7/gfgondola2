@@ -1309,14 +1309,16 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   display: flex;
   position: sticky;
   top: 72px;
-  z-index: 100;
+  z-index: 10; /* Turunkan z-index agar tidak menutupi gambar project */
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
   gap: 0;
-  background: #000000; /* Lebih terang, menyatu dengan section */
-  border-radius: 4.5rem;
-  box-shadow: 0 2px 12px rgba(0,86,179,0.07);
+  background: #fff;
+  border-radius: 2rem 2rem 0 0;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
+  margin-bottom: 0;
+  border-bottom: 1.5px solid #e3eaf6;
+  border: 1px solid #e3eaf6;
   padding: 6px;
   min-width: 83vw;
   min-height: 90px;
@@ -1325,8 +1327,35 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   margin-right: auto;
   overflow-x: auto;
   transition: box-shadow 0.25s, background 0.25s;
-  border: 1px solid #e3eaf6;
 }
+.project-tabs {
+  background: #fff;
+  border-radius: 2rem 2rem 0 0;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
+  margin-bottom: 0;
+  border-bottom: 1.5px solid #e3eaf6;
+  position: relative;
+  z-index: 10; /* Samakan z-index agar tidak overlap dengan gambar */
+}
+
+.box-container {
+  background: #fff;
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 0 4px 24px rgba(0,86,179,0.07);
+  margin-top: 0; /* Hapus overlap agar gambar tidak tertutup tab */
+  padding-top: 2rem;
+  position: relative;
+  z-index: 1;
+  border-top: none;
+}
+
+/* Hilangkan border pada .project-tab agar lebih clean */
+.project-tab {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
 .project-tab {
   border: none;
   background: transparent;
@@ -1396,7 +1425,18 @@ h1::selection, h2::selection, h3::selection, h4::selection,
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
+/* Responsive: sudut lebih kecil di mobile */
+@media (max-width: 600px) {
+  .project-tabs {
+    border-radius: 1rem 1rem 0 0;
+    padding: 4px 2px;
+  }
+  .box-container {
+    border-radius: 0 0 1rem 1rem;
+    margin-top: -6px;
+    padding-top: 1rem;
+  }
+}
 /* Project Box Styles */
 .box-container {
   display: grid;
@@ -3574,7 +3614,6 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
 .footer-links,
 .footer-contact,
 .logo-container,
-.project-tab,
 .projects,
 .testimonials,
 .contact,
