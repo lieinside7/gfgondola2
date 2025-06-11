@@ -423,52 +423,89 @@ const logoSlider = new Swiper('.logo-slider', {
      });
    });
  
-   // ===== LIGHTGALLERY =====
-   if (document.querySelector('.projects-grid')) {
-     lightGallery(document.querySelector('.projects-grid'), {
-       selector: '.project-item',
-       download: false,
-     });
-   }
- 
-   // Inisialisasi LightGallery
-   document.addEventListener('DOMContentLoaded', function() {
-     if (document.querySelector('.projects .box-container')) {
-       lightGallery(document.querySelector('.projects .box-container'), {
-         selector: '.box',
-         download: false
-         // Jika ingin plugin zoom/thumbnail, pastikan sudah include plugin-nya
-         // plugins: [lgZoom, lgThumbnail],
-         // speed: 500
-       });
-     }
-     // modifikasi inisialisasi LightGallery
-lightGallery(document.querySelector('.projects .box-container'), {
-  selector: '.box',
-  download: false,
-  sanitize: true, // Aktifkan sanitasi
-  sanitizeOptions: {
-    allowedTags: ['img', 'div', 'span', 'h3', 'p', 'i', 'a'],
-    allowedAttributes: {
-      'img': ['src', 'alt', 'loading'],
-      'a': ['href', 'data-lg-size'],
-      'div': ['class'],
-      'i': ['class']
-    }
+   // ===== LIGHTGALLERY =====//
+// Fungsi untuk inisialisasi LightGallery pada box-container aktif
+function initActiveGallery() {
+  if (window.lgInstance) {
+    window.lgInstance.destroy(true);
   }
+  
+  // Cari container aktif
+  const activeContainer = document.querySelector('.projects .tab-pane.active .box-container');
+  
+  if (activeContainer) {
+    window.lgInstance = lightGallery(activeContainer, {
+      selector: '.box',
+      download: false,
+      plugins: [lgZoom, lgThumbnail],
+      zoom: true,
+      actualSize: true,
+      thumbnail: true
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initActiveGallery();
+
+  // Ambil hanya box di tab-pane yang aktif
+  const projectBoxes = document.querySelectorAll('.projects .tab-pane.active .box');
+  projectBoxes.forEach((box, idx) => {
+    // Sembunyikan dulu
+    box.style.opacity = 0;
+    box.style.transform = 'translateY(40px)';
+  });
+  // Animasi masuk satu per satu
+  projectBoxes.forEach((box, idx) => {
+    setTimeout(() => {
+      box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
+      box.style.opacity = 1;
+      box.style.transform = 'translateY(0)';
+    }, 200 + idx * 120);
+  });
 });
-     // Animasi masuk box proyek (fadeInUp)
-     const projectBoxes = document.querySelectorAll('.projects .box');
-     projectBoxes.forEach((box, idx) => {
-       box.style.opacity = 0;
-       box.style.transform = 'translateY(40px)';
-       setTimeout(() => {
-         box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
-         box.style.opacity = 1;
-         box.style.transform = 'translateY(0)';
-       }, 200 + idx * 120);
-     });
-   });
+
+document.querySelectorAll('.project-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    setTimeout(initActiveGallery, 350); // Delay untuk memastikan tab sudah aktif
+    // Inisialisasi ulang saat tab diubah
+
+    // Juga tambahkan animasi untuk box di tab baru
+    setTimeout(() => {
+      const projectBoxes = document.querySelectorAll('.projects .tab-pane.active .box');
+      projectBoxes.forEach((box, idx) => {
+        box.style.opacity = 0;
+        box.style.transform = 'translateY(40px)';
+        setTimeout(() => {
+          box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
+          box.style.opacity = 1;
+          box.style.transform = 'translateY(0)';
+        }, 200 + idx * 120);
+      });
+    }, 350);
+  });
+});
+
+// Juga inisialisasi ulang saat tab diubah melalui tombol layanan
+document.querySelectorAll('.service-link[data-tab]').forEach(link => {
+  link.addEventListener('click', function() {
+    setTimeout(initActiveGallery, 500); // Delay lebih lama untuk scroll selesai
+    
+    // Animasi untuk box di tab baru
+    setTimeout(() => {
+      const projectBoxes = document.querySelectorAll('.projects .tab-pane.active .box');
+      projectBoxes.forEach((box, idx) => {
+        box.style.opacity = 0;
+        box.style.transform = 'translateY(40px)';
+        setTimeout(() => {
+          box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
+          box.style.opacity = 1;
+          box.style.transform = 'translateY(0)';
+        }, 200 + idx * 120);
+      });
+    }, 500);
+  });
+});
    // ===== SECTION ANIMATION ON SCROLL =====
    const animatedSections = document.querySelectorAll(
      '.section, .section-header, .hero-content, .about-content, .about-media, .stats-grid, .projects-grid, .blogs-slider, .testimonials-slider, .contact-section, .footer'
@@ -917,7 +954,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Inisialisasi fungsi
   initProjectTabs();
-  initLightbox();
 });
 // Fungsi untuk inisialisasi LightGallery pada box-container aktif
 function initActiveGallery() {
@@ -930,7 +966,6 @@ function initActiveGallery() {
     window.lgInstance = lightGallery(activeBoxContainer, {
       selector: '.box',
       download: false,
-      plugins: [lgZoom], // Aktifkan plugin zoom
       zoom: true
     });
   }
