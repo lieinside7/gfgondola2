@@ -254,7 +254,7 @@
       <p>Penyelesaian proyek sesuai jadwal yang disepakati</p>
     </div>
   </div>
-  <a href="#contact" class="btn btn-primary" style="margin-top:2rem;">Konsultasi Gratis</a>
+  <a href="#contact" class="btn btn-primary" style="margin-top:2rem;">Info Selengkapnya</a>
 </div>
 </section>
 </section>
@@ -362,7 +362,7 @@
     
     <div class="project-tabs">
       <button class="project-tab active" data-tab="custom">Pengadaan Gondola Custom</button>
-      <button class="project-tab active" data-tab="pemasangan">Perawatan & Servis</button>
+      <button class="project-tab" data-tab="pemasangan">Perawatan & Servis</button>
       <button class="project-tab" data-tab="perawatan">Suku Cadang</button>
       <button class="project-tab" data-tab="sukucadang">Cover Gondola</button>
     </div>
@@ -986,23 +986,23 @@
  
      <div class="contact-grid">
              <!-- Contact Form -->
-       <div class="contact-form">
-         <form id="contactForm" action="https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com" method="POST" enctype="text/plain">
-           <div class="form-group">
-             <input type="text" name="Nama" placeholder="Nama Lengkap" required>
-           </div>
-           <div class="form-group">
-             <input type="email" name="Email" placeholder="Alamat Email" required>
-           </div>
-           <div class="form-group">
-             <input type="tel" name="Telepon" placeholder="Nomor Telepon" required>
-           </div>
-           <div class="form-group">
-             <textarea name="Pesan" placeholder="Pesan Anda" rows="5" required></textarea>
-           </div>
-           <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-         </form>
-       </div>
+<div class="contact-form">
+  <form id="contactForm" onsubmit="sendToGmail(event)">
+    <div class="form-group">
+      <input type="text" name="nama" placeholder="Nama Lengkap" required>
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Alamat Email" required>
+    </div>
+    <div class="form-group">
+      <input type="tel" name="telepon" placeholder="Nomor Telepon" required>
+    </div>
+    <div class="form-group">
+      <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+  </form>
+</div>
       
       <!-- Contact Info -->
        <div class="contact-info">
