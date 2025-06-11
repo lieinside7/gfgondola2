@@ -3,6 +3,56 @@
 
 <head>
 
+   <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com https://maps.googleapis.com https://www.google.com https://www.gstatic.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://maps.googleapis.com;
+  img-src 'self' data: https: https://maps.gstatic.com https://*.googleapis.com https://*.ggpht.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  connect-src 'self' https://maps.googleapis.com;
+  manifest-src 'self';
+  frame-src https://www.google.com https://maps.google.com;
+  object-src 'none';
+  form-action 'self' https://mail.google.com;
+   base-uri 'self';">
+   <meta http-equiv="Feature-Policy" content="
+   accelerometer 'none';
+   ambient-light-sensor 'none';
+   autoplay 'self';
+   camera 'none';
+   encrypted-media 'none';
+   fullscreen 'self';
+   geolocation 'none';
+   gyroscope 'none';
+   magnetometer 'none';
+   microphone 'none';
+   midi 'none';
+   payment 'none';
+   picture-in-picture 'none';
+   speaker 'self';
+   sync-xhr 'none';
+   usb 'none';
+   vr 'none'">
+   <meta http-equiv="Report-To" content='{
+   "group": "csp-endpoint",
+   "max_age": 10886400,
+   "endpoints": [
+    {"url": "https://gfgondola.com/report-csp-violation"}
+   ],
+   "include_subdomains": true
+   }'>
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+   <meta http-equiv="Pragma" content="no-cache">
+   <meta http-equiv="Expires" content="0"> 
+   <meta http-equiv="Access-Control-Allow-Origin" content="https://gfgondola.com">
+   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+   <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+   <meta name="referrer" content="strict-origin-when-cross-origin">
+   <input type="hidden" name="_csrf" value="[GENERATED-TOKEN]">
+   <meta http-equiv="X-Frame-Options" content="DENY">
+   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+   <meta http-equiv="X-Content-Type-Options" content="nosniff">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
    <!-- Favicon universal (ico, fallback for all browsers) -->
    <link rel="icon" href="favicon.ico" type="favicon/favicon.ico">
@@ -25,9 +75,9 @@
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
    
-   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha384-[HASH]" crossorigin="anonymous">
    <!-- ==========CUSTOM CSS===========!-->
    <link rel="stylesheet" href="css/style.css">
    <script src="js/animations.js"></script>
@@ -51,10 +101,10 @@
       <header class="header mobile-header">
          <div class="container" style="padding-left:20px;padding-right:20px;">
            <a href="#" class="logo">
-             <img src="images/Logo.png" alt="Logo PT Gondola Firdaus" width="30" height="30">
+             <img src="images/Logo.png" alt="Logo" width="40" height="38" decoding="async" fetchpriority="high">
              <span>PT. Gondola Firdaus Pratama Jaya</span>
            </a>
-           
+
            <div class="header-actions">
              <a href="tel:081220200690" class="action-btn" title="Telepon Kami">
                <i class="fas fa-phone-alt"></i>
