@@ -1,3 +1,11 @@
+const originalFetch = window.fetch;
+window.fetch = function(url, options) {
+  if (typeof url === 'string' && !isAllowedDomain(url)) {
+    return Promise.reject(new Error('Blocked: Attempt to access unauthorized domain'));
+  }
+  return originalFetch(url, options);
+};
+document.cookie = "sessionId=[ID]; Secure; HttpOnly; SameSite=Strict; Path=/";
 document.addEventListener('DOMContentLoaded', function() {
    // ===== PRELOADER =====
    const preloader = document.querySelector('.preloader');
@@ -434,6 +442,21 @@ const logoSlider = new Swiper('.logo-slider', {
          // speed: 500
        });
      }
+     // modifikasi inisialisasi LightGallery
+lightGallery(document.querySelector('.projects .box-container'), {
+  selector: '.box',
+  download: false,
+  sanitize: true, // Aktifkan sanitasi
+  sanitizeOptions: {
+    allowedTags: ['img', 'div', 'span', 'h3', 'p', 'i', 'a'],
+    allowedAttributes: {
+      'img': ['src', 'alt', 'loading'],
+      'a': ['href', 'data-lg-size'],
+      'div': ['class'],
+      'i': ['class']
+    }
+  }
+});
      // Animasi masuk box proyek (fadeInUp)
      const projectBoxes = document.querySelectorAll('.projects .box');
      projectBoxes.forEach((box, idx) => {
@@ -446,46 +469,6 @@ const logoSlider = new Swiper('.logo-slider', {
        }, 200 + idx * 120);
      });
    });
- 
-   // ===== CONTACT FORM SUBMISSION =====
-   const contactForm = document.getElementById('contactForm');
-
-   if (contactForm) {
-     contactForm.addEventListener('submit', function(e) {
-       e.preventDefault();
-
-       // Ambil data form
-       const formData = new FormData(contactForm);
-       // Ganti key agar sesuai dengan kebutuhan email
-       const data = {
-         Nama: formData.get('Nama'),
-         Email: formData.get('Email'),
-         Telepon: formData.get('Telepon'),
-         Pesan: formData.get('Pesan')
-       };
-
-       // Kirim data ke Formspree (atau endpoint email lain)
-       fetch('https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com', {
-         method: 'POST',
-         headers: {
-           'Accept': 'application/json'
-         },
-         body: new FormData(contactForm)
-       })
-       .then(response => {
-         if (response.ok) {
-           alert('Terima kasih ' + data.Nama + '! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
-           contactForm.reset();
-         } else {
-           alert('Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi kami langsung.');
-         }
-       })
-       .catch(() => {
-         alert('Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi kami langsung.');
-       });
-     });
-   }
-
    // ===== SECTION ANIMATION ON SCROLL =====
    const animatedSections = document.querySelectorAll(
      '.section, .section-header, .hero-content, .about-content, .about-media, .stats-grid, .projects-grid, .blogs-slider, .testimonials-slider, .contact-section, .footer'
@@ -583,26 +566,6 @@ const logoSlider = new Swiper('.logo-slider', {
    fixHeroFontSize();
    window.addEventListener('resize', fixHeroFontSize);
  });
- 
- // Function for contact form submission (used in HTML onclick)
- function sendContactForm(e) {
-   e.preventDefault();
-   
-   // Get form values
-   const form = e.target;
-   const formData = new FormData(form);
-   const data = Object.fromEntries(formData);
-   
-   // Here you would typically send the data to a server
-   // For demonstration, we'll just show an alert
-   alert(`Terima kasih ${data.nama}! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.`);
-   
-   // Reset form
-   form.reset();
-   
-   return false;
- }
-
  /* ===== BUTTON RIPPLE CSS ===== */
  const rippleStyle = document.createElement('style');
  rippleStyle.innerHTML = `
@@ -986,7 +949,17 @@ function initActiveGallery() {
         box.style.transform = 'translateY(0)';
       }, 200 + idx * 120);
     });
+//tambahkan validasi untuk URL eksternal
+const allowedDomains = ['cdnjs.cloudflare.com', 'unpkg.com', 'fonts.googleapis.com'];
 
+function isAllowedDomain(url) {
+  try {
+    const domain = new URL(url).hostname;
+    return allowedDomains.includes(domain);
+  } catch {
+    return false;
+  }
+}
     // Event listener untuk tab proyek
     document.querySelectorAll('.project-tab[data-tab]').forEach(function(tabBtn) {
       tabBtn.addEventListener('click', function() {
@@ -996,3 +969,67 @@ function initActiveGallery() {
       });
     });
   });
+function logSuspiciousActivity(event) {
+  const logData = {
+    event: event.type,
+    timestamp: new Date().toISOString(),
+    userAgent: navigator.userAgent,
+    ip: null, // Akan diisi oleh server
+    details: event.detail || 'No details'
+  };
+  
+  // Kirim ke endpoint logging yang aman
+  fetch('/api/log', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(logData)
+  }).catch(() => {});
+}
+
+//
+window.addEventListener('securitypolicyviolation', logSuspiciousActivity);
+document.addEventListener('click', function(e) {
+  if (e.target.href && !isAllowedDomain(e.target.href)) {
+    logSuspiciousActivity({
+      type: 'suspicious_click',
+      detail: `Attempt to navigate to ${e.target.href}`
+    });
+  }
+});
+ // ===== CONTACT FORM SUBMISSION =====//
+function sendToGmail(event) {
+  event.preventDefault();
+  
+  // Ambil nilai form
+  const form = event.target;
+  const nama = form.nama.value;
+  const email = form.email.value;
+  const telepon = form.telepon.value;
+  const pesan = form.pesan.value;
+  
+  // Validasi sederhana
+  if (!nama || !email || !pesan) {
+    alert('Harap isi semua field yang wajib diisi!');
+    return;
+  }
+  
+  // Encode untuk URL
+  const subject = encodeURIComponent(`Pesan dari ${nama}`);
+  const body = encodeURIComponent(
+    `Nama: ${nama}\nEmail: ${email}\nTelepon: ${telepon}\n\nPesan:\n${pesan}`
+  );
+  
+  // Buka Gmail compose
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=gfgondola86@gmail.com&su=${subject}&body=${body}`;
+  
+  // Buka di tab baru
+  window.open(gmailUrl, '_blank');
+  
+  // Reset form setelah pengiriman
+  form.reset();
+  
+  // Tampilkan konfirmasi
+  alert('Terima kasih! Anda akan diarahkan ke Gmail untuk mengirim pesan.');
+}
