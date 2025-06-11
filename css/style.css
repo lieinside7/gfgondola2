@@ -3559,68 +3559,6 @@ html, body, .container, .section, .footer, .projects, .testimonials, .contact, .
     max-width: 100%;
   }
 }
-/* Padding konsisten kiri-kanan untuk PC (di luar media query mobile) */
-.container,
-.section,
-.about,
-.about-content,
-.about-media,
-.footer,
-.footer-content,
-.footer-about,
-.footer-links,
-.footer-contact,
-.logo-container,
-.projects,
-.testimonials,
-.contact,
-.client-cards-section,
-.client-cards-header,
-.client-cards-grid,
-.client-card,
-.contact-info,
-.stats-grid,
-.stats-number,
-.stats-item,
-.row {
-  padding-left: 2.5rem !important;
-  padding-right: 2.5rem !important;
-  box-sizing: border-box;
-}
-
-/* Untuk mobile tetap gunakan 1.5rem */
-@media (max-width: 600px) {
-  .container,
-  .section,
-  .about,
-  .about-content,
-  .about-media,
-  .footer,
-  .footer-content,
-  .footer-about,
-  .footer-links,
-  .footer-contact,
-  .logo-container,
-  .projects,
-  .testimonials,
-  .contact,
-  .client-cards-section,
-  .client-cards-header,
-  .client-cards-grid,
-  .client-card,
-  .project-tab,
-  .contact-info,
-  .blogs-slider,
-  .blogs-grid,
-  .stats-grid,
-  .stats-number,
-  .stats-item,
-  .row {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-    box-sizing: border-box;
-  }
-}
 /* Hilangkan semua scrollbar di seluruh elemen kecuali html */
 body, *:not(html) {
   scrollbar-width: none !important;      /* Firefox */
@@ -4239,4 +4177,66 @@ body {
 .logo-slider .swiper-slide img:hover {
   transform: scale(1.08) rotate(-2deg);
   box-shadow: 0 8px 24px rgba(0,86,179,0.13);
+}
+/* Padding konsisten kiri-kanan untuk PC (di luar media query mobile) */
+.container,
+.section,
+.about,
+.about-content,
+.about-media,
+.footer,
+.footer-content,
+.footer-about,
+.footer-links,
+.footer-contact,
+.logo-container,
+.projects,
+.testimonials,
+.contact,
+.client-cards-section,
+.client-cards-header,
+.client-cards-grid,
+.client-card,
+.contact-info,
+.stats-grid,
+.stats-number,
+.stats-item,
+.row {
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+  box-sizing: border-box;
+}
+
+/* Untuk mobile tetap gunakan 1.5rem */
+@media (max-width: 600px) {
+  .container,
+  .section,
+  .about,
+  .about-content,
+  .about-media,
+  .footer,
+  .footer-content,
+  .footer-about,
+  .footer-links,
+  .footer-contact,
+  .logo-container,
+  .projects,
+  .testimonials,
+  .contact,
+  .client-cards-section,
+  .client-cards-header,
+  .client-cards-grid,
+  .client-card,
+  .project-tab,
+  .contact-info,
+  .blogs-slider,
+  .blogs-grid,
+  .stats-grid,
+  .stats-number,
+  .stats-item,
+  .row {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    box-sizing: border-box;
+  }
 }
