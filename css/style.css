@@ -4336,3 +4336,24 @@ body {
     box-sizing: border-box;
   }
 }
+@media (max-width: 600px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .contact-info,
+  .contact-form {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 3rem !important; /* samakan dengan PC */
+    border-radius: 12px !important;
+  }
+  .contact-map {
+    grid-column: span 2;
+    height: 400px !important;
+  }
+}
+
+
