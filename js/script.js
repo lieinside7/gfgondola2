@@ -455,13 +455,13 @@ document.addEventListener('DOMContentLoaded', function() {
     box.style.opacity = 0;
     box.style.transform = 'translateY(40px)';
   });
-  // Animasi masuk satu per satu
+  // Animasi masuk satu per satu, gambar pertama langsung animasi
   projectBoxes.forEach((box, idx) => {
     setTimeout(() => {
       box.style.transition = 'opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1)';
       box.style.opacity = 1;
       box.style.transform = 'translateY(0)';
-    }, 200 + idx * 120);
+    }, idx * 120); // Hapus delay 200ms, jadi gambar pertama langsung animasi
   });
 });
 
