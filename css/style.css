@@ -4178,98 +4178,42 @@ body {
   transform: scale(1.08) rotate(-2deg);
   box-shadow: 0 8px 24px rgba(0,86,179,0.13);
 }
-/* Tombol download elegan, rata tengah, tidak warna-warni */
-.btn-download {
-  display: inline-flex;
+/*Tombol-Download*/
+.btn-download-full {
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.9em;
-  padding: 1.1em 2.2em;
-  font-size: 1.18rem;
-  font-weight: 600;
-  border-radius: 2.5em;
+  gap: 0.7em;
   background: #0070e0;
-  color: #fff !important;
-  box-shadow: 0 4px 18px rgba(0,86,179,0.08);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.15rem;
   border: none;
-  transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
-  text-align: center;
+  border-radius: 30px;
+  padding: 1em 2em;
   margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s;
+  text-align: center;
+  cursor: pointer;
 }
-.btn-download:hover,
-.btn-download:focus {
+.btn-download-full:hover,
+.btn-download-full:focus {
   background: #005bb5;
-  color: #fff !important;
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(0,86,179,0.16);
+  color: #fff;
   text-decoration: none;
 }
-.download-icon {
+.btn-download-full .download-icon {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-.download-icon svg {
-  display: block;
-}
-.about-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 2.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.btn-download {
-  width: 100%;
-  max-width: 380px; /* Samakan dengan .feature-item */
-  min-width: 220px; /* Samakan dengan .feature-item */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.9em;
-  padding: 1.1em 2.2em;
-  font-size: 1.18rem;
-  font-weight: 600;
-  border-radius: 2.5em;
-  background: #0070e0;
-  color: #fff !important;
-  box-shadow: 0 4px 18px rgba(0,86,179,0.08);
-  border: none;
-  transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.btn-download:hover,
-.btn-download:focus {
-  background: #005bb5;
-  color: #fff !important;
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(0,86,179,0.16);
-  text-decoration: none;
-}
-
-.download-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.download-icon svg {
-  display: block;
-}
-
-@media (max-width:900px) {
-  .btn-download {
-    max-width: 100%;
-    min-width: 0;
+@media (max-width: 600px) {
+  .btn-download-full {
+    width: 100%;
     font-size: 1rem;
-    padding: 0.8em 1.3em;
-  }
-  .about-buttons {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding: 1em 0.5em;
   }
 }
 /* Padding konsisten kiri-kanan untuk PC (di luar media query mobile) */
