@@ -4211,6 +4211,7 @@ body {
 @media (max-width: 600px) {
   .btn-download-full {
     width: 100%;
+    min-height: 1%;
     font-size: 1rem;
     padding: 1em 0.5em;
   }
@@ -4228,7 +4229,7 @@ body {
 .footer-contact,
 .logo-container,
 .projects,
-.btn-download,
+.btn-download-full,
 .testimonials,
 .contact,
 .client-cards-section,
@@ -4258,7 +4259,7 @@ body {
   .footer-links,
   .footer-contact,
   .logo-container,
-  .btn-download,
+  .btn-download-full,
   .projects,
   .testimonials,
   .contact,
