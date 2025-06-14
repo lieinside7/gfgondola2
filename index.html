@@ -63,19 +63,21 @@
    <title>PT. Gondola Firdaus Pratama Jaya - Spesialis Gondola Profesional</title>
    <meta name="description" content="Spesialis jasa gondola custom, pemasangan, perawatan, dan suku cadang untuk gedung bertingkat. Solusi aman dan profesional untuk kebutuhan akses ketinggian Anda.">
 
-<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
-<link rel="manifest" href="icon/site.webmanifest" crossorigin="use-credentials">
-<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#ff7d00">
-<link rel="shortcut icon" href="icon/favicon.ico">
-<link rel="icon" href="icon/favicon.ico?v=2">
-<link rel="apple-touch-icon" href="icon/apple-touch-icon.png?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png?v=2">
-<link rel="manifest" href="icon/site.webmanifest" crossorigin="use-credentials">
-<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#ff7d00">
-<meta name="msapplication-config" content="icon/browserconfig.xml">
+<!-- Favicon untuk berbagai platform -->
+<meta name="theme-color" content="#ff7d00">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="icon/favicon.ico" sizes="any">
+<link rel="icon" href="icon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon/apple-touch-icon.png">
+<link rel="manifest" href="icon/site.webmanifest">
+<link rel="icon" href="icon/favicon.ico?v=3">
+<link rel="apple-touch-icon" href="icon/apple-touch-icon.png?v=3">
+<link rel="manifest" href="icon/site.webmanifest?v=3">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚡</text></svg>">
+<link rel="icon" href="https://example.com/icon/favicon.ico">
+<link rel="apple-touch-icon" href="https://example.com/icon/apple-touch-icon.png">
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1326,6 +1328,20 @@ document.addEventListener('DOMContentLoaded', function() {
   popup.addEventListener('click', function(e) {
     e.stopPropagation();
   });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Cek apakah favicon sudah dimuat
+  setTimeout(function() {
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (!favicon || !favicon.href) {
+      const fallback = document.createElement('link');
+      fallback.rel = 'icon';
+      fallback.href = 'https://example.com/icon/favicon.ico';
+      document.head.appendChild(fallback);
+    }
+  }, 3000);
 });
 </script>
 </body>
