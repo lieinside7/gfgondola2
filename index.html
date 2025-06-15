@@ -49,47 +49,39 @@
    <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()">
    <meta name="referrer" content="strict-origin-when-cross-origin">
-   <!-- Hapus input _csrf dari head, tidak relevan di sini -->
    <meta http-equiv="X-Frame-Options" content="DENY">
    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
    <meta http-equiv="X-Content-Type-Options" content="nosniff">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-   <!-- Favicon untuk berbagai platform -->
-   <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
-   <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
-   <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
-   <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
-   <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
-   <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
-   <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
-   <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
-   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-   <link rel="apple-touch-icon-precomposed" href="/favicon/apple-icon-precomposed.png">
-   <link rel="apple-touch-icon" href="/favicon/apple-icon.png">
-   <!-- Favicon untuk browser modern -->
-   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-   <link rel="icon" type="image/png" sizes="36x36" href="/favicon/android-icon-36x36.png">
-   <link rel="icon" type="image/png" sizes="48x48" href="/favicon/android-icon-48x48.png">
-   <link rel="icon" type="image/png" sizes="72x72" href="/favicon/android-icon-72x72.png">
-   <link rel="icon" type="image/png" sizes="96x96" href="/favicon/android-icon-96x96.png">
-   <link rel="icon" type="image/png" sizes="144x144" href="/favicon/android-icon-144x144.png">
-   <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
-   <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
-   <!-- Fallback favicon untuk browser lama -->
-   <link rel="icon" href="/favicon/favicon.ico">
-   <!-- Favicon tanpa type untuk fallback ekstra -->
-   <link rel="shortcut icon" href="/favicon/favicon.ico">
-   <!-- Safari mask-icon -->
-   <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ff7d00">
-   <!-- Manifest dan browserconfig -->
-   <link rel="manifest" href="/favicon/site.webmanifest" crossorigin="use-credentials">
-   <meta name="msapplication-TileColor" content="#ffffff">
-   <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
-   <meta name="msapplication-config" content="/favicon/browserconfig.xml">
-   <meta name="theme-color" content="#ffffff">
+   <base href="./">
+   <!-- Favicon untuk berbagai platform (ubah path ke relatif) -->
+   <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon-precomposed" href="favicon/apple-icon-precomposed.png">
+<link rel="apple-touch-icon" href="favicon/apple-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="36x36" href="favicon/android-icon-36x36.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon/android-icon-48x48.png">
+<link rel="icon" type="image/png" sizes="72x72" href="favicon/android-icon-72x72.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/android-icon-96x96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="favicon/android-icon-144x144.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+<link rel="shortcut icon" href="favicon/favicon.ico">
+<link rel="manifest" href="favicon/site.webmanifest" crossorigin="use-credentials">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+<meta name="msapplication-config" content="favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
 <!-- Apple PWA -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="PT. Gondola Firdaus Pratama Jaya">
@@ -1367,31 +1359,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!favicon || !favicon.href) {
       const fallback = document.createElement('link');
       fallback.rel = 'icon';
-      fallback.href = 'https://example.com/icon/favicon.ico';
+      fallback.href = 'favicon/favicon.ico';
       document.head.appendChild(fallback);
     }
   }, 3000);
 });
-</script>
-<!-- Tambahkan fallback favicon JS di akhir body sebelum </body> -->
-<script>
-  // Fallback favicon jika tidak muncul
-  (function() {
-    var hasFavicon = false;
-    var links = document.getElementsByTagName('link');
-    for (var i = 0; i < links.length; i++) {
-      if ((links[i].rel === 'icon' || links[i].rel === 'shortcut icon') && links[i].href) {
-        hasFavicon = true;
-        break;
-      }
-    }
-    if (!hasFavicon) {
-      var fallback = document.createElement('link');
-      fallback.rel = 'icon';
-      fallback.href = '/favicon/favicon.ico';
-      document.head.appendChild(fallback);
-    }
-  })();
 </script>
 </body>
 </html>
